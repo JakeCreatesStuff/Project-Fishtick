@@ -5,6 +5,8 @@ signal jumped()
 signal landing()
 
 var JakeAbandonedUs = true
+var EdamameWithSalt = true
+
 
 @export var SPEED : float = 200.0
 @export var ACCELERATION = 500.0
