@@ -1,20 +1,28 @@
 [gd_scene load_steps=62 format=3 uid="uid://s0shuc50m6uf"]
 
-[ext_resource type="Texture2D" uid="uid://d1u4neos6j6at" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="1_wmuej"]
-[ext_resource type="Texture2D" uid="uid://0g5sbld5lnpk" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Jump/player new jump 48x48.png" id="2_hwssu"]
-[ext_resource type="Texture2D" uid="uid://b8teb8asnomop" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Idle/Player Crouch-Idle 48x48.png" id="2_k7ivg"]
-[ext_resource type="Texture2D" uid="uid://dpoyqflen6ar8" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Run/player run 48x48.png" id="3_6ygq3"]
-[ext_resource type="Texture2D" uid="uid://txlvx62ko2i" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Walk/player crouch-walk 48x48.png" id="3_p2hvc"]
-[ext_resource type="Texture2D" uid="uid://b6isvlrd8o3a5" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Land/player land 48x48.png" id="3_srqym"]
-[ext_resource type="Texture2D" uid="uid://c5ig7g5sesd6m" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V4/Player Katana Continuous Attack/player katana continuous attack 80x64.png" id="4_qg0ck"]
-[ext_resource type="Texture2D" uid="uid://cmtin77px4vbl" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Wall Slide/player wall slide 48x48.png" id="8_xrrpa"]
+[ext_resource type="Texture2D" uid="uid://djxlyryg2xje0" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="1_wmuej"]
+[ext_resource type="Texture2D" uid="uid://caqgrgepx316q" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Jump/player new jump 48x48.png" id="2_hwssu"]
+[ext_resource type="Texture2D" uid="uid://cy4x4abf1kjus" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Idle/Player Crouch-Idle 48x48.png" id="2_k7ivg"]
+[ext_resource type="Texture2D" uid="uid://b7hrorscs15ob" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Run/player run 48x48.png" id="3_6ygq3"]
+[ext_resource type="Texture2D" uid="uid://dell34fhgjg5" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Walk/player crouch-walk 48x48.png" id="3_p2hvc"]
+[ext_resource type="Texture2D" uid="uid://dii2hr43egum5" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Land/player land 48x48.png" id="3_srqym"]
+[ext_resource type="Texture2D" uid="uid://d3dvne2oa4xtl" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V4/Player Katana Continuous Attack/player katana continuous attack 80x64.png" id="4_qg0ck"]
+[ext_resource type="Texture2D" uid="uid://dv865snuo0ojk" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Wall Slide/player wall slide 48x48.png" id="8_xrrpa"]
 [ext_resource type="Shape2D" uid="uid://juxewl7jags0" path="res://cshapes/plater_stand_cshape.tres" id="9_720mu"]
 
 [sub_resource type="GDScript" id="GDScript_2coau"]
 script/source = "extends CharacterBody2D
+
 signal crouch_signal()
+signal jumped()
+signal landing()
+
+var JakeAbandonedUs = true
 
 @export var SPEED : float = 200.0
+@export var ACCELERATION = 500.0
+@export var friction = 800.0
+@export var air_resistance = 400.0
 @export var JUMP_VELOCITY : float = -200.0
 @export var DOUBLE_JUMP_VELOCITY : float = -150.0
 @export var WALL_JUMP_PUSHBACK : float = 100
@@ -30,30 +38,37 @@ signal crouch_signal()
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 var HAS_DOUBLE_JUMPED : bool = false
+var touched_a_wall = false
+var has_jumped = false
+var jump_timer = false
 var HAS_WALL_JUMPED : bool = false
 var animation_locked : bool = false
-var direction : Vector2 = Vector2.ZERO
 var was_in_air : bool = false
 var is_crouching = false
 var stuck_under_object = false
 var is_wall_sliding = false
 var crouch_velocity = 0.5
 
+
 var crouching_cshape = preload(\"res://cshapes/plater_crouch_cshape.tres\")
 var standing_cshape = preload(\"res://cshapes/plater_stand_cshape.tres\")
 
 func _physics_process(delta):
 	# Add the gravity.
+	var direction = Input.get_axis(\"left\", \"right\")
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		was_in_air = true
+		if !jump_timer:
+			jump_timer = true
+			$JumpTimer.start()
 	else:
+		has_jumped = false
 		HAS_DOUBLE_JUMPED = false
-		HAS_WALL_JUMPED = false
+		#HAS_WALL_JUMPED = false
 		
 		if was_in_air == true:
-			land()
-			
+			animated_sprite.play(\"jump end\")
 		was_in_air = false
 		
 	if Input.is_action_just_pressed(\"down\"):
@@ -68,94 +83,121 @@ func _physics_process(delta):
 	if stuck_under_object && overhead_check():
 		stand()
 		stuck_under_object = false
-		
-	# Handle jump.
-	if Input.is_action_just_pressed(\"jump\"):
-		if is_on_floor():
-			#normal jump
-			jump()
-		elif not HAS_DOUBLE_JUMPED:
-			if is_on_wall():
-				wall_jump()
-				print(\"pog\")
-			else:
-				double_jump()
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
+	
 	if is_crouching:
 		crouch_velocity = 0.5
 	else:
 		crouch_velocity = 1
 	if HAS_WALL_JUMPED == false:
-		if direction.x > 0:
-			velocity.x = SPEED * crouch_velocity
-		elif direction.x < 0 :
-			velocity.x = SPEED * -crouch_velocity
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-	else:
-		if wall_raycast_left.is_colliding():
-			velocity.x = 100
-		if wall_raycast_right.is_colliding():
-			velocity.x = -100
-	
-	wall_slide(delta)
-	move_and_slide()
-	update_animation()
-	update_facing_direction()
-
-func update_animation():
-	if not animation_locked:
-		if direction.x != 0:
-			if is_crouching:
+		if direction != 0:
+			velocity.x = move_toward(velocity.x, SPEED * crouch_velocity * direction, ACCELERATION * delta )
+			if is_crouching and is_on_floor():
 				animated_sprite.play(\"crouch walk\")
-			else:
+			elif is_on_floor():
 				animated_sprite.play(\"run\")
 		else:
-			if is_crouching:
+			apply_friction(direction, delta)
+			if is_crouching and is_on_floor():
 				animated_sprite.play(\"crouch\")
-			else:
+			elif is_on_floor():
 				animated_sprite.play(\"idle\")
-			
-func update_facing_direction():
-	if direction.x > 0:
+	# Handle jump.
+	# handle_wall_jump()
+	wall_checker()
+	if Input.is_action_just_pressed(\"jump\"):
+		if is_on_floor():
+			#normal jump
+			jump(direction)
+		elif touched_a_wall and $WallJumpGracePeriod.time_left > 0:
+			wall_jump(direction)
+		elif not HAS_DOUBLE_JUMPED:
+			double_jump()#if is_on_wall() and $WallJumpGracePeriod.time_left > 0 :
+				#wall_jump(direction)
+				##print(\"pog\")
+			#else:
+				
+
+	
+	#else:
+		#if wall_raycast_left.is_colliding():
+			#velocity.x = 100
+		#if wall_raycast_right.is_colliding():
+			#velocity.x = -100
+	
+	wall_slide(direction, delta)
+	apply_air_resistance(direction, delta)
+	move_and_slide()
+	#update_animation(direction)
+	update_facing_direction(direction)
+
+
+#func update_animation(direction):
+	#if direction != 0 and velocity.y == 0 :
+		#if is_crouching:
+			#animated_sprite.play(\"crouch walk\")
+		#else:
+			#animated_sprite.play(\"run\")
+	#elif direction == 0 and velocity.y == 0:
+		#if is_crouching:
+			#animated_sprite.play(\"crouch\")
+		#else:
+			#animated_sprite.play(\"idle\")
+	#elif velocity.y != 0:
+		#animated_sprite.play(\"jump\")
+		#animated_sprite.frame = 5
+
+func update_facing_direction(direction):
+	if direction > 0:
 		animated_sprite.flip_h = false
-	elif direction.x < 0:
+	elif direction < 0:
 		animated_sprite.flip_h = true
 
-func jump():
+func jump(direction):
+	has_jumped = true
 	velocity.y = JUMP_VELOCITY
 	animated_sprite.play(\"jump\")
-	animation_locked = true
-		
+	#elif direction != 0:
+		#animated_sprite.play(\"jump move\")
+
 func double_jump():
 	velocity.y = DOUBLE_JUMP_VELOCITY
-	animated_sprite.play(\"jump double\")
+	animated_sprite.play(\"jump\")
 	#print(\"double jump\")
-	animation_locked = true
+	#animation_locked = true
 	HAS_DOUBLE_JUMPED = true
 	HAS_WALL_JUMPED = false
 	
-func wall_jump():
+func wall_jump(direction):
+	#animation_locked = false
+	var wall_normal = get_wall_normal()
+	velocity.x = wall_normal.x * SPEED
 	velocity.y = JUMP_VELOCITY
+	if wall_normal == Vector2.LEFT:
+		direction = 1
+		animated_sprite.play(\"jump\")
+	if wall_normal == Vector2.RIGHT:
+		direction = -1
+		animated_sprite.play(\"jump\")
+	elif wall_normal == Vector2.ZERO:
+		direction = 0
 	#if direction.x < 0:
 		#velocity.x = WALL_JUMP_PUSHBACK
 		#print(\"wall jump left\")
 	#elif direction.x > 0:
 		#velocity.x = WALL_JUMP_PUSHBACK
 	#print(\"wall jump\")
-	animated_sprite.play(\"jump\")
-	animation_locked = true
+	#animated_sprite.play(\"jump\")
+	#animation_locked = true
 	HAS_WALL_JUMPED = true
 	
-func wall_slide(delta):
+func wall_slide(direction, delta):
 	if is_on_wall_only():
 		#print(\"wall slide\")
-		if direction.x > 0 or direction.x < 0:
-			is_wall_sliding = true
-			animated_sprite.play(\"wall slide\")
+		if velocity.x != 0:
+			if !is_wall_sliding:
+				is_wall_sliding = true
+			if is_wall_sliding:
+				animated_sprite.play(\"wall slide\")
 			animation_locked = true
 		else:
 			is_wall_sliding = false
@@ -168,8 +210,10 @@ func wall_slide(delta):
 		velocity.y = min(velocity.y, wall_slide_gravity)
 
 func land():
+	print(\"test\")
 	animated_sprite.play(\"jump end\")
-	animation_locked = true
+	await animated_sprite.animation_finished
+	animated_sprite.play(\"idle\")
 
 func crouch():
 	if is_crouching:
@@ -189,17 +233,39 @@ func overhead_check() -> bool:
 	var result = !crouch_raycast1.is_colliding() && !crouch_raycast2.is_colliding()
 	return result
 	
-func _on_animated_sprite_2d_animation_finished():
-	if([\"jump end\", \"jump\", \"jump double\"].has(animated_sprite.animation)):
-		animation_locked = false
+#func _on_animated_sprite_2d_animation_finished():
+	#if([\"jump end\", \"jump\", \"jump double\"].has(animated_sprite.animation)):
+		#animation_locked = false
 
-func _input(event):
-	if event.is_action_pressed(\"test\"):
-		velocity.x = 100
-		move_and_slide()
 
 func _on_crouch_signal():
 	pass # Replace with function body.
+
+func wall_checker():
+	if wall_raycast_left.is_colliding() or wall_raycast_right.is_colliding():
+		touched_a_wall = true
+		$WallJumpGracePeriod.start()
+	else:
+		touched_a_wall = false
+
+func apply_friction(direction, delta):
+	if direction == 0 and is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
+		
+
+func apply_air_resistance(direction, delta):
+	if direction == 0 and not is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, air_resistance * delta)
+
+
+func _on_jump_timer_timeout():
+	jump_timer = false
+	if !has_jumped:
+		animated_sprite.play(\"mid air\")
+	else: 
+		await animated_sprite.animation_finished
+		animated_sprite.play(\"mid air\")
+		
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um3vy"]
@@ -634,4 +700,13 @@ target_position = Vector2(11, 0)
 [node name="WallCheck_Left" type="RayCast2D" parent="."]
 target_position = Vector2(-11, 0)
 
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="WallJumpGracePeriod" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
