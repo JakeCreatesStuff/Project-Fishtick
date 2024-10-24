@@ -11,7 +11,9 @@
 [ext_resource type="Shape2D" uid="uid://juxewl7jags0" path="res://cshapes/plater_stand_cshape.tres" id="9_720mu"]
 
 [sub_resource type="GDScript" id="GDScript_2coau"]
-script/source = "extends CharacterBody2D
+script/source = "#PLAYER CODE
+
+extends CharacterBody2D
 signal crouch_signal()
 
 @export var SPEED : float = 200.0
