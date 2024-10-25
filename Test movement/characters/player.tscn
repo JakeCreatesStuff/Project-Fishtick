@@ -423,11 +423,12 @@ script = ExtResource("1_h246c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_idbdt")
-animation = &"mid air"
+animation = &"wall slide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = ExtResource("9_720mu")
+one_way_collision_margin = 0.0
 
 [node name="CrouchRaycast_1" type="RayCast2D" parent="."]
 position = Vector2(-5, 3)

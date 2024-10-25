@@ -7,6 +7,7 @@ signal crouch_signal()
 @export var JUMP_VELOCITY : float = -200.0
 @export var DOUBLE_JUMP_VELOCITY : float = -150.0
 @export var WALL_JUMP_PUSHBACK : float = 100
+@export var WALL_SLIDE_GRAVITY = 100
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var cshape = $CollisionShape2D
@@ -25,13 +26,14 @@ var was_in_air : bool = false
 var is_crouching = false
 var stuck_under_object = false
 var crouch_velocity = 0.5
+var is_wall_sliding
 
 var crouching_cshape = preload("res://cshapes/plater_crouch_cshape.tres")
 var standing_cshape = preload("res://cshapes/plater_stand_cshape.tres")
 
 func _physics_process(delta):
 	# Add the gravity.
-	print("test")
+	print(get_wall_normal())
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		was_in_air = true
@@ -62,11 +64,13 @@ func _physics_process(delta):
 		if is_on_floor():
 			#normal jump
 			jump()
-		elif not HAS_DOUBLE_JUMPED:
-			if is_on_wall():
-				wall_jump()
-			else:
-				double_jump()
+		elif wall_raycast_right.is_colliding() or wall_raycast_left.is_colliding():
+			wall_jump()
+		#elif not HAS_DOUBLE_JUMPED:
+			#if is_wall_sliding:
+				#wall_jump()
+			#else:
+				#double_jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -82,13 +86,9 @@ func _physics_process(delta):
 			velocity.x = SPEED * -crouch_velocity
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	else:
-		if wall_raycast_left.is_colliding():
-			velocity.x = 100
-		if wall_raycast_right.is_colliding():
-			velocity.x = -100
 	
 	move_and_slide()
+	wall_slide(delta)
 	update_animation()
 	update_facing_direction()
 
@@ -125,16 +125,33 @@ func double_jump():
 	HAS_WALL_JUMPED = false
 	
 func wall_jump():
+	var wall_normal = get_wall_normal()
 	velocity.y = JUMP_VELOCITY
-	#if direction.x < 0:
-		#velocity.x = WALL_JUMP_PUSHBACK
-		#print("wall jump left")
-	#elif direction.x > 0:
-		#velocity.x = WALL_JUMP_PUSHBACK
-	print("wall jump")
+	if wall_normal == Vector2.RIGHT:
+		velocity.x = WALL_JUMP_PUSHBACK
+	elif wall_normal == Vector2.LEFT:
+		velocity.x = -WALL_JUMP_PUSHBACK
+	#print("wall jump")
 	animated_sprite.play("jump")
 	animation_locked = true
 	HAS_WALL_JUMPED = true
+	
+func wall_slide(delta):
+	if wall_raycast_right.is_colliding() or wall_raycast_left.is_colliding():
+		print("wall slide")
+		animated_sprite.play("wall slide")
+		animation_locked = true
+		if direction.x > 0 or direction.x < 0:
+			is_wall_sliding = true
+		else:
+			is_wall_sliding = false
+	else:
+		is_wall_sliding = false
+		
+	if is_wall_sliding:
+		velocity.y += (WALL_SLIDE_GRAVITY * delta)
+		velocity.y = min(velocity.y, WALL_SLIDE_GRAVITY)
+		#velocity.y = move_toward(velocity.y, WALL_SLIDE_GRAVITY, 18*delta)
 	
 func land():
 	animated_sprite.play("jump end")
