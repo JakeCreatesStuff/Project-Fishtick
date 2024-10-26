@@ -32,14 +32,15 @@ var crouch_velocity = 0.5
 var is_wall_sliding = false
 var is_dashing = false
 var can_dash = true
+var in_water = false
 
 var crouching_cshape = preload("res://cshapes/plater_crouch_cshape.tres")
 var standing_cshape = preload("res://cshapes/plater_stand_cshape.tres")
 
 func _physics_process(delta):
 	# Add the gravity.
-	print(direction.y)
-	if not is_on_floor():
+	#print(direction.y)
+	if !is_on_floor():
 		velocity.y += gravity * delta
 		was_in_air = true
 	else:
@@ -92,11 +93,12 @@ func _physics_process(delta):
 	if HAS_WALL_JUMPED == false:
 		if direction.x and !is_dashing:
 			#velocity.x = -direction.x * SPEED * -crouch_velocity
-			velocity.x = move_toward(velocity.x, SPEED * crouch_velocity * direction.x, ACCELERATION * delta )
+			velocity.x = move_toward(velocity.x, SPEED * crouch_velocity * round(direction.x), ACCELERATION * delta )
 		elif is_dashing:
 			velocity.x = -facing.x * DASH_VELOCITY * -crouch_velocity
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			#velocity.x = move_toward(velocity.x, 0, SPEED)
+			apply_friction(delta)
 	elif is_dashing:
 		velocity.x = -facing.x * DASH_VELOCITY * -crouch_velocity
 	
@@ -133,7 +135,7 @@ func jump():
 func double_jump():
 	velocity.y = DOUBLE_JUMP_VELOCITY
 	animated_sprite.play("jump double")
-	print("double jump")
+	#print("double jump")
 	animation_locked = true
 	HAS_DOUBLE_JUMPED = true
 	HAS_WALL_JUMPED = false
@@ -145,13 +147,14 @@ func wall_jump():
 		velocity.x = WALL_JUMP_PUSHBACK
 	elif wall_normal == Vector2.LEFT:
 		velocity.x = -WALL_JUMP_PUSHBACK
-	animated_sprite.play("jump")
+	animated_sprite.play("jump double")
 	animation_locked = true
 	HAS_WALL_JUMPED = true
 	
 func wall_slide(delta):
+	#print(HAS_WALL_JUMPED)
 	if !is_on_floor() and (wall_raycast_right.is_colliding() or wall_raycast_left.is_colliding()):
-		print("wall slide")
+		#print("wall slide")
 		animated_sprite.play("wall slide")
 		animation_locked = true
 		if direction.x > 0 or direction.x < 0:
@@ -160,12 +163,11 @@ func wall_slide(delta):
 			is_wall_sliding = false
 	else:
 		is_wall_sliding = false
-		#animation_locked = false
 		
 	if is_wall_sliding:
+		#HAS_WALL_JUMPED = false
 		velocity.y += (WALL_SLIDE_GRAVITY * delta)
 		velocity.y = min(velocity.y, WALL_SLIDE_GRAVITY)
-		#velocity.y = move_toward(velocity.y, WALL_SLIDE_GRAVITY, 18*delta)
 
 func dash():
 	is_dashing = true
@@ -208,6 +210,10 @@ func _input(event):
 		velocity.x = 100
 		move_and_slide()
 
+func apply_friction(delta):
+	if direction.x == 0 and is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
+
 func _on_crouch_signal():
 	pass # Replace with function body.
 
@@ -216,7 +222,27 @@ func _on_dash_timer_timeout():
 	is_dashing = false
 	animation_locked = false
 	
-
-
 func _on_dash_cooldown_timeout():
 	can_dash = true
+
+
+#func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	#print("is touching water")
+	#animated_sprite.play("swim")
+	#animation_locked = true
+#
+#
+#func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+	#print("left water")
+	#animation_locked = false
+
+
+func _on_area_2d_body_entered(body):
+	print("is touching water")
+	animated_sprite.play("swim")
+	animation_locked = true
+
+
+func _on_area_2d_body_exited(body):
+	print("left water")
+	animation_locked = false

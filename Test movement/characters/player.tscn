@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://s0shuc50m6uf"]
+[gd_scene load_steps=85 format=3 uid="uid://s0shuc50m6uf"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_h246c"]
 [ext_resource type="Texture2D" uid="uid://d1u4neos6j6at" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="1_wmuej"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cyjrmqy2n6a43" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V5/Dash/dash.png" id="4_rn3no"]
 [ext_resource type="Texture2D" uid="uid://cmtin77px4vbl" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Wall Slide/player wall slide 48x48.png" id="8_xrrpa"]
 [ext_resource type="Shape2D" uid="uid://juxewl7jags0" path="res://cshapes/plater_stand_cshape.tres" id="9_720mu"]
+[ext_resource type="Texture2D" uid="uid://dx1amkfwok85r" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V5/Slide/Player Slide 48x48.png" id="10_d82pi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um3vy"]
 atlas = ExtResource("2_k7ivg")
@@ -254,6 +255,38 @@ region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbyvd"]
 atlas = ExtResource("3_6ygq3")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooe23"]
+atlas = ExtResource("10_d82pi")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j62wg"]
+atlas = ExtResource("10_d82pi")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgl5q"]
+atlas = ExtResource("10_d82pi")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d35wq"]
+atlas = ExtResource("10_d82pi")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g0ry"]
+atlas = ExtResource("10_d82pi")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkohi"]
+atlas = ExtResource("10_d82pi")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcym5"]
+atlas = ExtResource("10_d82pi")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1tvx"]
+atlas = ExtResource("10_d82pi")
 region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvdej"]
@@ -501,6 +534,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ooe23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j62wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgl5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d35wq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g0ry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkohi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcym5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1tvx")
+}],
+"loop": false,
+"name": &"swim",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bvdej")
 }],
 "loop": false,
@@ -508,14 +570,18 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ewi4g"]
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_h246c")
+DASH_VELOCITY = 400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_idbdt")
-animation = &"crouch"
+animation = &"swim"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 shape = ExtResource("9_720mu")
 one_way_collision_margin = 0.0
@@ -541,6 +607,19 @@ one_shot = true
 [node name="dash_cooldown" type="Timer" parent="."]
 wait_time = 0.8
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="WaterCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_ewi4g")
+debug_color = Color(0.250292, 0.62046, 0.398284, 0.42)
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
