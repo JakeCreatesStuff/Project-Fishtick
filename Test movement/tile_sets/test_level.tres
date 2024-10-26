@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" load_steps=13 format=3 uid="uid://0ol68ehao87j"]
 
-[ext_resource type="Texture2D" uid="uid://csofdgvbmbjne" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/IceSet.png" id="1_14afc"]
-[ext_resource type="Texture2D" uid="uid://bwxqltvxb0qo0" path="res://art/Water+.png" id="2_5u3m4"]
-[ext_resource type="Texture2D" uid="uid://di8nxhy0vq85d" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/FireSet.png" id="3_cji2i"]
-[ext_resource type="Texture2D" uid="uid://b0v160ru2mjwq" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/DarkCastle.png" id="4_uejxa"]
-[ext_resource type="Texture2D" uid="uid://dctc3i0ogiomy" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/BasicGreen.png" id="5_cya45"]
-[ext_resource type="Texture2D" uid="uid://qj0ym14315bc" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/Swampset.png" id="6_gwmxo"]
+[ext_resource type="Texture2D" uid="uid://buuc26oatdwv3" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/IceSet.png" id="1_14afc"]
+[ext_resource type="Texture2D" uid="uid://cffspllrb8vii" path="res://art/Water+.png" id="2_5u3m4"]
+[ext_resource type="Texture2D" uid="uid://bbce4evb80yh3" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/FireSet.png" id="3_cji2i"]
+[ext_resource type="Texture2D" uid="uid://bybpf4eilgtut" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/DarkCastle.png" id="4_uejxa"]
+[ext_resource type="Texture2D" uid="uid://d5ka28odsmny" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/BasicGreen.png" id="5_cya45"]
+[ext_resource type="Texture2D" uid="uid://dxd4u5ukovdin" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/Swampset.png" id="6_gwmxo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3v3d6"]
 texture = ExtResource("1_14afc")
@@ -152,6 +152,7 @@ texture = ExtResource("2_5u3m4")
 3:7/0 = 0
 4:7/0 = 0
 5:7/0 = 0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -8, 8, 8, -8, 8)
 6:7/0 = 0
 7:7/0 = 0
 8:7/0 = 0
