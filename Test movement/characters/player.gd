@@ -2,14 +2,15 @@ extends CharacterBody2D
 signal crouch_signal()
 
 @export var SPEED : float = 200.0
+@export var SWIM_SPEED : float = 250.0
 @export var ACCELERATION = 500.0
 @export var friction = 800.0
-@export var air_resistance = 400.0
 @export var JUMP_VELOCITY : float = -200.0
 @export var DOUBLE_JUMP_VELOCITY : float = -150.0
 @export var WALL_JUMP_PUSHBACK : float = 150
 @export var WALL_SLIDE_GRAVITY = 100
 @export var DASH_VELOCITY : float = 600.0
+@export var SWIM_DASH_VELOCITY : float = 400.0
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var cshape = $CollisionShape2D
@@ -17,9 +18,10 @@ signal crouch_signal()
 @onready var crouch_raycast2 = $CrouchRaycast_2
 @onready var wall_raycast_right = $WallCheck_Right
 @onready var wall_raycast_left = $WallCheck_Left
+@onready var burst_particles = $CPUParticles2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = 480
 var HAS_DOUBLE_JUMPED : bool = false
 var HAS_WALL_JUMPED : bool = false
 var animation_locked : bool = false
@@ -33,13 +35,17 @@ var is_wall_sliding = false
 var is_dashing = false
 var can_dash = true
 var in_water = false
+var is_bursting = false
+var can_burst = false
 
 var crouching_cshape = preload("res://cshapes/plater_crouch_cshape.tres")
 var standing_cshape = preload("res://cshapes/plater_stand_cshape.tres")
 
 func _physics_process(delta):
+	#burst_particles.is_emittinng
+	#var mouse_position = get_local_mouse_position().normalized()
 	# Add the gravity.
-	#print(direction.y)
+	print(is_bursting)
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		was_in_air = true
@@ -73,34 +79,50 @@ func _physics_process(delta):
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			#normal jump
-			jump()
-		elif wall_raycast_right.is_colliding() or wall_raycast_left.is_colliding():
-			wall_jump()
-		elif not HAS_DOUBLE_JUMPED:
-			double_jump()
-
+		if !in_water:
+			if is_on_floor():
+				#normal jump
+				jump()
+			elif wall_raycast_right.is_colliding() or wall_raycast_left.is_colliding():
+				wall_jump()
+			elif not HAS_DOUBLE_JUMPED:
+				double_jump()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_vector("left", "right", "up", "down")
 	if !direction.x == 0 and !is_dashing:
 		facing.x = direction.x
-	if is_crouching:
-		crouch_velocity = 0.5
-	else:
-		crouch_velocity = 1
-	if HAS_WALL_JUMPED == false:
-		if direction.x and !is_dashing:
-			#velocity.x = -direction.x * SPEED * -crouch_velocity
-			velocity.x = move_toward(velocity.x, SPEED * crouch_velocity * round(direction.x), ACCELERATION * delta )
+	if !in_water:
+		if is_crouching:
+			crouch_velocity = 0.5
+		else:
+			crouch_velocity = 1
+		if HAS_WALL_JUMPED == false:
+			if direction.x and !is_dashing:
+				#velocity.x = -direction.x * SPEED * -crouch_velocity
+				velocity.x = move_toward(velocity.x, SPEED * crouch_velocity * round(direction.x), ACCELERATION * delta )
+			elif is_dashing and !is_bursting:
+				velocity.x = facing.x * DASH_VELOCITY
+				#velocity.y = -mouse_position.y * DASH_VELOCITY * -crouch_velocity
+			elif is_bursting:
+				velocity.x = move_toward(velocity.x, SWIM_SPEED * round(direction.x), ACCELERATION * delta )
+				velocity.y = move_toward(velocity.y, SWIM_SPEED * round(direction.y), ACCELERATION * delta )
+			else:
+				#velocity.x = move_toward(velocity.x, 0, SPEED)
+				apply_friction(delta)
 		elif is_dashing:
-			velocity.x = -facing.x * DASH_VELOCITY * -crouch_velocity
+			velocity.x = facing.x * DASH_VELOCITY
+	else:
+		if (direction.x or direction.y) and !is_dashing:
+			velocity.x = move_toward(velocity.x, SWIM_SPEED * round(direction.x), ACCELERATION * delta )
+			velocity.y = move_toward(velocity.y, SWIM_SPEED * round(direction.y), ACCELERATION * delta )
+		elif is_dashing:
+			velocity.x = round(direction.x) * SWIM_DASH_VELOCITY
+			velocity.y = round(direction.y) * SWIM_DASH_VELOCITY
 		else:
 			#velocity.x = move_toward(velocity.x, 0, SPEED)
-			apply_friction(delta)
-	elif is_dashing:
-		velocity.x = -facing.x * DASH_VELOCITY * -crouch_velocity
+			apply_friction(delta)	
+			
 	
 	move_and_slide()
 	wall_slide(delta)
@@ -126,7 +148,7 @@ func update_facing_direction():
 			animated_sprite.flip_h = false
 		elif direction.x < 0:
 			animated_sprite.flip_h = true
-
+	
 func jump():
 	velocity.y = JUMP_VELOCITY
 	animated_sprite.play("jump")
@@ -135,7 +157,6 @@ func jump():
 func double_jump():
 	velocity.y = DOUBLE_JUMP_VELOCITY
 	animated_sprite.play("jump double")
-	#print("double jump")
 	animation_locked = true
 	HAS_DOUBLE_JUMPED = true
 	HAS_WALL_JUMPED = false
@@ -152,9 +173,7 @@ func wall_jump():
 	HAS_WALL_JUMPED = true
 	
 func wall_slide(delta):
-	#print(HAS_WALL_JUMPED)
 	if !is_on_floor() and (wall_raycast_right.is_colliding() or wall_raycast_left.is_colliding()):
-		#print("wall slide")
 		animated_sprite.play("wall slide")
 		animation_locked = true
 		if direction.x > 0 or direction.x < 0:
@@ -169,15 +188,15 @@ func wall_slide(delta):
 		velocity.y += (WALL_SLIDE_GRAVITY * delta)
 		velocity.y = min(velocity.y, WALL_SLIDE_GRAVITY)
 
+func burst():
+	is_bursting = true
+	animation_locked = true
+	
 func dash():
 	is_dashing = true
 	animated_sprite.play("dash")
 	animation_locked = true
 	can_dash = false
-	
-func dash_up():
-	is_dashing = true
-	animated_sprite.play("dash")
 
 func land():
 	animated_sprite.play("jump end")
@@ -223,26 +242,22 @@ func _on_dash_timer_timeout():
 	animation_locked = false
 	
 func _on_dash_cooldown_timeout():
+	is_bursting = false
 	can_dash = true
-
-
-#func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	#print("is touching water")
-	#animated_sprite.play("swim")
-	#animation_locked = true
-#
-#
-#func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
-	#print("left water")
-	#animation_locked = false
-
 
 func _on_area_2d_body_entered(body):
 	print("is touching water")
 	animated_sprite.play("swim")
+	ACCELERATION = 600
+	gravity = 100
+	in_water = true
 	animation_locked = true
-
 
 func _on_area_2d_body_exited(body):
 	print("left water")
+	ACCELERATION = 500
+	gravity = 480
+	in_water = false
+	if is_dashing:
+		is_bursting = true
 	animation_locked = false
