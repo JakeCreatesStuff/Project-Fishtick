@@ -18,7 +18,7 @@ signal crouch_signal()
 @onready var crouch_raycast2 = $CrouchRaycast_2
 @onready var wall_raycast_right = $WallCheck_Right
 @onready var wall_raycast_left = $WallCheck_Left
-@onready var burst_particles = $CPUParticles2D
+@onready var burst_particles = $GPUParticles2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 480
@@ -45,7 +45,11 @@ func _physics_process(delta):
 	#burst_particles.is_emittinng
 	#var mouse_position = get_local_mouse_position().normalized()
 	# Add the gravity.
-	print(is_bursting)
+	if is_bursting:
+		burst_particles.emitting = true
+	else:
+		burst_particles.emitting = false
+		
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		was_in_air = true
@@ -122,8 +126,7 @@ func _physics_process(delta):
 		else:
 			#velocity.x = move_toward(velocity.x, 0, SPEED)
 			apply_friction(delta)	
-			
-	
+		
 	move_and_slide()
 	wall_slide(delta)
 	update_animation()

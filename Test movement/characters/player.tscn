@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://s0shuc50m6uf"]
+[gd_scene load_steps=88 format=3 uid="uid://s0shuc50m6uf"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_h246c"]
 [ext_resource type="Texture2D" uid="uid://d1u4neos6j6at" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="1_wmuej"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bx5mpg7bnkdqa" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V3/Player Hurt-Damaged/Player Hurt 48x48.png" id="9_nad8l"]
 [ext_resource type="Texture2D" uid="uid://lsuy70n7r0cj" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V3/Player Death/Player Death 64x64.png" id="10_xbkkd"]
 [ext_resource type="Texture2D" uid="uid://drglh4hlc8pk7" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="11_ltf66"]
+[ext_resource type="Texture2D" uid="uid://lrvfcmwefkpp" path="res://art/particle.png" id="15_2elvy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um3vy"]
 atlas = ExtResource("2_k7ivg")
@@ -569,7 +570,29 @@ radius = 6.0
 [sub_resource type="Gradient" id="Gradient_xq76a"]
 colors = PackedColorArray(0, 0.894118, 0.843137, 1, 0.164706, 0.658824, 1, 1)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_prh83"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 11.75
+angle_min = -90.0
+angle_max = 90.0
+radial_velocity_min = 17.7
+radial_velocity_max = 27.75
+gravity = Vector3(0, -30, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+tangential_accel_min = -25.0
+tangential_accel_max = 25.0
+scale_min = 0.05
+scale_max = 0.5
+collision_mode = 1
+collision_friction = 0.19
+collision_bounce = 0.44
+collision_use_scale = true
+
 [node name="player" type="CharacterBody2D"]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_h246c")
 DASH_VELOCITY = 400.0
 
@@ -617,6 +640,7 @@ shape = SubResource("CircleShape2D_1kk7h")
 debug_color = Color(0.250292, 0.62046, 0.398284, 0.42)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
 amount = 80
 speed_scale = 2.81
 emission_shape = 1
@@ -628,6 +652,13 @@ scale_amount_min = 0.5
 scale_amount_max = 2.0
 color = Color(0.32549, 0.843137, 1, 1)
 color_ramp = SubResource("Gradient_xq76a")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_prh83")
+texture = ExtResource("15_2elvy")
+lifetime = 2.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

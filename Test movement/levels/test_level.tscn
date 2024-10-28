@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://cfj2ljc85invv"]
+[gd_scene load_steps=9 format=4 uid="uid://cfj2ljc85invv"]
 
 [ext_resource type="TileSet" uid="uid://0ol68ehao87j" path="res://tile_sets/test_level.tres" id="1_okh7y"]
 [ext_resource type="PackedScene" uid="uid://s0shuc50m6uf" path="res://characters/player.tscn" id="3_emhbo"]
 [ext_resource type="Texture2D" uid="uid://cffspllrb8vii" path="res://art/Water+.png" id="3_k0mxj"]
 [ext_resource type="PackedScene" uid="uid://ddos1vn23r3qy" path="res://door.tscn" id="3_rte8b"]
+[ext_resource type="PackedScene" uid="uid://c7mbfdtqgn08m" path="res://shark.tscn" id="5_e6qhv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iium3"]
 texture = ExtResource("3_k0mxj")
@@ -50,5 +51,8 @@ position = Vector2(-1, 459)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_vfgqb")
+
+[node name="Shark" parent="." instance=ExtResource("5_e6qhv")]
+position = Vector2(-268, 384)
 
 [connection signal="crouch_signal" from="player" to="player" method="_on_crouch_signal"]
