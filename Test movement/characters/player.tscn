@@ -1,206 +1,20 @@
-[gd_scene load_steps=62 format=3 uid="uid://s0shuc50m6uf"]
+[gd_scene load_steps=88 format=3 uid="uid://s0shuc50m6uf"]
 
+[ext_resource type="Script" path="res://characters/player.gd" id="1_h246c"]
 [ext_resource type="Texture2D" uid="uid://d1u4neos6j6at" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="1_wmuej"]
 [ext_resource type="Texture2D" uid="uid://0g5sbld5lnpk" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Jump/player new jump 48x48.png" id="2_hwssu"]
 [ext_resource type="Texture2D" uid="uid://b8teb8asnomop" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Idle/Player Crouch-Idle 48x48.png" id="2_k7ivg"]
 [ext_resource type="Texture2D" uid="uid://dpoyqflen6ar8" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Run/player run 48x48.png" id="3_6ygq3"]
 [ext_resource type="Texture2D" uid="uid://txlvx62ko2i" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Walk/player crouch-walk 48x48.png" id="3_p2hvc"]
 [ext_resource type="Texture2D" uid="uid://b6isvlrd8o3a5" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Land/player land 48x48.png" id="3_srqym"]
-[ext_resource type="Texture2D" uid="uid://c5ig7g5sesd6m" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V4/Player Katana Continuous Attack/player katana continuous attack 80x64.png" id="4_qg0ck"]
+[ext_resource type="Texture2D" uid="uid://dgjbonxqtbyex" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Air Spin/player air spin 48x48.png" id="4_3s1y4"]
+[ext_resource type="Texture2D" uid="uid://cyjrmqy2n6a43" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V5/Dash/dash.png" id="4_rn3no"]
 [ext_resource type="Texture2D" uid="uid://cmtin77px4vbl" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Wall Slide/player wall slide 48x48.png" id="8_xrrpa"]
 [ext_resource type="Shape2D" uid="uid://juxewl7jags0" path="res://cshapes/plater_stand_cshape.tres" id="9_720mu"]
-
-[sub_resource type="GDScript" id="GDScript_2coau"]
-script/source = "#PLAYER CODE
-
-extends CharacterBody2D
-signal crouch_signal()
-
-@export var SPEED : float = 200.0
-@export var JUMP_VELOCITY : float = -200.0
-@export var DOUBLE_JUMP_VELOCITY : float = -150.0
-@export var WALL_JUMP_PUSHBACK : float = 100
-@export var wall_slide_gravity : float = 100
-
-@onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var cshape = $CollisionShape2D
-@onready var crouch_raycast1 = $CrouchRaycast_1
-@onready var crouch_raycast2 = $CrouchRaycast_2
-@onready var wall_raycast_right = $WallCheck_Right
-@onready var wall_raycast_left = $WallCheck_Left
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-var HAS_DOUBLE_JUMPED : bool = false
-var HAS_WALL_JUMPED : bool = false
-var animation_locked : bool = false
-var direction : Vector2 = Vector2.ZERO
-var was_in_air : bool = false
-var is_crouching = false
-var stuck_under_object = false
-var is_wall_sliding = false
-var crouch_velocity = 0.5
-
-var crouching_cshape = preload(\"res://cshapes/plater_crouch_cshape.tres\")
-var standing_cshape = preload(\"res://cshapes/plater_stand_cshape.tres\")
-
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		was_in_air = true
-	else:
-		HAS_DOUBLE_JUMPED = false
-		HAS_WALL_JUMPED = false
-		
-		if was_in_air == true:
-			land()
-			
-		was_in_air = false
-		
-	if Input.is_action_just_pressed(\"down\"):
-		crouch()
-		crouch_signal.emit()
-	elif Input.is_action_just_released(\"down\"):
-		if overhead_check():
-			stand()
-		else:
-			if stuck_under_object !=true:
-				stuck_under_object = true
-	if stuck_under_object && overhead_check():
-		stand()
-		stuck_under_object = false
-		
-	# Handle jump.
-	if Input.is_action_just_pressed(\"jump\"):
-		if is_on_floor():
-			#normal jump
-			jump()
-		elif not HAS_DOUBLE_JUMPED:
-			if is_on_wall_only():
-				wall_jump()
-			#else:
-				#double_jump()
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
-	if is_crouching:
-		crouch_velocity = 0.5
-	else:
-		crouch_velocity = 1
-	if HAS_WALL_JUMPED == false:
-		if direction.x > 0:
-			velocity.x = SPEED * crouch_velocity
-		elif direction.x < 0 :
-			velocity.x = SPEED * -crouch_velocity
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	wall_slide(delta)
-	move_and_slide()
-	update_animation()
-	update_facing_direction()
-
-func update_animation():
-	if not animation_locked:
-		if direction.x != 0:
-			if is_crouching:
-				animated_sprite.play(\"crouch walk\")
-			else:
-				animated_sprite.play(\"run\")
-		else:
-			if is_crouching:
-				animated_sprite.play(\"crouch\")
-			else:
-				animated_sprite.play(\"idle\")
-			
-func update_facing_direction():
-	if direction.x > 0:
-		animated_sprite.flip_h = false
-	elif direction.x < 0:
-		animated_sprite.flip_h = true
-
-func jump():
-	velocity.y = JUMP_VELOCITY
-	animated_sprite.play(\"jump\")
-	animation_locked = true
-		
-func double_jump():
-	velocity.y = DOUBLE_JUMP_VELOCITY
-	animated_sprite.play(\"jump double\")
-	#print(\"double jump\")
-	animation_locked = true
-	HAS_DOUBLE_JUMPED = true
-	HAS_WALL_JUMPED = false
-	
-func wall_jump():
-	velocity.y = JUMP_VELOCITY
-	if is_wall_sliding && wall_raycast_left.is_colliding():
-		velocity.x = WALL_JUMP_PUSHBACK
-	elif is_wall_sliding && wall_raycast_right.is_colliding():
-		velocity.x = -WALL_JUMP_PUSHBACK
-	#if direction.x < 0:
-		#velocity.x = WALL_JUMP_PUSHBACK
-		#print(\"wall jump left\")
-	#elif direction.x > 0:
-		#velocity.x = WALL_JUMP_PUSHBACK
-	#print(\"wall jump\")
-	animated_sprite.play(\"jump\")
-	animation_locked = true
-	HAS_WALL_JUMPED = true
-	
-func wall_slide(delta):
-	if is_on_wall_only():
-		if direction.x > 0 or direction.x < 0:
-			is_wall_sliding = true
-			print(\"wall slide\")
-			animated_sprite.play(\"wall slide\")
-			animation_locked = true
-		else:
-			is_wall_sliding = false
-			animated_sprite.play(\"jump\")
-			animation_locked = true
-	else:
-		is_wall_sliding = false
-	if is_wall_sliding:
-		velocity.y += (wall_slide_gravity * delta)
-		velocity.y = min(velocity.y, wall_slide_gravity)
-
-func land():
-	animated_sprite.play(\"jump end\")
-	animation_locked = true
-
-func crouch():
-	if is_crouching:
-		return
-	is_crouching = true
-	cshape.shape = crouching_cshape
-	cshape.position.y = 9
-
-func stand():
-	if is_crouching == false:
-		return
-	is_crouching = false
-	cshape.shape = standing_cshape
-	cshape.position.y = 2
-	
-func overhead_check() -> bool:
-	var result = !crouch_raycast1.is_colliding() && !crouch_raycast2.is_colliding()
-	return result
-	
-func _on_animated_sprite_2d_animation_finished():
-	if([\"jump end\", \"jump\", \"jump double\"].has(animated_sprite.animation)):
-		animation_locked = false
-
-func _input(event):
-	if event.is_action_pressed(\"test\"):
-		velocity.x = 100
-		move_and_slide()
-
-func _on_crouch_signal():
-	pass # Replace with function body.
-"
+[ext_resource type="Texture2D" uid="uid://bx5mpg7bnkdqa" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V3/Player Hurt-Damaged/Player Hurt 48x48.png" id="9_nad8l"]
+[ext_resource type="Texture2D" uid="uid://lsuy70n7r0cj" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V3/Player Death/Player Death 64x64.png" id="10_xbkkd"]
+[ext_resource type="Texture2D" uid="uid://drglh4hlc8pk7" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="11_ltf66"]
+[ext_resource type="Texture2D" uid="uid://lrvfcmwefkpp" path="res://art/particle.png" id="15_2elvy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um3vy"]
 atlas = ExtResource("2_k7ivg")
@@ -282,6 +96,42 @@ region = Rect2(384, 0, 48, 48)
 atlas = ExtResource("3_p2hvc")
 region = Rect2(432, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvnnw"]
+atlas = ExtResource("4_rn3no")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1x13"]
+atlas = ExtResource("4_rn3no")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyn8i"]
+atlas = ExtResource("4_rn3no")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2thew"]
+atlas = ExtResource("4_rn3no")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq2wu"]
+atlas = ExtResource("4_rn3no")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8si87"]
+atlas = ExtResource("4_rn3no")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hiub"]
+atlas = ExtResource("4_rn3no")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssyeu"]
+atlas = ExtResource("4_rn3no")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8j6m"]
+atlas = ExtResource("4_rn3no")
+region = Rect2(384, 0, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3i38"]
 atlas = ExtResource("1_wmuej")
 region = Rect2(0, 0, 48, 48)
@@ -346,17 +196,29 @@ region = Rect2(192, 0, 48, 48)
 atlas = ExtResource("2_hwssu")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_306cq"]
-atlas = ExtResource("4_qg0ck")
-region = Rect2(320, 0, 80, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpv8x"]
+atlas = ExtResource("4_3s1y4")
+region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_58yx2"]
-atlas = ExtResource("4_qg0ck")
-region = Rect2(400, 0, 80, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7oyc"]
+atlas = ExtResource("4_3s1y4")
+region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_di8hf"]
-atlas = ExtResource("4_qg0ck")
-region = Rect2(480, 0, 80, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiaj7"]
+atlas = ExtResource("4_3s1y4")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sblc4"]
+atlas = ExtResource("4_3s1y4")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khu7m"]
+atlas = ExtResource("4_3s1y4")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5cq0"]
+atlas = ExtResource("4_3s1y4")
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7385"]
 atlas = ExtResource("3_srqym")
@@ -365,6 +227,14 @@ region = Rect2(96, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1iid7"]
 atlas = ExtResource("3_srqym")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clt2t"]
+atlas = ExtResource("9_nad8l")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0452"]
+atlas = ExtResource("9_nad8l")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u2esf"]
 atlas = ExtResource("3_6ygq3")
@@ -396,6 +266,22 @@ region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbyvd"]
 atlas = ExtResource("3_6ygq3")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjutg"]
+atlas = ExtResource("10_xbkkd")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2p5v"]
+atlas = ExtResource("11_ltf66")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpmrb"]
+atlas = ExtResource("11_ltf66")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2i0as"]
+atlas = ExtResource("10_xbkkd")
 region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvdej"]
@@ -476,6 +362,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wvnnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1x13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyn8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2thew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq2wu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8si87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hiub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssyeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8j6m")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_k3i38")
 }, {
 "duration": 1.0,
@@ -534,13 +452,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_306cq")
+"texture": SubResource("AtlasTexture_kpv8x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_58yx2")
+"texture": SubResource("AtlasTexture_y7oyc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_di8hf")
+"texture": SubResource("AtlasTexture_yiaj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sblc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khu7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5cq0")
 }],
 "loop": false,
 "name": &"jump double",
@@ -569,6 +496,17 @@ animations = [{
 }],
 "loop": false,
 "name": &"mid air",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clt2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0452")
+}],
+"loop": true,
+"name": &"new_animation",
 "speed": 10.0
 }, {
 "frames": [{
@@ -602,6 +540,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hjutg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2p5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpmrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2i0as")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bvdej")
 }],
 "loop": false,
@@ -609,29 +564,104 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1kk7h"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_xq76a"]
+colors = PackedColorArray(0, 0.894118, 0.843137, 1, 0.164706, 0.658824, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_prh83"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 11.75
+angle_min = -90.0
+angle_max = 90.0
+radial_velocity_min = 17.7
+radial_velocity_max = 27.75
+gravity = Vector3(0, -30, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+tangential_accel_min = -25.0
+tangential_accel_max = 25.0
+scale_min = 0.05
+scale_max = 0.5
+collision_mode = 1
+collision_friction = 0.19
+collision_bounce = 0.44
+collision_use_scale = true
+
 [node name="player" type="CharacterBody2D"]
-script = SubResource("GDScript_2coau")
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_h246c")
+DASH_VELOCITY = 400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_idbdt")
-animation = &"mid air"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = ExtResource("9_720mu")
+one_way_collision_margin = 0.0
 
 [node name="CrouchRaycast_1" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(-5, 3)
 target_position = Vector2(0, -16)
 
 [node name="CrouchRaycast_2" type="RayCast2D" parent="."]
+visible = false
 position = Vector2(6, 3)
 target_position = Vector2(0, -16)
 
 [node name="WallCheck_Right" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(16, 0)
 
 [node name="WallCheck_Left" type="RayCast2D" parent="."]
+visible = false
 target_position = Vector2(-16, 0)
 
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="dash_cooldown" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="Water check" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="WaterCollision" type="CollisionShape2D" parent="Water check"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_1kk7h")
+debug_color = Color(0.250292, 0.62046, 0.398284, 0.42)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 80
+speed_scale = 2.81
+emission_shape = 1
+emission_sphere_radius = 10.98
+gravity = Vector2(0, 0)
+radial_accel_min = 12.76
+radial_accel_max = 12.76
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color = Color(0.32549, 0.843137, 1, 1)
+color_ramp = SubResource("Gradient_xq76a")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_prh83")
+texture = ExtResource("15_2elvy")
+lifetime = 2.0
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="body_entered" from="Water check" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Water check" to="." method="_on_area_2d_body_exited"]
