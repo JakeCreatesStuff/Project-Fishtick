@@ -11,13 +11,9 @@ config_version=5
 [application]
 
 config/name="Project Fishstick"
-run/main_scene="res://levels/test_level.tscn"
+run/main_scene="res://Scenes/level_design.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
-
-[display]
-
-window/stretch/scale=3.0
 
 [input]
 

@@ -5,13 +5,12 @@ signal jumped()
 signal landing()
 
 var JakeAbandonedUs = true
-var EdamameWithSalt = true
-
+var SweetPotatoWithSalt = true
 
 @export var SPEED : float = 200.0
 @export var ACCELERATION = 500.0
 @export var friction = 800.0
-@export var air_resistance = 400.0
+@export var air_resistance = 200.0
 @export var JUMP_VELOCITY : float = -200.0
 @export var DOUBLE_JUMP_VELOCITY : float = -150.0
 @export var WALL_JUMP_PUSHBACK : float = 100
@@ -48,18 +47,16 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		was_in_air = true
-		if !jump_timer:
-			jump_timer = true
-			$JumpTimer.start()
+		#if !jump_timer:
+			#jump_timer = true
+			#$JumpTimer.start()
 	else:
 		has_jumped = false
 		HAS_DOUBLE_JUMPED = false
-		#HAS_WALL_JUMPED = false
-		
+		HAS_WALL_JUMPED = false
 		if was_in_air == true:
 			animated_sprite.play("jump end")
 		was_in_air = false
-		
 	if Input.is_action_just_pressed("down"):
 		crouch()
 		crouch_signal.emit()
@@ -99,8 +96,9 @@ func _physics_process(delta):
 			jump(direction)
 		elif touched_a_wall and $WallJumpGracePeriod.time_left > 0:
 			wall_jump(direction)
-		elif not HAS_DOUBLE_JUMPED:
-			double_jump()#if is_on_wall() and $WallJumpGracePeriod.time_left > 0 :
+		#elif not HAS_DOUBLE_JUMPED:
+			#double_jump()
+			#if is_on_wall() and $WallJumpGracePeriod.time_left > 0 :
 				#wall_jump(direction)
 				##print("pog")
 			#else:
@@ -112,7 +110,6 @@ func _physics_process(delta):
 			#velocity.x = 100
 		#if wall_raycast_right.is_colliding():
 			#velocity.x = -100
-	
 	wall_slide(direction, delta)
 	apply_air_resistance(direction, delta)
 	move_and_slide()
@@ -237,13 +234,14 @@ func wall_checker():
 	else:
 		touched_a_wall = false
 
+
 func apply_friction(direction, delta):
 	if direction == 0 and is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 		
 
 func apply_air_resistance(direction, delta):
-	if direction == 0 and not is_on_floor():
+	if not is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, air_resistance * delta)
 
 
