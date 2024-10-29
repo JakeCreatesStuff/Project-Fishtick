@@ -18,7 +18,8 @@ signal crouch_signal()
 @onready var crouch_raycast2 = $CrouchRaycast_2
 @onready var wall_raycast_right = $WallCheck_Right
 @onready var wall_raycast_left = $WallCheck_Left
-@onready var burst_particles = $GPUParticles2D
+@onready var burst_particles = $Burst_Particles
+@onready var wet_particles = $Wet_Particles
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 480
@@ -37,6 +38,7 @@ var can_dash = true
 var in_water = false
 var is_bursting = false
 var can_burst = false
+var is_wet = false
 
 var crouching_cshape = preload("res://cshapes/plater_crouch_cshape.tres")
 var standing_cshape = preload("res://cshapes/plater_stand_cshape.tres")
@@ -45,6 +47,10 @@ func _physics_process(delta):
 	#burst_particles.is_emittinng
 	#var mouse_position = get_local_mouse_position().normalized()
 	# Add the gravity.
+	if is_wet:
+		wet_particles.emitting = true
+	else:
+		wet_particles.emitting = false
 	if is_bursting:
 		burst_particles.emitting = true
 	else:
@@ -62,7 +68,13 @@ func _physics_process(delta):
 			
 		was_in_air = false
 		
+	if Input.is_action_just_pressed("hit"):	
+		$Attack_hitbox.process_mode = Node.PROCESS_MODE_INHERIT
+		await get_tree().create_timer(0.5).timeout
+		$Attack_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
+		
 	if Input.is_action_just_pressed("down"):
+		slide()
 		crouch()
 		crouch_signal.emit()
 		
@@ -205,6 +217,9 @@ func land():
 	animated_sprite.play("jump end")
 	animation_locked = true
 
+func slide():
+	return
+
 func crouch():
 	if is_crouching:
 		return
@@ -254,6 +269,7 @@ func _on_area_2d_body_entered(body):
 	ACCELERATION = 600
 	gravity = 100
 	in_water = true
+	is_wet = true
 	animation_locked = true
 
 func _on_area_2d_body_exited(body):
@@ -261,6 +277,12 @@ func _on_area_2d_body_exited(body):
 	ACCELERATION = 500
 	gravity = 480
 	in_water = false
+	$wet_timer.start()
 	if is_dashing:
 		is_bursting = true
 	animation_locked = false
+
+
+func _on_wet_timer_timeout():
+	is_wet = false
+	print("I'm dry :D")
