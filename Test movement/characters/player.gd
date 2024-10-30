@@ -234,14 +234,14 @@ func crouch():
 		return
 	is_crouching = true
 	cshape.shape = crouching_cshape
-	cshape.position.y = 9
+	cshape.position.y = -7
 
 func stand():
 	if is_crouching == false:
 		return
 	is_crouching = false
 	cshape.shape = standing_cshape
-	cshape.position.y = 2
+	cshape.position.y = -14
 	
 func overhead_check() -> bool:
 	var result = !crouch_raycast1.is_colliding() && !crouch_raycast2.is_colliding()
