@@ -266,6 +266,7 @@ func _on_crouch_signal():
 func _on_dash_timer_timeout():
 	is_dashing = false
 	animation_locked = false
+	$wet_damage.process_mode = Node.PROCESS_MODE_DISABLED
 	
 func _on_dash_cooldown_timeout():
 	is_bursting = false
@@ -291,8 +292,8 @@ func _on_area_2d_body_exited(body):
 	animation_locked = false
 
 func _on_wet_timer_timeout():
-	is_wet = false
-	$wet_damage.process_mode = Node.PROCESS_MODE_DISABLED
+	if !in_water:
+		is_wet = false
 	print("I'm dry :D")
 
 func _on_hit_cooldown_timeout():

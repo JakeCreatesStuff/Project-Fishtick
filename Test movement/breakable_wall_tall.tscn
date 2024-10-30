@@ -1,0 +1,105 @@
+[gd_scene load_steps=14 format=3 uid="uid://1gfki5bt57i3"]
+
+[ext_resource type="Texture2D" uid="uid://c0xaxaebwggpd" path="res://art/GrimeWall.png" id="1_4laoh"]
+[ext_resource type="Texture2D" uid="uid://bknamsw2skdk6" path="res://art/spotlight_1.png" id="2_53hhw"]
+[ext_resource type="Script" path="res://cleanable.gd" id="3_gkkf2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c1fe"]
+size = Vector2(8, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k847n"]
+atlas = ExtResource("1_4laoh")
+region = Rect2(0, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lh2s"]
+atlas = ExtResource("1_4laoh")
+region = Rect2(96, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3qcq"]
+atlas = ExtResource("1_4laoh")
+region = Rect2(192, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrme7"]
+atlas = ExtResource("1_4laoh")
+region = Rect2(288, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tym15"]
+atlas = ExtResource("1_4laoh")
+region = Rect2(384, 0, 96, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e1xb"]
+atlas = ExtResource("1_4laoh")
+region = Rect2(480, 0, 96, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j3vne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k847n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lh2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3qcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrme7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tym15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e1xb")
+}],
+"loop": false,
+"name": &"Break",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k847n")
+}],
+"loop": true,
+"name": &"Still",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0ijlj"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0yf1d"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(8, 40, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -10, 0)
+radial_accel_min = 10.0
+radial_accel_max = 25.0
+tangential_accel_min = -10.0
+tangential_accel_max = 10.0
+scale_min = 0.0
+scale_max = 0.01
+color = Color(0.871404, 0.486516, 0.74221, 1)
+
+[node name="Breakable_Wall_Tall" type="CharacterBody2D"]
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6c1fe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 0)
+sprite_frames = SubResource("SpriteFrames_j3vne")
+animation = &"Still"
+
+[node name="CPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_0ijlj")
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_0yf1d")
+texture = ExtResource("2_53hhw")
+
+[node name="Cleanable" type="Node" parent="."]
+script = ExtResource("3_gkkf2")
