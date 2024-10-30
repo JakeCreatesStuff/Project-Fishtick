@@ -1,5 +1,9 @@
 extends CharacterBody2D
+
+class_name Player
+
 signal crouch_signal()
+signal facing_direction_changed(facing_right : bool)
 
 @export var SPEED : float = 200.0
 @export var SWIM_SPEED : float = 250.0
@@ -70,8 +74,9 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("hit"):	
 		$Attack_hitbox.process_mode = Node.PROCESS_MODE_INHERIT
-		await get_tree().create_timer(0.5).timeout
-		$Attack_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
+		#await get_tree().create_timer(0.5).timeout
+		$hit_cooldown.start()
+		#$Attack_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
 		
 	if Input.is_action_just_pressed("down"):
 		slide()
@@ -90,6 +95,8 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("dash") and can_dash:
 		dash()
+		if is_wet:
+			$wet_damage.process_mode = Node.PROCESS_MODE_INHERIT
 		$dash_timer.start()
 		$dash_cooldown.start()
 		
@@ -163,6 +170,8 @@ func update_facing_direction():
 			animated_sprite.flip_h = false
 		elif direction.x < 0:
 			animated_sprite.flip_h = true
+			
+		emit_signal("facing_direction_changed", !animated_sprite.flip_h)
 	
 func jump():
 	velocity.y = JUMP_VELOCITY
@@ -254,7 +263,6 @@ func apply_friction(delta):
 func _on_crouch_signal():
 	pass # Replace with function body.
 
-
 func _on_dash_timer_timeout():
 	is_dashing = false
 	animation_locked = false
@@ -282,7 +290,10 @@ func _on_area_2d_body_exited(body):
 		is_bursting = true
 	animation_locked = false
 
-
 func _on_wet_timer_timeout():
 	is_wet = false
+	$wet_damage.process_mode = Node.PROCESS_MODE_DISABLED
 	print("I'm dry :D")
+
+func _on_hit_cooldown_timeout():
+	$Attack_hitbox.process_mode = Node.PROCESS_MODE_DISABLED

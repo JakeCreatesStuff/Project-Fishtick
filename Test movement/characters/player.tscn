@@ -1,6 +1,7 @@
-[gd_scene load_steps=142 format=3 uid="uid://s0shuc50m6uf"]
+[gd_scene load_steps=156 format=3 uid="uid://s0shuc50m6uf"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_h246c"]
+[ext_resource type="Texture2D" uid="uid://d1u4neos6j6at" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="1_wmuej"]
 [ext_resource type="Texture2D" uid="uid://0g5sbld5lnpk" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Jump/player new jump 48x48.png" id="2_hwssu"]
 [ext_resource type="Texture2D" uid="uid://b8teb8asnomop" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Idle/Player Crouch-Idle 48x48.png" id="2_k7ivg"]
 [ext_resource type="Texture2D" uid="uid://dpoyqflen6ar8" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Run/player run 48x48.png" id="3_6ygq3"]
@@ -16,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://drglh4hlc8pk7" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="11_ltf66"]
 [ext_resource type="Texture2D" uid="uid://lrvfcmwefkpp" path="res://art/particle.png" id="15_2elvy"]
 [ext_resource type="Script" path="res://characters/attack_hitbox.gd" id="16_p321w"]
+[ext_resource type="Script" path="res://characters/FacingCollision.gd" id="17_crylp"]
+[ext_resource type="Script" path="res://characters/wet_damage.gd" id="18_lme5t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um3vy"]
 atlas = ExtResource("2_k7ivg")
@@ -132,6 +135,46 @@ region = Rect2(336, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8j6m"]
 atlas = ExtResource("4_rn3no")
 region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lrlw"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44o5v"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnmsp"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2kpx"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnpss"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la0e1"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scyih"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx8a0"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl6ny"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bnn5"]
+atlas = ExtResource("1_wmuej")
+region = Rect2(432, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8sa4x"]
 atlas = ExtResource("5_bu4kn")
@@ -603,6 +646,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3lrlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44o5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnmsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2kpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnpss")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la0e1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scyih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lx8a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl6ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bnn5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8sa4x")
 }, {
 "duration": 1.0,
@@ -789,7 +867,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_odvrf")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle2",
 "speed": 10.0
 }, {
 "frames": [{
@@ -965,6 +1043,9 @@ scale_max = 0.2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jl1li"]
 size = Vector2(20, 28)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ioc14"]
+radius = 19.0263
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 9
 collision_mask = 9
@@ -972,7 +1053,7 @@ script = ExtResource("1_h246c")
 DASH_VELOCITY = 400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -48)
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_idbdt")
 animation = &"idle"
 
@@ -1009,6 +1090,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Water check" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -16)
 collision_layer = 2
 collision_mask = 2
@@ -1034,16 +1116,34 @@ amount = 45
 process_material = SubResource("ParticleProcessMaterial_s8c56")
 texture = ExtResource("15_2elvy")
 
-[node name="Attack_hitbox" type="Area2D" parent="."]
+[node name="Attack_hitbox" type="Area2D" parent="." node_paths=PackedStringArray("player", "facing_shape")]
 process_mode = 4
 position = Vector2(2, -16)
 collision_layer = 17
 collision_mask = 17
 script = ExtResource("16_p321w")
+player = NodePath("..")
+facing_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_hitbox"]
 position = Vector2(20, 2)
 shape = SubResource("RectangleShape2D_jl1li")
+script = ExtResource("17_crylp")
+facing_left = Vector2(-20, 2)
+facing_right = Vector2(20, 2)
+
+[node name="hit_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="wet_damage" type="Area2D" parent="."]
+process_mode = 4
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("18_lme5t")
+
+[node name="wet_collision" type="CollisionShape2D" parent="wet_damage"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_ioc14")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
@@ -1052,3 +1152,5 @@ shape = SubResource("RectangleShape2D_jl1li")
 [connection signal="body_entered" from="Water check" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Water check" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Attack_hitbox" to="Attack_hitbox" method="_on_body_entered"]
+[connection signal="timeout" from="hit_cooldown" to="." method="_on_hit_cooldown_timeout"]
+[connection signal="body_entered" from="wet_damage" to="wet_damage" method="_on_body_entered"]
