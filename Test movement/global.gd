@@ -1,0 +1,3 @@
+extends Node
+
+var corruption_amount = 20

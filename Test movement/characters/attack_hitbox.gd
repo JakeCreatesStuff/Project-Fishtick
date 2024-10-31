@@ -13,7 +13,6 @@ func _on_body_entered(body):
 			print(body.name)
 			child.hit()
 
-
 func _on_player_facing_direction_changed(facing_right : bool):
 	if(facing_right):
 		facing_shape.position = facing_shape.facing_right

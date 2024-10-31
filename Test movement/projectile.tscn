@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqrixou45316r"]
+
+[ext_resource type="Script" path="res://projectile.gd" id="1_ilcto"]
+[ext_resource type="Texture2D" uid="uid://b63al5tyno4jo" path="res://art/Projectile_Final-Sheet.png" id="1_u3nor"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sv3x"]
+atlas = ExtResource("1_u3nor")
+region = Rect2(0, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yei3e"]
+atlas = ExtResource("1_u3nor")
+region = Rect2(50, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmqmo"]
+atlas = ExtResource("1_u3nor")
+region = Rect2(100, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw5wr"]
+atlas = ExtResource("1_u3nor")
+region = Rect2(150, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tams7"]
+atlas = ExtResource("1_u3nor")
+region = Rect2(200, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gp6x5"]
+atlas = ExtResource("1_u3nor")
+region = Rect2(250, 0, 50, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfsx4"]
+atlas = ExtResource("1_u3nor")
+region = Rect2(300, 0, 50, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kcqjg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sv3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yei3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmqmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw5wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tams7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gp6x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfsx4")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5qasi"]
+radius = 9.0
+
+[node name="Projectile" type="CharacterBody2D"]
+script = ExtResource("1_ilcto")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -4)
+sprite_frames = SubResource("SpriteFrames_kcqjg")
+animation = &"spin"
+frame_progress = 0.0732159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5qasi")
