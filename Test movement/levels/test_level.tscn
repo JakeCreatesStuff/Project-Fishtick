@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cfj2ljc85invv"]
+[gd_scene load_steps=11 format=4 uid="uid://cfj2ljc85invv"]
 
 [ext_resource type="TileSet" uid="uid://0ol68ehao87j" path="res://tile_sets/test_level.tres" id="1_okh7y"]
 [ext_resource type="PackedScene" uid="uid://s0shuc50m6uf" path="res://characters/player.tscn" id="3_emhbo"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ddos1vn23r3qy" path="res://door.tscn" id="3_rte8b"]
 [ext_resource type="PackedScene" uid="uid://c7mbfdtqgn08m" path="res://shark.tscn" id="5_e6qhv"]
 [ext_resource type="PackedScene" uid="uid://0xcncyan0epy" path="res://corruption.tscn" id="6_0n7xw"]
+[ext_resource type="PackedScene" uid="uid://1gfki5bt57i3" path="res://breakable_wall_tall.tscn" id="7_8j1l5"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iium3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nswa6"]
 texture = ExtResource("3_k0mxj")
 2:0/animation_columns = 3
 2:0/animation_frame_0/duration = 1.0
@@ -19,7 +20,7 @@ texture = ExtResource("3_k0mxj")
 [sub_resource type="TileSet" id="TileSet_6bgor"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
-sources/1 = SubResource("TileSetAtlasSource_iium3")
+sources/1 = SubResource("TileSetAtlasSource_nswa6")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vfgqb"]
 
@@ -37,13 +38,13 @@ tile_set = SubResource("TileSet_6bgor")
 position = Vector2(0, 400)
 
 [node name="player" parent="." instance=ExtResource("3_emhbo")]
-position = Vector2(0, 272)
+position = Vector2(0, 288)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 272)
+position = Vector2(0, 288)
 zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 
@@ -65,5 +66,8 @@ position = Vector2(139, 431)
 
 [node name="Corruption3" parent="." instance=ExtResource("6_0n7xw")]
 position = Vector2(159, 431)
+
+[node name="Breakable_Wall_Tall" parent="." instance=ExtResource("7_8j1l5")]
+position = Vector2(120, 280)
 
 [connection signal="crouch_signal" from="player" to="player" method="_on_crouch_signal"]

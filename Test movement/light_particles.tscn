@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://mo08yyvpp3da"]
+
+[ext_resource type="Texture2D" uid="uid://bknamsw2skdk6" path="res://art/spotlight_1.png" id="1_8v7bg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uh86x"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gdxyl"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.01
+color = Color(0.266667, 0.54902, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_uh86x")
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_gdxyl")
+texture = ExtResource("1_8v7bg")
+lifetime = 0.5

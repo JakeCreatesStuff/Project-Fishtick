@@ -1043,12 +1043,12 @@ scale_max = 0.2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jl1li"]
 size = Vector2(20, 28)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ioc14"]
-radius = 19.0263
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w185e"]
+size = Vector2(28, 30)
 
 [node name="player" type="CharacterBody2D"]
-collision_layer = 9
-collision_mask = 9
+collision_layer = 137
+collision_mask = 137
 script = ExtResource("1_h246c")
 DASH_VELOCITY = 400.0
 
@@ -1137,14 +1137,13 @@ wait_time = 0.5
 
 [node name="wet_damage" type="Area2D" parent="."]
 process_mode = 4
-visible = false
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("18_lme5t")
 
 [node name="wet_collision" type="CollisionShape2D" parent="wet_damage"]
 position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_ioc14")
+shape = SubResource("RectangleShape2D_w185e")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
