@@ -51,6 +51,7 @@ func _physics_process(delta):
 	#burst_particles.is_emittinng
 	#var mouse_position = get_local_mouse_position().normalized()
 	# Add the gravity.
+	print(Global.corruption_amount)
 	if is_wet:
 		wet_particles.emitting = true
 	else:
@@ -116,14 +117,11 @@ func _physics_process(delta):
 	if !direction.x == 0 and !is_dashing:
 		facing.x = direction.x
 	if !in_water:
-		if is_crouching:
-			crouch_velocity = 0.5
-		else:
-			crouch_velocity = 1
+		#new updates
 		if HAS_WALL_JUMPED == false:
 			if direction.x and !is_dashing:
 				#velocity.x = -direction.x * SPEED * -crouch_velocity
-				velocity.x = move_toward(velocity.x, SPEED * crouch_velocity * round(direction.x), ACCELERATION * delta )
+				velocity.x = move_toward(velocity.x, SPEED * round(direction.x), ACCELERATION * delta )
 			elif is_dashing and !is_bursting:
 				velocity.x = facing.x * DASH_VELOCITY
 				#velocity.y = -mouse_position.y * DASH_VELOCITY * -crouch_velocity
@@ -146,6 +144,13 @@ func _physics_process(delta):
 			#velocity.x = move_toward(velocity.x, 0, SPEED)
 			apply_friction(delta)	
 		
+	if is_crouching and is_dashing:
+		cshape.position.y = -7
+		cshape.shape = crouching_cshape
+		
+		
+	
+	#print(is_dashing)
 	move_and_slide()
 	wall_slide(delta)
 	update_animation()
@@ -227,14 +232,17 @@ func land():
 	animation_locked = true
 
 func slide():
-	return
+	if is_dashing:
+		is_crouching = true
+		cshape.shape = crouching_cshape
+		cshape.position.y = -7
 
 func crouch():
 	if is_crouching:
 		return
 	is_crouching = true
-	cshape.shape = crouching_cshape
-	cshape.position.y = -7
+	#cshape.shape = crouching_cshape
+	#cshape.position.y = -7
 
 func stand():
 	if is_crouching == false:

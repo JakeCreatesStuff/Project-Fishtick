@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bmjeuhtx7xpdb"]
+[gd_scene load_steps=23 format=4 uid="uid://bmjeuhtx7xpdb"]
 
 [ext_resource type="Texture2D" uid="uid://bjbxtui38hpw2" path="res://Assets/Sprites/Tilemap.png" id="1_3udb2"]
 [ext_resource type="Texture2D" uid="uid://cb5tnwtaej4q0" path="res://art/Background_tiles.png" id="1_qiseh"]
@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dgs5m2jx3rym" path="res://Assets/Sprites/GrimeBar_2.png" id="6_w4d2c"]
 [ext_resource type="PackedScene" uid="uid://ddos1vn23r3qy" path="res://door.tscn" id="10_st2hu"]
 [ext_resource type="PackedScene" uid="uid://1gfki5bt57i3" path="res://breakable_wall_tall.tscn" id="11_lkhx4"]
+[ext_resource type="PackedScene" uid="uid://0xcncyan0epy" path="res://corruption.tscn" id="12_kwpgj"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvdjf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tutlw"]
 texture = ExtResource("1_qiseh")
 0:0/0 = 0
 1:0/0 = 0
@@ -24,9 +25,9 @@ texture = ExtResource("1_qiseh")
 1:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_to7vu"]
-sources/0 = SubResource("TileSetAtlasSource_vvdjf")
+sources/0 = SubResource("TileSetAtlasSource_tutlw")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4ucg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldcjw"]
 texture = ExtResource("4_eya07")
 2:0/animation_columns = 3
 2:0/animation_frame_0/duration = 1.0
@@ -35,7 +36,7 @@ texture = ExtResource("4_eya07")
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqka7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f5qh6"]
 texture = ExtResource("5_26md0")
 5:7/animation_columns = 2
 5:7/0 = 0
@@ -63,8 +64,8 @@ texture = ExtResource("5_26md0")
 [sub_resource type="TileSet" id="TileSet_i8gwq"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
-sources/1 = SubResource("TileSetAtlasSource_e4ucg")
-sources/2 = SubResource("TileSetAtlasSource_nqka7")
+sources/1 = SubResource("TileSetAtlasSource_ldcjw")
+sources/2 = SubResource("TileSetAtlasSource_f5qh6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_706e2"]
 texture = ExtResource("1_3udb2")
@@ -162,6 +163,7 @@ tile_map_data = PackedByteArray("AAAAACcAAgAAAAEAAAAHACcAAgAAAAEAAAALACcAAgACAAA
 tile_set = ExtResource("2_u7ay0")
 
 [node name="Grime" type="TileMapLayer" parent="."]
+visible = false
 tile_map_data = PackedByteArray("AAAIAB4AAQAFAAAAAAAHAB4AAQAGAAAAAAAGAB4AAQAIAAkAAAAFAB4AAQAIAAkAAAAKAB8AAQALAAkAAAAJAB8AAQAFAAUAAAALACAAAQAFAAUAAAAOABsAAQAJAAkAAAAPABsAAQAMAAkAAAAQABsAAQAGAAAAAAARABsAAQAHAAAAAAASABsAAQAMAAkAAAATABsAAQAKAAkAAAAUABsAAQAIAAkAAAAVABsAAQAMAAkAAAAWABsAAQAFAAAAAAAYABkAAAACAAAAAEAWABIAAAACAAAAAFAWABEAAAACAAAAAFAWABcAAAACAAAAAFAYABQAAAACAAAAAEAYABMAAAACAAAAAEAYAA4AAAACAAAAAEAYAA8AAAACAAAAAEAYABAAAAACAAAAAEAOABAAAQAMAAkAAFAOABIAAQANAAkAAFAOABMAAQAIAAkAAFAOABEAAQAKAAkAAFANABUAAQAGAAAAAAAMABUAAQAMAAkAAAALABUAAQANAAkAAAAKABUAAQAMAAkAAAAJABUAAQAHAAAAAAAIABUAAQAIAAkAAAAHABUAAQAFAAAAAAAGABUAAQAFAAAAAAACABUAAQAGAAAAAAABABUAAQAOAAkAABADABUAAQAKAAkAAAAEABUAAQAMAAkAAAAFABUAAQAIAAkAAAABABIAAAACAAAAAFABABMAAAACAAAAAFABABQAAAACAAAAAFAXAPr/AAACAAAAADAUAP7/AQAHAAAAAAATAP7/AQAHAAAAAAASAP7/AQAGAAAAAAARAP7/AQAHAAAAAAAQAP7/AQANAAkAAAAPAP7/AQAFAAAAAAAOAP7/AQAMAAkAAAALAP7/AQAGAAAAAAAKAP7/AQAMAAkAAAAJAP7/AQAHAAAAAAAIAP7/AQAJAAkAAAAHAP7/AQALAAkAAAAGAP7/AQAIAAkAAAAFAP7/AQAGAAAAAAAEAP7/AQAMAAkAAAACAAYAAQAJAAkAAAADAAYAAQAKAAkAAAAEAAYAAQANAAkAAAAFAAYAAQAMAAkAAAAGAAYAAQAFAAAAAAAHAAYAAQANAAkAAAAIAAYAAQAGAAAAAAAJAAYAAQAGAAAAAAABAP7/AQAKAAkAAFABAP3/AQAJAAkAAFABAPv/AQANAAkAAFABAPz/AQANAAkAAFADAP//AQAMAAkAAEADAAAAAQALAAkAAEADAAEAAQAJAAkAAEADAAIAAQANAAkAAEADAAMAAQAMAAkAAEALACYAAQAHAAAAAAAMACYAAQAIAAkAAAANACYAAQANAAkAAAAOACYAAQAHAAAAAAAQACYAAQAKAAkAAAARACYAAQALAAkAAAASACYAAQANAAkAAAATACYAAQAJAAkAAAAUACYAAQAMAAkAAAAVACYAAQAKAAkAAAAWACYAAQAHAAAAAAAXACYAAQAIAAkAAAAYACYAAQAOAAkAAAAVACIAAQAFAAAAAAAUACIAAQAKAAkAAAATACIAAQAJAAkAAAASACIAAQAIAAkAAAAQACEAAQAMAAkAAAAPACEAAQANAAkAAAAOACEAAQAGAAAAAAAMACAAAQANAAkAAAALABsAAQAGAAAAAAAMABsAAQANAAkAAAANABsAAQAKAAkAAAAXABsAAQANAAkAAAAYABsAAQAOAAkAAAAUAA8AAQAGAAAAAAATAA8AAQAIAAkAAAASAA8AAQAHAAAAAAARAA8AAQAHAAAAAAAQABUAAQAOAAkAAAAPABUAAQAGAAAAAAAOABUAAQAHAAAAAAAPAAwAAQAHAAAAAAAQAAwAAQAFAAAAAAARAAwAAQAGAAAAAAASAAwAAQAKAAkAAAATAAwAAQAHAAAAAAAUAAwAAQAHAAAAAAAVAAwAAQALAAkAAAAWAAwAAQALAAkAAAAXAAwAAQAOAAkAAAASAPf/AQANAAkAAAATAPf/AQAMAAkAAAAUAPf/AQAGAAAAAAAVAPf/AQAKAAkAAAAWAPf/AQALAAkAAAAXAPf/AQALAAkAAAARAPL/AQAGAAAAAAAQAPL/AQAMAAkAAAAPAPL/AQAFAAAAAAASAOn/AQAGAAAAAAARAOn/AQAFAAAAAAAQAOn/AQAFAAAAAAAPAOn/AQANAAkAAAAOAOn/AQAIAAkAAAAYAOX/AQAMAAkAAAAXAOX/AQANAAkAAAAWAOX/AQAMAAkAAAAFAOn/AQANAAkAAAAEAOn/AQAIAAkAAAAGAOn/AQAJAAkAAAANAOX/AQALAAkAAAAOAOX/AQAFAAAAAAAPAOX/AQAGAAAAAAAQAOP/AQAJAAkAAAARAOP/AQAFAAAAAAASAOP/AQAKAAkAAAATAOH/AQAIAAkAAAAUAOH/AQAKAAkAAAAVAOH/AQAJAAkAAAAIAOf/AQAFAAAAAAAJAOf/AQAIAAkAAAAKAOf/AQAFAAAAAAALAOf/AQAGAAAAAAAMAOf/AQAIAAkAAAABAAYAAQAFAAUAAAABAP//AQANAAkAAFABAAAAAQAMAAkAAFABAAEAAQAJAAkAAFABAAIAAQAMAAkAAFABAAMAAQAJAAkAAFABAAQAAQAKAAkAAFABAAUAAQALAAkAAFANACEAAQAFAAUAAAARACIAAQAFAAUAAAALAB8AAQAGAAUAAAANACAAAQAGAAUAAAAJAB4AAQAGAAUAAAARACEAAQAGAAUAAAAVABAAAQAFAAUAAAAVAA8AAQAGAAUAAAADAP7/AQAGAAUAABAKACYAAQACAAAAABAKACcAAQACAAEAABAWACMAAQACAAEAAAAWACIAAQACAAAAAAAYACUAAQAHAAAAAEAYACQAAQAHAAAAAEAYACMAAQAFAAAAAEAYACIAAQAHAAAAAEAYACEAAQAIAAAAAGA=")
 tile_set = SubResource("TileSet_fbrxy")
 
@@ -185,6 +187,7 @@ tile_set = ExtResource("2_u7ay0")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TridentHp" type="Sprite2D" parent="CanvasLayer"]
+visible = false
 position = Vector2(112, 529)
 texture = ExtResource("5_a7hq1")
 
@@ -197,3 +200,21 @@ position = Vector2(77, -992)
 
 [node name="Breakable_Wall_Tall" parent="." instance=ExtResource("11_lkhx4")]
 position = Vector2(168, 424)
+
+[node name="Corruption" parent="." instance=ExtResource("12_kwpgj")]
+position = Vector2(187, 623)
+
+[node name="Corruption2" parent="." instance=ExtResource("12_kwpgj")]
+position = Vector2(207, 623)
+
+[node name="Corruption3" parent="." instance=ExtResource("12_kwpgj")]
+position = Vector2(227, 623)
+
+[node name="Corruption4" parent="." instance=ExtResource("12_kwpgj")]
+position = Vector2(247, 623)
+
+[node name="Corruption5" parent="." instance=ExtResource("12_kwpgj")]
+position = Vector2(267, 623)
+
+[node name="Corruption6" parent="." instance=ExtResource("12_kwpgj")]
+position = Vector2(287, 623)

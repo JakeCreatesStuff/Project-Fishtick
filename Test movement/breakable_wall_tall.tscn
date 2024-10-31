@@ -1,11 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://1gfki5bt57i3"]
+[gd_scene load_steps=15 format=3 uid="uid://1gfki5bt57i3"]
 
 [ext_resource type="Texture2D" uid="uid://c0xaxaebwggpd" path="res://art/GrimeWall.png" id="1_4laoh"]
+[ext_resource type="Script" path="res://breakable_wall_tall.gd" id="1_ub5nm"]
 [ext_resource type="Texture2D" uid="uid://bknamsw2skdk6" path="res://art/spotlight_1.png" id="2_53hhw"]
 [ext_resource type="Script" path="res://cleanable.gd" id="3_gkkf2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c1fe"]
-size = Vector2(8, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k847n"]
 atlas = ExtResource("1_4laoh")
@@ -65,6 +63,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c1fe"]
+size = Vector2(8, 34)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0ijlj"]
 blend_mode = 1
 
@@ -85,14 +86,15 @@ color = Color(0.871404, 0.486516, 0.74221, 1)
 [node name="Breakable_Wall_Tall" type="CharacterBody2D"]
 collision_layer = 17
 collision_mask = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6c1fe")
+script = ExtResource("1_ub5nm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(24, 0)
 sprite_frames = SubResource("SpriteFrames_j3vne")
-animation = &"Still"
+animation = &"Break"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6c1fe")
 
 [node name="CPUParticles2D" type="GPUParticles2D" parent="."]
 show_behind_parent = true
