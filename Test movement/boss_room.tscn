@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ck3m0p1flrw0e"]
+[gd_scene load_steps=14 format=4 uid="uid://ck3m0p1flrw0e"]
 
 [ext_resource type="Texture2D" uid="uid://cb5tnwtaej4q0" path="res://art/Background_tiles.png" id="1_dp80j"]
 [ext_resource type="Texture2D" uid="uid://cffspllrb8vii" path="res://art/Water+.png" id="2_x7k8c"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://d4uh4sr5u617" path="res://boss.tscn" id="6_pcni0"]
 [ext_resource type="PackedScene" uid="uid://ddos1vn23r3qy" path="res://door.tscn" id="7_xnidw"]
 [ext_resource type="PackedScene" uid="uid://mo08yyvpp3da" path="res://light_particles.tscn" id="8_5uwnw"]
-[ext_resource type="PackedScene" uid="uid://cqrixou45316r" path="res://projectile.tscn" id="9_gc38x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y85w8"]
 texture = ExtResource("1_dp80j")
@@ -98,6 +97,3 @@ position = Vector2(-128, 608)
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("8_5uwnw")]
 position = Vector2(-184, 596)
-
-[node name="Projectile" parent="." instance=ExtResource("9_gc38x")]
-position = Vector2(172, 529)

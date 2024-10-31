@@ -1,17 +1,24 @@
-extends CharacterBody2D
+extends Area2D
 
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
-const SPEED = 300.0
-#var spawnPos : Vector2
-#var spawnRot : float
+var speed = 150
+
+var direction:Vector2
 
 func _ready():
-	pass
-	#global_position = spawnPos
-	#global_rotation = spawnRot
+	await get_tree().create_timer(3).timeout
+	queue_free()
+	print("delete")
+
+func set_direction(projDirection):
+	direction = projDirection
+	print(projDirection)
+	#rotation_degrees = rad_to_deg(global_position.angle_to_point(global_position+direction))
 
 func _physics_process(delta):
-	#velocity = Vector2(0, -SPEED).rotated(dir)
+	global_position += direction * speed * delta
 	animated_sprite.play("spin")
-	#move_and_slide()
+
+func _on_body_entered(body):
+	pass
