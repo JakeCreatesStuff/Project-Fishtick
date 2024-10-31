@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://bmjeuhtx7xpdb"]
+[gd_scene load_steps=11 format=4 uid="uid://bmjeuhtx7xpdb"]
 
 [ext_resource type="Texture2D" uid="uid://bgig16l7vey8e" path="res://Assets/Sprites/Tilemap.png" id="1_3udb2"]
 [ext_resource type="Texture2D" uid="uid://dn5qk6ikk1cu7" path="res://Assets/Sprites/Grime.png" id="2_hn6np"]
 [ext_resource type="PackedScene" uid="uid://s0shuc50m6uf" path="res://characters/player.tscn" id="2_o3pit"]
 [ext_resource type="TileSet" uid="uid://c50l5lks0hfu8" path="res://Resources/level_design.tres" id="2_u7ay0"]
-[ext_resource type="Texture2D" uid="uid://dq3dgxec6fm72" path="res://Assets/Sprites/TridentHp.png" id="5_a7hq1"]
-[ext_resource type="Texture2D" uid="uid://l2sdnfcexeib" path="res://Assets/Sprites/GrimeBar_2.png" id="6_w4d2c"]
+[ext_resource type="PackedScene" uid="uid://bqkkwxliyy4dd" path="res://Scenes/trident.tscn" id="5_lsy3j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_706e2"]
 texture = ExtResource("1_3udb2")
@@ -113,14 +112,4 @@ modulate = Color(1, 1, 1, 0.490196)
 tile_map_data = PackedByteArray("AAABACYAAgAFAAcAAAACACYAAgAGAAcAAAADACYAAgAFAAcAAAAEACYAAgAGAAcAAAAFACYAAgAFAAcAAAA=")
 tile_set = ExtResource("2_u7ay0")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="TridentHp" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(112, 529)
-texture = ExtResource("5_a7hq1")
-
-[node name="GrimeBar" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(905, 62)
-texture = ExtResource("6_w4d2c")
+[node name="Trident" parent="." instance=ExtResource("5_lsy3j")]
