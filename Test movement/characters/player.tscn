@@ -1,21 +1,22 @@
-[gd_scene load_steps=156 format=3 uid="uid://s0shuc50m6uf"]
+[gd_scene load_steps=160 format=3 uid="uid://s0shuc50m6uf"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_h246c"]
-[ext_resource type="Texture2D" uid="uid://d1u4neos6j6at" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="1_wmuej"]
-[ext_resource type="Texture2D" uid="uid://0g5sbld5lnpk" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Jump/player new jump 48x48.png" id="2_hwssu"]
-[ext_resource type="Texture2D" uid="uid://b8teb8asnomop" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Idle/Player Crouch-Idle 48x48.png" id="2_k7ivg"]
-[ext_resource type="Texture2D" uid="uid://dpoyqflen6ar8" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Run/player run 48x48.png" id="3_6ygq3"]
-[ext_resource type="Texture2D" uid="uid://txlvx62ko2i" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Walk/player crouch-walk 48x48.png" id="3_p2hvc"]
-[ext_resource type="Texture2D" uid="uid://b6isvlrd8o3a5" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Land/player land 48x48.png" id="3_srqym"]
-[ext_resource type="Texture2D" uid="uid://dgjbonxqtbyex" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Air Spin/player air spin 48x48.png" id="4_3s1y4"]
-[ext_resource type="Texture2D" uid="uid://cyjrmqy2n6a43" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V5/Dash/dash.png" id="4_rn3no"]
-[ext_resource type="Texture2D" uid="uid://lcx2dkun818r" path="res://art/Gura Sprite/Gura_Idol_V2-Sheet.png" id="5_bu4kn"]
-[ext_resource type="Texture2D" uid="uid://cmtin77px4vbl" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Wall Slide/player wall slide 48x48.png" id="8_xrrpa"]
+[ext_resource type="Texture2D" uid="uid://djxlyryg2xje0" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="1_wmuej"]
+[ext_resource type="Texture2D" uid="uid://caqgrgepx316q" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Jump/player new jump 48x48.png" id="2_hwssu"]
+[ext_resource type="Texture2D" uid="uid://cy4x4abf1kjus" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Idle/Player Crouch-Idle 48x48.png" id="2_k7ivg"]
+[ext_resource type="Texture2D" uid="uid://b7hrorscs15ob" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Run/player run 48x48.png" id="3_6ygq3"]
+[ext_resource type="Texture2D" uid="uid://dell34fhgjg5" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Walk/player crouch-walk 48x48.png" id="3_p2hvc"]
+[ext_resource type="Texture2D" uid="uid://dii2hr43egum5" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Land/player land 48x48.png" id="3_srqym"]
+[ext_resource type="Texture2D" uid="uid://cw6n0xnybgiw0" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Air Spin/player air spin 48x48.png" id="4_3s1y4"]
+[ext_resource type="Texture2D" uid="uid://b8cn07utl4nfp" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V5/Dash/dash.png" id="4_rn3no"]
+[ext_resource type="Texture2D" uid="uid://d1nnv5skcfwgb" path="res://art/Gura Sprite/Gura_Idol_V2-Sheet.png" id="5_bu4kn"]
+[ext_resource type="Texture2D" uid="uid://dv865snuo0ojk" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V1/Player Wall Slide/player wall slide 48x48.png" id="8_xrrpa"]
 [ext_resource type="Shape2D" uid="uid://juxewl7jags0" path="res://cshapes/plater_stand_cshape.tres" id="9_720mu"]
-[ext_resource type="Texture2D" uid="uid://bx5mpg7bnkdqa" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V3/Player Hurt-Damaged/Player Hurt 48x48.png" id="9_nad8l"]
-[ext_resource type="Texture2D" uid="uid://lsuy70n7r0cj" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V3/Player Death/Player Death 64x64.png" id="10_xbkkd"]
-[ext_resource type="Texture2D" uid="uid://drglh4hlc8pk7" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="11_ltf66"]
-[ext_resource type="Texture2D" uid="uid://lrvfcmwefkpp" path="res://art/particle.png" id="15_2elvy"]
+[ext_resource type="Texture2D" uid="uid://dsl1h0wl6qy1w" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V3/Player Hurt-Damaged/Player Hurt 48x48.png" id="9_nad8l"]
+[ext_resource type="Texture2D" uid="uid://cmhf0xpaf6yqw" path="res://Assets/Sprites/New folder/Gura_Jump.png" id="10_fbkf3"]
+[ext_resource type="Texture2D" uid="uid://bgbb2t61fr4kv" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V3/Player Death/Player Death 64x64.png" id="10_xbkkd"]
+[ext_resource type="Texture2D" uid="uid://cvf005mcr6xuu" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Player Roll/Player Roll 48x48.png" id="11_ltf66"]
+[ext_resource type="Texture2D" uid="uid://cib50kxcldpev" path="res://art/particle.png" id="15_2elvy"]
 [ext_resource type="Script" path="res://characters/attack_hitbox.gd" id="16_p321w"]
 [ext_resource type="Script" path="res://characters/FacingCollision.gd" id="17_crylp"]
 [ext_resource type="Script" path="res://characters/wet_damage.gd" id="18_lme5t"]
@@ -480,6 +481,18 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("3_srqym")
 region = Rect2(144, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttkbe"]
+atlas = ExtResource("10_fbkf3")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa05t"]
+atlas = ExtResource("10_fbkf3")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4s83"]
+atlas = ExtResource("10_fbkf3")
+region = Rect2(192, 0, 96, 96)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_clt2t"]
 atlas = ExtResource("9_nad8l")
 region = Rect2(0, 0, 48, 48)
@@ -929,6 +942,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ttkbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa05t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4s83")
+}],
+"loop": true,
+"name": &"jump_test",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bc1hv")
 }, {
 "duration": 1.0,
@@ -1055,7 +1082,7 @@ DASH_VELOCITY = 400.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_idbdt")
-animation = &"idle"
+animation = &"jump_test"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)

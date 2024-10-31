@@ -8,11 +8,13 @@ func _ready():
 
 func _on_body_entered(body):
 	#print(body.name)
-	for child in body.get_children():
-		if child is Cleanable:
-			print(body.name)
-			child.hit()
-
+	#for child in body.get_children():
+		#if child is Cleanable:
+			#print(body.name)
+			#child.hit()
+	if body.is_in_group("grime"):
+		print(body)
+		
 
 func _on_player_facing_direction_changed(facing_right : bool):
 	if(facing_right):

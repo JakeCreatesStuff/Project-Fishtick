@@ -175,7 +175,7 @@ func update_facing_direction():
 	
 func jump():
 	velocity.y = JUMP_VELOCITY
-	animated_sprite.play("jump")
+	animated_sprite.play("jump_test")
 	animation_locked = true
 		
 func double_jump():
