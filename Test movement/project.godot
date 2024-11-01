@@ -75,6 +75,7 @@ reset_hp={
 [layer_names]
 
 2d_physics/layer_10="Projectile"
+2d_physics/layer_16="DOOR"
 
 [physics]
 

@@ -36,7 +36,7 @@ func _physics_process(delta):
 		#position.y += (player.position.y - position.y - 100) / speed
 		
 		if !Global.boss_damaged:
-			position.y = move_toward(position.y, player.position.y - 100, delta * speed)
+			position.y = move_toward(position.y, player.position.y - 120, delta * speed)
 			position.x = 250
 		else:
 			position.y = move_toward(position.y, 168, delta * speed / 2)
