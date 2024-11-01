@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://0xcncyan0epy"]
+[gd_scene load_steps=8 format=3 uid="uid://0xcncyan0epy"]
 
 [ext_resource type="Script" path="res://corruption.gd" id="1_04tjr"]
-[ext_resource type="Texture2D" uid="uid://brvq4352sxfv3" path="res://art/da ooze.png" id="1_sll3v"]
-[ext_resource type="Texture2D" uid="uid://bt5pp42cfqqkg" path="res://art/spotlight_1.png" id="4_2nmj7"]
+[ext_resource type="Texture2D" uid="uid://glgj0s4c38sd" path="res://art/da ooze.png" id="1_sll3v"]
+[ext_resource type="Script" path="res://cleanable.gd" id="3_c55h1"]
+[ext_resource type="Texture2D" uid="uid://bjurw8fv7co1j" path="res://art/spotlight_1.png" id="4_2nmj7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12uve"]
 size = Vector2(20, 6)
@@ -24,9 +25,9 @@ scale_min = 0.0
 scale_max = 0.01
 color = Color(0.871404, 0.486516, 0.74221, 1)
 
-[node name="Corruption" type="Area2D"]
-collision_layer = 0
-collision_mask = 16
+[node name="Corruption" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_04tjr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -37,6 +38,7 @@ scale = Vector2(0.0335, 0.01075)
 texture = ExtResource("1_sll3v")
 
 [node name="Cleanable" type="Node" parent="."]
+script = ExtResource("3_c55h1")
 
 [node name="CPUParticles2D" type="GPUParticles2D" parent="."]
 show_behind_parent = true
@@ -44,5 +46,3 @@ material = SubResource("CanvasItemMaterial_64qp3")
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_vp555")
 texture = ExtResource("4_2nmj7")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

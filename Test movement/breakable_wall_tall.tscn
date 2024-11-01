@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://1gfki5bt57i3"]
 
-[ext_resource type="Texture2D" uid="uid://c0xaxaebwggpd" path="res://art/GrimeWall.png" id="1_4laoh"]
+[ext_resource type="Texture2D" uid="uid://dwl1d6fynlgmq" path="res://art/GrimeWall.png" id="1_4laoh"]
 [ext_resource type="Script" path="res://breakable_wall_tall.gd" id="1_ub5nm"]
-[ext_resource type="Texture2D" uid="uid://bknamsw2skdk6" path="res://art/spotlight_1.png" id="2_53hhw"]
+[ext_resource type="Texture2D" uid="uid://bjurw8fv7co1j" path="res://art/spotlight_1.png" id="2_53hhw"]
 [ext_resource type="Script" path="res://cleanable.gd" id="3_gkkf2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k847n"]
