@@ -27,8 +27,8 @@ height = 146.0
 size = Vector2(355, 1042)
 
 [node name="BOSS" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 4096
+collision_mask = 4096
 script = ExtResource("1_3rhqr")
 
 [node name="Projectile" parent="." instance=ExtResource("2_72kd5")]
@@ -42,11 +42,21 @@ position = Vector2(0, -20)
 shape = SubResource("CapsuleShape2D_gkw07")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(2.5, 417)
 shape = SubResource("RectangleShape2D_7cwiw")
 
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="DamagedCooldown" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
+[connection signal="timeout" from="DamagedCooldown" to="." method="_on_damaged_cooldown_timeout"]
