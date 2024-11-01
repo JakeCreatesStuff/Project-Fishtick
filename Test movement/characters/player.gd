@@ -264,10 +264,10 @@ func _on_animated_sprite_2d_animation_finished():
 	if(["jump end", "jump", "jump double"].has(animated_sprite.animation)):
 		animation_locked = false
 
-func _input(event):
-	if event.is_action_pressed("test"):
-		velocity.x = 100
-		move_and_slide()
+#func _input(event):
+	#if event.is_action_pressed("test"):
+		#velocity.x = 100
+		#move_and_slide()
 
 func apply_friction(delta):
 	if direction.x == 0 and is_on_floor():
