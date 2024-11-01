@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://ck3m0p1flrw0e"]
+[gd_scene load_steps=17 format=4 uid="uid://ck3m0p1flrw0e"]
 
 [ext_resource type="Texture2D" uid="uid://cb5tnwtaej4q0" path="res://art/Background_tiles.png" id="1_dp80j"]
 [ext_resource type="Texture2D" uid="uid://cffspllrb8vii" path="res://art/Water+.png" id="2_x7k8c"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d4uh4sr5u617" path="res://boss.tscn" id="6_pcni0"]
 [ext_resource type="PackedScene" uid="uid://ddos1vn23r3qy" path="res://door.tscn" id="7_xnidw"]
 [ext_resource type="PackedScene" uid="uid://mo08yyvpp3da" path="res://light_particles.tscn" id="8_5uwnw"]
+[ext_resource type="PackedScene" uid="uid://0xcncyan0epy" path="res://corruption.tscn" id="9_ioggy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y85w8"]
 texture = ExtResource("1_dp80j")
@@ -165,3 +166,6 @@ position = Vector2(-184, 596)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAFAAMAAAABAAIAADAGAAMAAAABAAIAADAHAAMAAAABAAIAADAIAAMAAAABAAIAADAJAAMAAAABAAIAADAKAAMAAAABAAIAADALAAMAAAABAAIAADAMAAMAAAABAAIAADANAAMAAAABAAIAADAOAAMAAAABAAIAADAPAAMAAAABAAIAADAQAAMAAAABAAIAADARAAMAAAABAAIAADASAAMAAAABAAIAADATAAMAAAABAAIAADAUAAMAAAABAAIAADAVAAMAAAABAAIAADAWAAMAAAABAAIAADAXAAMAAAABAAIAADAYAAMAAAABAAIAADAZAAMAAAABAAIAADA=")
 tile_set = SubResource("TileSet_kt1eu")
+
+[node name="Corruption" parent="." instance=ExtResource("9_ioggy")]
+position = Vector2(300, 551)

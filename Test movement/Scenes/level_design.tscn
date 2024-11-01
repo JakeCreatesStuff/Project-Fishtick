@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bmjeuhtx7xpdb"]
+[gd_scene load_steps=24 format=4 uid="uid://bmjeuhtx7xpdb"]
 
 [ext_resource type="Texture2D" uid="uid://bjbxtui38hpw2" path="res://Assets/Sprites/Tilemap.png" id="1_3udb2"]
 [ext_resource type="Texture2D" uid="uid://cb5tnwtaej4q0" path="res://art/Background_tiles.png" id="1_qiseh"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ddos1vn23r3qy" path="res://door.tscn" id="10_st2hu"]
 [ext_resource type="PackedScene" uid="uid://1gfki5bt57i3" path="res://breakable_wall_tall.tscn" id="11_lkhx4"]
 [ext_resource type="PackedScene" uid="uid://0xcncyan0epy" path="res://corruption.tscn" id="12_kwpgj"]
+[ext_resource type="PackedScene" uid="uid://cqrixou45316r" path="res://projectile.tscn" id="13_cq2w2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tutlw"]
 texture = ExtResource("1_qiseh")
@@ -218,3 +219,6 @@ position = Vector2(267, 623)
 
 [node name="Corruption6" parent="." instance=ExtResource("12_kwpgj")]
 position = Vector2(287, 623)
+
+[node name="Projectile" parent="." instance=ExtResource("13_cq2w2")]
+position = Vector2(115, 590)

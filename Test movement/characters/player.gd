@@ -75,6 +75,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("hit"):	
 		$Attack_hitbox.process_mode = Node.PROCESS_MODE_INHERIT
+		attack()
 		#await get_tree().create_timer(0.5).timeout
 		$hit_cooldown.start()
 		#$Attack_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
@@ -177,6 +178,10 @@ func update_facing_direction():
 			animated_sprite.flip_h = true
 			
 		emit_signal("facing_direction_changed", !animated_sprite.flip_h)
+	
+func attack():
+	animated_sprite.play("attack")
+	animation_locked = true
 	
 func jump():
 	velocity.y = JUMP_VELOCITY
