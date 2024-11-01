@@ -120,7 +120,7 @@ func died():
 	ball_1.speed_scale = 4
 	ball_2.speed_scale = 4
 	ball_3.speed_scale = 4
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	heart_beat_audio.play()
 	animation.play("tendril_breathe")
 	$Retry.show()
