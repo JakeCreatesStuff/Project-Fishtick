@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://boss.gd" id="1_3rhqr"]
 [ext_resource type="PackedScene" uid="uid://cqrixou45316r" path="res://projectile.tscn" id="2_72kd5"]
-[ext_resource type="Texture2D" uid="uid://dsvb5df0o4fv4" path="res://art/Gura Sprite/Gwar_Boss.png" id="3_2hdum"]
+[ext_resource type="Texture2D" uid="uid://c78qca56wmj30" path="res://art/Gura Sprite/Gwar_Boss.png" id="3_2hdum"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j741m"]
 atlas = ExtResource("3_2hdum")
