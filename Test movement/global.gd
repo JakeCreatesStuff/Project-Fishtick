@@ -1,3 +1,3 @@
 extends Node
 
-var corruption_amount = 20
+var corruption_amount = 128

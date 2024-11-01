@@ -51,7 +51,7 @@ func _physics_process(delta):
 	#burst_particles.is_emittinng
 	#var mouse_position = get_local_mouse_position().normalized()
 	# Add the gravity.
-	print(Global.corruption_amount)
+	#print(Global.corruption_amount)
 	if is_wet:
 		wet_particles.emitting = true
 	else:
@@ -259,10 +259,10 @@ func _on_animated_sprite_2d_animation_finished():
 	if(["jump end", "jump", "jump double"].has(animated_sprite.animation)):
 		animation_locked = false
 
-func _input(event):
-	if event.is_action_pressed("test"):
-		velocity.x = 100
-		move_and_slide()
+#func _input(event):
+	#if event.is_action_pressed("test"):
+		#velocity.x = 100
+		#move_and_slide()
 
 func apply_friction(delta):
 	if direction.x == 0 and is_on_floor():
@@ -281,7 +281,7 @@ func _on_dash_cooldown_timeout():
 	can_dash = true
 
 func _on_area_2d_body_entered(body):
-	print("is touching water")
+	#print("is touching water")
 	animated_sprite.play("swim")
 	ACCELERATION = 600
 	gravity = 100
@@ -290,7 +290,7 @@ func _on_area_2d_body_entered(body):
 	animation_locked = true
 
 func _on_area_2d_body_exited(body):
-	print("left water")
+	#print("left water")
 	ACCELERATION = 500
 	gravity = 480
 	in_water = false
@@ -302,7 +302,7 @@ func _on_area_2d_body_exited(body):
 func _on_wet_timer_timeout():
 	if !in_water:
 		is_wet = false
-	print("I'm dry :D")
+	#print("I'm dry :D")
 
 func _on_hit_cooldown_timeout():
 	$Attack_hitbox.process_mode = Node.PROCESS_MODE_DISABLED

@@ -1,9 +1,10 @@
-[gd_scene load_steps=130 format=3 uid="uid://bqkkwxliyy4dd"]
+[gd_scene load_steps=151 format=3 uid="uid://bqkkwxliyy4dd"]
 
 [ext_resource type="Texture2D" uid="uid://bwkj43id217dd" path="res://Assets/Sprites/New folder/GrimeBar_Stick.png" id="1_pmk1g"]
 [ext_resource type="Script" path="res://Scripts/trident.gd" id="1_pr6fd"]
 [ext_resource type="Texture2D" uid="uid://dct80talikhkr" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_1.png" id="2_pmmwc"]
 [ext_resource type="Texture2D" uid="uid://d4bd61lwhua8t" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_2.png" id="3_v86po"]
+[ext_resource type="Texture2D" uid="uid://cv4lgryckuf3y" path="res://Assets/Sprites/New folder/GrimeBar_Stick_White.png" id="3_vjdwo"]
 [ext_resource type="Texture2D" uid="uid://0imchqkgo7c6" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_3.png" id="4_24mrf"]
 [ext_resource type="Texture2D" uid="uid://bwqsfd7wevvua" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_4.png" id="5_iujie"]
 [ext_resource type="Texture2D" uid="uid://b8rrba1ilg1l2" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_5.png" id="6_vcxck"]
@@ -12,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://cbv60lbwqurub" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_8.png" id="9_sj1d3"]
 [ext_resource type="Texture2D" uid="uid://c6vwx5mfuclkq" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_1.png" id="10_0ehye"]
 [ext_resource type="Texture2D" uid="uid://04un80xuvp4k" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_2.png" id="11_gs7c0"]
+[ext_resource type="Texture2D" uid="uid://b4di1yk7h0m4u" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_9.png" id="11_ymdj8"]
 [ext_resource type="Texture2D" uid="uid://blgsubxoiwjut" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_3.png" id="12_q6u07"]
 [ext_resource type="Texture2D" uid="uid://b2y1x57ln7fm8" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_4.png" id="13_k0161"]
+[ext_resource type="Texture2D" uid="uid://o2qucrbhdsm5" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_1_White.png" id="13_ms7vx"]
 [ext_resource type="Texture2D" uid="uid://cr30r32pfqp8w" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_5.png" id="14_6qmic"]
 [ext_resource type="Texture2D" uid="uid://bjmn2bx4kp7e6" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_6.png" id="15_x51h5"]
 [ext_resource type="Texture2D" uid="uid://dli6xe750skpr" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_7.png" id="16_wmw16"]
@@ -22,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://ccpwy5w3rfr4h" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_2.png" id="19_s3k7g"]
 [ext_resource type="Texture2D" uid="uid://8tmpekvxipvq" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_3.png" id="20_nqsly"]
 [ext_resource type="Texture2D" uid="uid://c8pu5vcjn0v3j" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_4.png" id="21_6dy2c"]
+[ext_resource type="Texture2D" uid="uid://beaxobg2d50a2" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_9.png" id="21_ot16m"]
 [ext_resource type="Texture2D" uid="uid://rbxvme87psjx" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_5.png" id="22_s0acy"]
 [ext_resource type="Texture2D" uid="uid://y2q7iis7mlsu" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_6.png" id="23_v0uej"]
 [ext_resource type="Texture2D" uid="uid://ksg6ixchjbir" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_7.png" id="24_ksrtf"]
@@ -32,6 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://bghyo5qqrsjtv" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_4.png" id="29_63mf3"]
 [ext_resource type="Texture2D" uid="uid://ch4a5jgms3mup" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_5.png" id="30_ma3ww"]
 [ext_resource type="Texture2D" uid="uid://dej5ypeuib1lu" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_6.png" id="31_a67ji"]
+[ext_resource type="Texture2D" uid="uid://dr1wdtsbee6n4" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_9.png" id="31_x0eeu"]
+[ext_resource type="Texture2D" uid="uid://c2isfagp8d08e" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_1_White.png" id="32_8riym"]
 [ext_resource type="Texture2D" uid="uid://c1d3058a35fnh" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_7.png" id="32_x7yya"]
 [ext_resource type="Texture2D" uid="uid://duc8yjbywoqew" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_8.png" id="33_iodr4"]
 [ext_resource type="Texture2D" uid="uid://dajx1g36wwyd2" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_9.png" id="34_b7glp"]
@@ -116,17 +122,66 @@
 [ext_resource type="Texture2D" uid="uid://cbd1xg6y0xdrj" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_7.png" id="113_1btsq"]
 [ext_resource type="Texture2D" uid="uid://dy835qqcy5ns3" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_8.png" id="114_n25v6"]
 [ext_resource type="Texture2D" uid="uid://cs0a5hyxuh738" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_9.png" id="115_246g4"]
+[ext_resource type="AudioStream" uid="uid://ddrd4rswslxx" path="res://Assets/SFX/glass_breaking.mp3" id="117_eburr"]
+[ext_resource type="AudioStream" uid="uid://d2i6e0pg5p517" path="res://Assets/SFX/heartbeat.mp3" id="123_1xj0s"]
+[ext_resource type="AudioStream" uid="uid://b6n6ncqq4v3c2" path="res://Assets/SFX/death.mp3" id="123_u3i6e"]
+[ext_resource type="AudioStream" uid="uid://iu3748rb3kf7" path="res://Assets/SFX/win_sfx.wav" id="126_jl2x4"]
+[ext_resource type="PackedScene" uid="uid://c30hckmdwp4l5" path="res://Scenes/retry.tscn" id="127_wkf8w"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7kugf"]
+[sub_resource type="Animation" id="Animation_l08me"]
+resource_name = "blue_screen"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o21ls"]
+_data = {
+"blue_screen": SubResource("Animation_l08me")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gv188"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pmmwc")
+"texture": ExtResource("1_pmk1g")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pmk1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vjdwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_pmk1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_pmk1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_pmk1g")
+}],
+"loop": false,
+"name": &"white",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7kugf"]
+animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_v86po")
@@ -143,8 +198,8 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_36f88")
 }],
-"loop": true,
-"name": &"new_animation",
+"loop": false,
+"name": &"breaking",
 "speed": 10.0
 }, {
 "frames": [{
@@ -155,20 +210,48 @@ animations = [{
 "texture": ExtResource("9_sj1d3")
 }],
 "loop": true,
-"name": &"new_animation_1",
+"name": &"broke",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_vvu12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ymdj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vvu12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sj1d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vvu12")
+}],
+"loop": false,
+"name": &"broke_white",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pmmwc")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}],
+"loop": false,
+"name": &"white",
+"speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bvsx2"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("10_0ehye")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("11_gs7c0")
@@ -185,9 +268,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("15_x51h5")
 }],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
+"loop": false,
+"name": &"breaking",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -197,24 +280,61 @@ animations = [{
 "texture": ExtResource("17_56fsw")
 }],
 "loop": true,
-"name": &"new_animation_1",
+"name": &"broke",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_wmw16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ot16m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wmw16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_56fsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wmw16")
+}],
+"loop": false,
+"name": &"broke_white",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0ehye")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_0ehye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ehye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ehye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ehye")
+}],
+"loop": false,
+"name": &"white",
+"speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7rbuu"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_8liyi")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_8liyi")
-}, {
 "duration": 1.0,
 "texture": ExtResource("19_s3k7g")
 }, {
@@ -230,9 +350,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("23_v0uej")
 }],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
+"loop": false,
+"name": &"breaking",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -242,8 +362,56 @@ animations = [{
 "texture": ExtResource("25_4rj7m")
 }],
 "loop": true,
-"name": &"new_animation_1",
+"name": &"broke",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_ksrtf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_x0eeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ksrtf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_4rj7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ksrtf")
+}],
+"loop": false,
+"name": &"broke_white",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_8liyi")
+}],
+"loop": false,
+"name": &"full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_8liyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8riym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8liyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8liyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8liyi")
+}],
+"loop": false,
+"name": &"white",
+"speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v56v"]
@@ -284,6 +452,18 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_6mcm1"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
 "duration": 1.0,
 "texture": ExtResource("26_id5pb")
 }, {
@@ -347,6 +527,18 @@ animations = [{
 "texture": ExtResource("26_id5pb")
 }, {
 "duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
 "texture": ExtResource("27_enwbo")
 }, {
 "duration": 1.0,
@@ -402,6 +594,18 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_wm8eo"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
 "duration": 1.0,
 "texture": ExtResource("26_id5pb")
 }, {
@@ -465,6 +669,18 @@ animations = [{
 "texture": ExtResource("26_id5pb")
 }, {
 "duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
 "texture": ExtResource("27_enwbo")
 }, {
 "duration": 1.0,
@@ -524,6 +740,18 @@ animations = [{
 "texture": ExtResource("26_id5pb")
 }, {
 "duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
 "texture": ExtResource("27_enwbo")
 }, {
 "duration": 1.0,
@@ -579,6 +807,18 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_04xil"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_id5pb")
+}, {
 "duration": 1.0,
 "texture": ExtResource("26_id5pb")
 }, {
@@ -711,10 +951,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("64_evath")
+}, {
+"duration": 1.0,
+"texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"pop",
-"speed": 5.0
+"speed": 14.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jj4u1"]
@@ -799,10 +1042,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("89_ngm58")
+}, {
+"duration": 1.0,
+"texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"pop",
-"speed": 10.0
+"speed": 14.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d4hgx"]
@@ -890,28 +1136,501 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("115_246g4")
+}, {
+"duration": 1.0,
+"texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"pop",
-"speed": 5.0
+"speed": 14.0
 }]
+
+[sub_resource type="Animation" id="Animation_45x6w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TridentSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TridentSprite/Tip_1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TridentSprite/Tip_2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TridentSprite/Tip_3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TridentSprite/Tendril/Tendril_1:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TridentSprite/Tendril/Tendril_2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TridentSprite/Tendril/Tendril_3:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TridentSprite/Tendril/Tendril_4:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("TridentSprite/Tendril/Tendril_5:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TridentSprite/Tendril/Tendril_6:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TridentSprite/Tendril/Tendril_7:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("BlackBarTop:size")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1150, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("BlackBarBottom:size")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1150, 0)]
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TridentSprite:position:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(872, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TridentSprite:position:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(64, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("WinScreen:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("TridentSprite:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bs3sy"]
+resource_name = "blue_screen"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WinScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pna54"]
+resource_name = "dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TridentSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.72272, 0.19479, 0.570672, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_larym"]
+resource_name = "tendril_breathe"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TridentSprite/Tendril/Tendril_1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TridentSprite/Tendril/Tendril_2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TridentSprite/Tendril/Tendril_3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0294207, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TridentSprite/Tendril/Tendril_4:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0294207, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TridentSprite/Tendril/Tendril_5:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0294207, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TridentSprite/Tendril/Tendril_6:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0294207, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TridentSprite/Tendril/Tendril_7:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0294207, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
+}
+
+[sub_resource type="Animation" id="Animation_u5wnc"]
+resource_name = "trident_fades_out"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TridentSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nkrop"]
+resource_name = "win"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackBarTop:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(1152, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackBarBottom:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.233333, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(1152, 104)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TridentSprite:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(872, -0.25, 0, 0.25, 0, 576, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.166667, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TridentSprite:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(64, -0.25, 0, 0.25, 0, 312, -0.2, -3.53058, 0.25, 0),
+"times": PackedFloat32Array(0.166667, 1)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TridentSprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5ruf"]
+_data = {
+"RESET": SubResource("Animation_45x6w"),
+"blue_screen": SubResource("Animation_bs3sy"),
+"dead": SubResource("Animation_pna54"),
+"tendril_breathe": SubResource("Animation_larym"),
+"trident_fades_out": SubResource("Animation_u5wnc"),
+"win": SubResource("Animation_nkrop")
+}
 
 [node name="Trident" type="CanvasLayer"]
 script = ExtResource("1_pr6fd")
 
-[node name="TridentSprite" type="Sprite2D" parent="."]
-position = Vector2(810, 81)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("1_pmk1g")
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10815, 0.09607, 0.165779, 1)
+
+[node name="WinScreen" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.373832, 0.556199, 0.662103, 1)
+
+[node name="WinScreen_Animation" type="AnimationPlayer" parent="WinScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_o21ls")
+}
+
+[node name="TridentSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(872, 64)
+sprite_frames = SubResource("SpriteFrames_gv188")
 
 [node name="Tip_1" type="AnimatedSprite2D" parent="TridentSprite"]
+show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_7kugf")
+animation = &"breaking"
+autoplay = "full"
 
 [node name="Tip_2" type="AnimatedSprite2D" parent="TridentSprite"]
+show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_bvsx2")
+animation = &"white"
+autoplay = "full"
 
 [node name="Tip_3" type="AnimatedSprite2D" parent="TridentSprite"]
+show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_7rbuu")
+animation = &"broke"
+autoplay = "full"
 
 [node name="Tendril" type="Node2D" parent="TridentSprite"]
 position = Vector2(-47.5, 0)
@@ -951,37 +1670,62 @@ position = Vector2(208.667, -0.833331)
 sprite_frames = SubResource("SpriteFrames_04xil")
 animation = &"receding"
 
-[node name="Tendril_8" type="AnimatedSprite2D" parent="TridentSprite/Tendril"]
-position = Vector2(118.667, -0.333331)
-sprite_frames = SubResource("SpriteFrames_n4s2f")
-animation = &"receding"
-
-[node name="Tendril_9" type="AnimatedSprite2D" parent="TridentSprite/Tendril"]
-position = Vector2(163.667, -0.833331)
-sprite_frames = SubResource("SpriteFrames_fpe5x")
-animation = &"receding"
-
-[node name="Tendril_10" type="AnimatedSprite2D" parent="TridentSprite/Tendril"]
-position = Vector2(208.667, -0.833331)
-sprite_frames = SubResource("SpriteFrames_04xil")
-animation = &"receding"
-
 [node name="Ball" type="Node2D" parent="TridentSprite"]
 
 [node name="Ball_3" type="AnimatedSprite2D" parent="TridentSprite/Ball"]
 sprite_frames = SubResource("SpriteFrames_wwt25")
-animation = &"idle"
+animation = &"pop"
 autoplay = "idle"
-frame_progress = 0.870627
 
 [node name="Ball_2" type="AnimatedSprite2D" parent="TridentSprite/Ball"]
 sprite_frames = SubResource("SpriteFrames_jj4u1")
-animation = &"idle"
+animation = &"pop"
 autoplay = "idle"
-frame_progress = 0.356329
+frame = 8
+frame_progress = 1.0
 
 [node name="Ball_1" type="AnimatedSprite2D" parent="TridentSprite/Ball"]
 sprite_frames = SubResource("SpriteFrames_d4hgx")
-animation = &"idle"
+animation = &"pop"
 autoplay = "idle"
-frame_progress = 0.630816
+
+[node name="HeartBeatAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("123_1xj0s")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("123_u3i6e")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="GlassBreakingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("117_eburr")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="WinAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("126_jl2x4")
+volume_db = -20.0
+pitch_scale = 1.4
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w5ruf")
+}
+
+[node name="BlackBarTop" type="ColorRect" parent="."]
+offset_right = 1150.0
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="BlackBarBottom" type="ColorRect" parent="."]
+offset_left = 1152.0
+offset_top = 648.0
+offset_right = 2302.0
+offset_bottom = 648.0
+rotation = -3.14159
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="Retry" parent="." instance=ExtResource("127_wkf8w")]
+visible = false

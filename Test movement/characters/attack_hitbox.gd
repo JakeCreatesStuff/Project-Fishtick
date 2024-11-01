@@ -10,7 +10,7 @@ func _on_body_entered(body):
 	#print(body.name)
 	for child in body.get_children():
 		if child is Cleanable:
-			print(body.name)
+			#print(body.name)
 			child.hit()
 
 func _on_player_facing_direction_changed(facing_right : bool):
