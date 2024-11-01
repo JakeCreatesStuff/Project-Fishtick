@@ -97,8 +97,8 @@ func _physics_process(delta):
 			
 		if Input.is_action_just_pressed("dash") and can_dash:
 			dash()
-			if is_wet:
-				$wet_damage.process_mode = Node.PROCESS_MODE_INHERIT
+			#if is_wet:
+				#$wet_damage.process_mode = Node.PROCESS_MODE_INHERIT
 			$dash_timer.start()
 			$dash_cooldown.start()
 			
@@ -152,6 +152,12 @@ func _physics_process(delta):
 		move_and_slide()
 		update_animation()
 		update_facing_direction()
+		
+		if is_wet:
+			$wet_damage.process_mode = Node.PROCESS_MODE_INHERIT
+		else:
+			$wet_damage.process_mode = Node.PROCESS_MODE_DISABLED
+		
 		if in_water:
 			cshape.shape = crouching_cshape
 			animated_sprite.play("swim")
@@ -295,7 +301,7 @@ func _on_crouch_signal():
 func _on_dash_timer_timeout():
 	is_dashing = false
 	animation_locked = false
-	$wet_damage.process_mode = Node.PROCESS_MODE_DISABLED
+	#$wet_damage.process_mode = Node.PROCESS_MODE_DISABLED
 	
 func _on_dash_cooldown_timeout():
 	is_bursting = false
