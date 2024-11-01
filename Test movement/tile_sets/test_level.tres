@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=9 format=3 uid="uid://0ol68ehao87j"]
 
-[ext_resource type="Texture2D" uid="uid://bqjvcvgm5vuvk" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/IceSet.png" id="1_14afc"]
-[ext_resource type="Texture2D" uid="uid://dvw5h0waflpa2" path="res://art/Water+.png" id="2_5u3m4"]
-[ext_resource type="Texture2D" uid="uid://cuix455eoap7y" path="res://art/Background_tiles.png" id="3_xa3wd"]
-[ext_resource type="Texture2D" uid="uid://bbh4hvjy78gto" path="res://art/Aquatic_Palace_Tile_Map.png" id="7_06ljd"]
+[ext_resource type="Texture2D" uid="uid://csofdgvbmbjne" path="res://art/Starter Tiles - Platformer/Starter Tiles Platformer/IceSet.png" id="1_14afc"]
+[ext_resource type="Texture2D" uid="uid://bwxqltvxb0qo0" path="res://art/Water+.png" id="2_5u3m4"]
+[ext_resource type="Texture2D" uid="uid://d6bw6lwsewaw" path="res://art/Background_tiles.png" id="3_xa3wd"]
+[ext_resource type="Texture2D" uid="uid://cmmws3bei50hx" path="res://art/Aquatic_Palace_Tile_Map.png" id="7_06ljd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3v3d6"]
 texture = ExtResource("1_14afc")

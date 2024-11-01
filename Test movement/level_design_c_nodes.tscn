@@ -1,0 +1,154 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8ldi78qblrug"]
+
+[ext_resource type="PackedScene" uid="uid://0xcncyan0epy" path="res://corruption.tscn" id="1_2hxev"]
+
+[node name="C Nodes" type="Node2D"]
+position = Vector2(187, 623)
+
+[node name="Corruption" parent="." instance=ExtResource("1_2hxev")]
+
+[node name="Corruption2" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(20, 0)
+
+[node name="Corruption3" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(40, 0)
+
+[node name="Corruption4" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(60, 0)
+
+[node name="Corruption5" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(80, 0)
+
+[node name="Corruption6" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(100, 0)
+
+[node name="Corruption7" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(120, 0)
+
+[node name="Corruption8" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(140, 0)
+
+[node name="Corruption9" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(160, 0)
+
+[node name="Corruption10" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(116, -66)
+
+[node name="Corruption11" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(136, -66)
+
+[node name="Corruption12" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(41, -82)
+
+[node name="Corruption13" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(61, -82)
+
+[node name="Corruption14" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-36, -114)
+
+[node name="Corruption15" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-120, -130)
+
+[node name="Corruption16" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-99, -130)
+
+[node name="Corruption23" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-2, -242)
+
+[node name="Corruption24" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(18, -242)
+
+[node name="Corruption25" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(38, -242)
+
+[node name="Corruption26" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(58, -242)
+
+[node name="Corruption27" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(78, -242)
+
+[node name="Corruption28" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(250, -242)
+
+[node name="Corruption29" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(270, -242)
+
+[node name="Corruption30" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(290, -242)
+
+[node name="Corruption31" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(310, -242)
+
+[node name="Corruption32" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(206, -450)
+
+[node name="Corruption33" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(186, -450)
+
+[node name="Corruption34" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(166, -450)
+
+[node name="Corruption35" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(146, -450)
+
+[node name="Corruption36" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(126, -450)
+
+[node name="Corruption37" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(74, -386)
+
+[node name="Corruption38" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-38, -386)
+
+[node name="Corruption39" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-81, -385)
+
+[node name="Corruption40" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-131, -385)
+
+[node name="Corruption41" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(185, -626)
+
+[node name="Corruption42" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(199, -882)
+
+[node name="Corruption43" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(29, -946)
+
+[node name="Corruption44" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-90, -883)
+
+[node name="Corruption45" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-159, -883)
+
+[node name="Corruption46" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-28, -1074)
+
+[node name="Corruption47" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(165, -1107)
+
+[node name="Corruption48" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(5, -1219)
+
+[node name="Corruption17" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-78, -130)
+
+[node name="Corruption18" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-137, -190)
+rotation = 1.5708
+
+[node name="Corruption19" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-137, -210)
+rotation = 1.5708
+
+[node name="Corruption20" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-137, -230)
+rotation = 1.5708
+
+[node name="Corruption21" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-137, -250)
+rotation = 1.5708
+
+[node name="Corruption22" parent="." instance=ExtResource("1_2hxev")]
+position = Vector2(-137, -270)
+rotation = 1.5708
