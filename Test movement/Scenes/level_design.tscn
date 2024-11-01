@@ -218,6 +218,3 @@ position = Vector2(267, 623)
 
 [node name="Corruption6" parent="." instance=ExtResource("12_kwpgj")]
 position = Vector2(287, 623)
-
-[node name="Breakable_Wall_Tall2" parent="." instance=ExtResource("11_lkhx4")]
-position = Vector2(152, 611)

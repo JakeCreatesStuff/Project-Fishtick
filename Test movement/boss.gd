@@ -6,9 +6,10 @@ const projectile = preload("res://projectile.tscn")
 
 @export var shootSpeed = 1.0
 
-var speed = 10
+var speed = 200
 var player = null
 var player_chase = false
+var friction = 800
 
 var player_pos
 var target_pos
@@ -26,13 +27,17 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("hit"):	
 		shoot()
 	if player_chase:
-		if position.y >= 168:
-			position.y += (player.position.y - position.y - 100) / speed
+		#position.y += (player.position.y - position.y - 100) / speed
+
+		position.y = move_toward(position.y, player.position.y - 100, delta * speed)
+		position.x = 250
 			
 		shotAngle = position - player.position
 		shotAngleDeg = atan2(-shotAngle.y, -shotAngle.x)
 		shotAngleDeg = Vector2.from_angle(shotAngleDeg)
 		#print(shotAngleDeg)
+		
+		move_and_slide()
 		
 
 func shoot():
