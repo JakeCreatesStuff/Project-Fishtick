@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://mo08yyvpp3da"]
 
-[ext_resource type="Texture2D" uid="uid://bknamsw2skdk6" path="res://art/spotlight_1.png" id="1_8v7bg"]
+[ext_resource type="Texture2D" uid="uid://bt5pp42cfqqkg" path="res://art/spotlight_1.png" id="1_8v7bg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uh86x"]
 blend_mode = 1

@@ -10,5 +10,5 @@ func _on_body_entered(body):
 	if body.name == "BOSS" and Global.boss_damaged == false:
 		print("OWWWCH")
 		Global.boss_damaged = true
-		Global.Boss_Health = Global.Boss_Health - 1
-		print(Global.Boss_Health)
+		Global.corruption_amount = Global.corruption_amount - 7
+		print(Global.corruption_amount)

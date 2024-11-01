@@ -5,6 +5,7 @@ func _ready():
 	top_level = false
 
 func _on_body_entered(body):
+	Global.corruption_save = Global.corruption_amount
 	Global.door_reached = true
 	animated_sprite.play("Open")
 	await get_tree().create_timer(2).timeout

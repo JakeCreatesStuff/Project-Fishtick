@@ -1,131 +1,132 @@
-[gd_scene load_steps=151 format=3 uid="uid://bqkkwxliyy4dd"]
+[gd_scene load_steps=152 format=3 uid="uid://bqkkwxliyy4dd"]
 
-[ext_resource type="Texture2D" uid="uid://c148ai1o21qoq" path="res://Assets/Sprites/New folder/GrimeBar_Stick.png" id="1_pmk1g"]
+[ext_resource type="Texture2D" uid="uid://bwkj43id217dd" path="res://Assets/Sprites/New folder/GrimeBar_Stick.png" id="1_pmk1g"]
 [ext_resource type="Script" path="res://Scripts/trident.gd" id="1_pr6fd"]
-[ext_resource type="Texture2D" uid="uid://k2dic7anqxy1" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_1.png" id="2_pmmwc"]
-[ext_resource type="Texture2D" uid="uid://tsbujxac3eyc" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_2.png" id="3_v86po"]
-[ext_resource type="Texture2D" uid="uid://bt5jshnsmlgtk" path="res://Assets/Sprites/New folder/GrimeBar_Stick_White.png" id="3_vjdwo"]
-[ext_resource type="Texture2D" uid="uid://bl8ngd5mbpxu3" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_3.png" id="4_24mrf"]
-[ext_resource type="Texture2D" uid="uid://co1ek42cy0o57" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_4.png" id="5_iujie"]
-[ext_resource type="Texture2D" uid="uid://dc7vdm3xfr6ip" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_5.png" id="6_vcxck"]
-[ext_resource type="Texture2D" uid="uid://2utkrm3h03ir" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_6.png" id="7_36f88"]
-[ext_resource type="Texture2D" uid="uid://b0ys30tkh2155" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_7.png" id="8_vvu12"]
-[ext_resource type="Texture2D" uid="uid://dbs8nicbwdq8w" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_8.png" id="9_sj1d3"]
-[ext_resource type="Texture2D" uid="uid://dh1yt0xxw6f8y" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_1.png" id="10_0ehye"]
-[ext_resource type="Texture2D" uid="uid://uknaeubb2kfi" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_2.png" id="11_gs7c0"]
-[ext_resource type="Texture2D" uid="uid://ehcpubnm08vp" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_9.png" id="11_ymdj8"]
-[ext_resource type="Texture2D" uid="uid://beevdil4d1avq" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_3.png" id="12_q6u07"]
-[ext_resource type="Texture2D" uid="uid://dm2b4oefd8v8u" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_4.png" id="13_k0161"]
-[ext_resource type="Texture2D" uid="uid://b2xtre0me3hy3" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_1_White.png" id="13_ms7vx"]
-[ext_resource type="Texture2D" uid="uid://dcw2aa3i66jo6" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_5.png" id="14_6qmic"]
-[ext_resource type="Texture2D" uid="uid://01iypim7j562" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_6.png" id="15_x51h5"]
-[ext_resource type="Texture2D" uid="uid://mvsqc5df7nv3" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_7.png" id="16_wmw16"]
-[ext_resource type="Texture2D" uid="uid://fpj7qa3wi2dd" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_8.png" id="17_56fsw"]
-[ext_resource type="Texture2D" uid="uid://qhrdo72vqh5a" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_1.png" id="18_8liyi"]
-[ext_resource type="Texture2D" uid="uid://bkgrdhpw086hr" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_2.png" id="19_s3k7g"]
-[ext_resource type="Texture2D" uid="uid://sx8xq1yto02b" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_3.png" id="20_nqsly"]
-[ext_resource type="Texture2D" uid="uid://co355lk3m3cd3" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_4.png" id="21_6dy2c"]
-[ext_resource type="Texture2D" uid="uid://3vj2aa2n7puv" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_9.png" id="21_ot16m"]
-[ext_resource type="Texture2D" uid="uid://bn7ebjt8mol6p" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_5.png" id="22_s0acy"]
-[ext_resource type="Texture2D" uid="uid://cgakrb3dg24g5" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_6.png" id="23_v0uej"]
-[ext_resource type="Texture2D" uid="uid://xa2woe6d8dio" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_7.png" id="24_ksrtf"]
-[ext_resource type="Texture2D" uid="uid://6r62y4j0wfln" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_8.png" id="25_4rj7m"]
-[ext_resource type="Texture2D" uid="uid://ch5vebj7j56om" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_1.png" id="26_id5pb"]
-[ext_resource type="Texture2D" uid="uid://bankjyjybcifp" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_2.png" id="27_enwbo"]
-[ext_resource type="Texture2D" uid="uid://raqd60ypt43g" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_3.png" id="28_3mq7w"]
-[ext_resource type="Texture2D" uid="uid://bke3imb2aqokt" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_4.png" id="29_63mf3"]
-[ext_resource type="Texture2D" uid="uid://c3prtrqjyso10" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_5.png" id="30_ma3ww"]
-[ext_resource type="Texture2D" uid="uid://cfft5mln1bp3d" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_6.png" id="31_a67ji"]
-[ext_resource type="Texture2D" uid="uid://do3pqm6biwdwp" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_9.png" id="31_x0eeu"]
-[ext_resource type="Texture2D" uid="uid://6r8vjils4eoy" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_1_White.png" id="32_8riym"]
-[ext_resource type="Texture2D" uid="uid://d2bs4yad3h68v" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_7.png" id="32_x7yya"]
-[ext_resource type="Texture2D" uid="uid://psw0la6gu7vk" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_8.png" id="33_iodr4"]
-[ext_resource type="Texture2D" uid="uid://c5vmu0ke348u5" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_9.png" id="34_b7glp"]
-[ext_resource type="Texture2D" uid="uid://bl8fe5sdl41q" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_10.png" id="35_5mcd4"]
-[ext_resource type="Texture2D" uid="uid://d3g20w3nkvod3" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_11.png" id="36_vpk44"]
-[ext_resource type="Texture2D" uid="uid://bqtvroli2cwhv" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_12.png" id="37_myog1"]
-[ext_resource type="Texture2D" uid="uid://dvvcmdig7tsi2" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_13.png" id="38_7p2ag"]
-[ext_resource type="Texture2D" uid="uid://d2jnoi8qgb76o" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_14.png" id="39_66gmq"]
-[ext_resource type="Texture2D" uid="uid://ei7mxdlk48tb" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_15.png" id="40_etb3q"]
-[ext_resource type="Texture2D" uid="uid://c4aqlo5b2wcge" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_16.png" id="41_nbw85"]
-[ext_resource type="Texture2D" uid="uid://scqwdl15urru" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_1.png" id="42_kq27q"]
-[ext_resource type="Texture2D" uid="uid://dsq618kul5sei" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_2.png" id="43_mi7m3"]
-[ext_resource type="Texture2D" uid="uid://dnj2a87iqrkp1" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_3.png" id="44_wjk7g"]
-[ext_resource type="Texture2D" uid="uid://dqufatw1mm7ka" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_4.png" id="45_q1r0m"]
-[ext_resource type="Texture2D" uid="uid://bnap27yb6s8gb" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_5.png" id="46_s1b1t"]
-[ext_resource type="Texture2D" uid="uid://deeeamolwwgbp" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_6.png" id="47_xodlh"]
-[ext_resource type="Texture2D" uid="uid://dec1dygsmxtuy" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_7.png" id="48_mx2um"]
-[ext_resource type="Texture2D" uid="uid://ce4jc6rj4ltue" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_8.png" id="49_logkj"]
-[ext_resource type="Texture2D" uid="uid://cfgnper823slr" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_9.png" id="50_2fe3t"]
-[ext_resource type="Texture2D" uid="uid://cv0767wa0lqbw" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_10.png" id="51_fgqx6"]
-[ext_resource type="Texture2D" uid="uid://chp3i77f2ahvs" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_11.png" id="52_m15gd"]
-[ext_resource type="Texture2D" uid="uid://brlcchjayydg7" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_12.png" id="53_e60d3"]
-[ext_resource type="Texture2D" uid="uid://78pcbvrv5qs2" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_13.png" id="54_0p1t7"]
-[ext_resource type="Texture2D" uid="uid://biyfe0ey6kq3q" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_14.png" id="55_l4hri"]
-[ext_resource type="Texture2D" uid="uid://vx0pcfvvswf" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_15.png" id="56_svhsb"]
-[ext_resource type="Texture2D" uid="uid://b0li8x16v02v1" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_16.png" id="57_peayi"]
-[ext_resource type="Texture2D" uid="uid://blwif0m8cbips" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_17.png" id="58_qymqa"]
-[ext_resource type="Texture2D" uid="uid://d4hr5aitfx41s" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_1.png" id="59_om672"]
-[ext_resource type="Texture2D" uid="uid://xxk3s76r17qv" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_2.png" id="60_ndq0w"]
-[ext_resource type="Texture2D" uid="uid://5m8k4jpat7lj" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_3.png" id="61_fy2fw"]
-[ext_resource type="Texture2D" uid="uid://c2rlfle23wgsq" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_4.png" id="62_7c8br"]
-[ext_resource type="Texture2D" uid="uid://sq35hrpxjhd5" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_5.png" id="63_a5co6"]
-[ext_resource type="Texture2D" uid="uid://d26chndhadu3r" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_6.png" id="64_evath"]
-[ext_resource type="Texture2D" uid="uid://k1vfgp3p7goh" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_1.png" id="65_2ilu0"]
-[ext_resource type="Texture2D" uid="uid://nkrerh8acd8m" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_2.png" id="66_roi2e"]
-[ext_resource type="Texture2D" uid="uid://c7sdjstk81l7x" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_3.png" id="67_7701u"]
-[ext_resource type="Texture2D" uid="uid://cvtcqtuc5ymd4" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_4.png" id="68_04d48"]
-[ext_resource type="Texture2D" uid="uid://33gcv2tyxw8j" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_5.png" id="69_p5jn8"]
-[ext_resource type="Texture2D" uid="uid://ck2knnm480yv4" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_6.png" id="70_j8l2y"]
-[ext_resource type="Texture2D" uid="uid://2ebpiwykyihr" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_7.png" id="71_6g1cy"]
-[ext_resource type="Texture2D" uid="uid://d25g5y3fjio4" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_8.png" id="72_jy75r"]
-[ext_resource type="Texture2D" uid="uid://dr8ilrlpidkxd" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_9.png" id="73_2nmdm"]
-[ext_resource type="Texture2D" uid="uid://cbbue8xbkm7gj" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_10.png" id="74_65lwl"]
-[ext_resource type="Texture2D" uid="uid://but3alc33oetu" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_11.png" id="75_45oks"]
-[ext_resource type="Texture2D" uid="uid://cudkgldnuopf0" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_12.png" id="76_w0vxo"]
-[ext_resource type="Texture2D" uid="uid://gsqxshbbfj4g" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_13.png" id="77_wtkdh"]
-[ext_resource type="Texture2D" uid="uid://cme84u063vgfl" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_14.png" id="78_eyjwj"]
-[ext_resource type="Texture2D" uid="uid://ceuk1njbufbj5" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_15.png" id="79_gfwbe"]
-[ext_resource type="Texture2D" uid="uid://boarr3r5l4oq2" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_16.png" id="80_65ry3"]
-[ext_resource type="Texture2D" uid="uid://vnu4bxi6g3eu" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_17.png" id="81_kbg1l"]
-[ext_resource type="Texture2D" uid="uid://cp5ju02bb8q5x" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_1.png" id="82_q56gw"]
-[ext_resource type="Texture2D" uid="uid://kfemqp25lqbd" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_2.png" id="83_mlbvs"]
-[ext_resource type="Texture2D" uid="uid://bwaepn0r4pc33" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_3.png" id="84_ec13l"]
-[ext_resource type="Texture2D" uid="uid://sjhns6rqe3xi" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_4.png" id="85_10akh"]
-[ext_resource type="Texture2D" uid="uid://br62n44kptlrp" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_5.png" id="86_j46xh"]
-[ext_resource type="Texture2D" uid="uid://dr1u8pidsri56" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_6.png" id="87_b6dic"]
-[ext_resource type="Texture2D" uid="uid://t2t2a5xvy7i6" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_7.png" id="88_1eyxh"]
-[ext_resource type="Texture2D" uid="uid://d0y7ph7ux3i65" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_8.png" id="89_ngm58"]
-[ext_resource type="Texture2D" uid="uid://dy1lde5acg0l7" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_1.png" id="90_yti0l"]
-[ext_resource type="Texture2D" uid="uid://c24ism5icr5ud" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_2.png" id="91_bw1er"]
-[ext_resource type="Texture2D" uid="uid://f4g1ruk26hqs" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_3.png" id="92_0afgg"]
-[ext_resource type="Texture2D" uid="uid://hf1b2pm4eryb" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_4.png" id="93_a2lgm"]
-[ext_resource type="Texture2D" uid="uid://d1odlegvd65kb" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_5.png" id="94_aewme"]
-[ext_resource type="Texture2D" uid="uid://3q5k1mggagyl" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_6.png" id="95_s5mon"]
-[ext_resource type="Texture2D" uid="uid://bpianyi6j8igo" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_7.png" id="96_s6mo4"]
-[ext_resource type="Texture2D" uid="uid://bw3esxmw0nkmq" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_8.png" id="97_oc446"]
-[ext_resource type="Texture2D" uid="uid://1vw35x4dy6ol" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_9.png" id="98_580wn"]
-[ext_resource type="Texture2D" uid="uid://5q0i4qxaf3bi" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_10.png" id="99_wbvrj"]
-[ext_resource type="Texture2D" uid="uid://dl44uf8yl6ajs" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_11.png" id="100_iqmjk"]
-[ext_resource type="Texture2D" uid="uid://cv313fno64232" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_12.png" id="101_kd64t"]
-[ext_resource type="Texture2D" uid="uid://cwj0hlc5p4rm1" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_13.png" id="102_nbtef"]
-[ext_resource type="Texture2D" uid="uid://g0grd13wsgm0" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_14.png" id="103_evq3s"]
-[ext_resource type="Texture2D" uid="uid://c3xan1af60ei2" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_15.png" id="104_14t02"]
-[ext_resource type="Texture2D" uid="uid://c7mqgeh18qdl" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_16.png" id="105_fu2ri"]
-[ext_resource type="Texture2D" uid="uid://bu56fpdtolrmp" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_17.png" id="106_fk16o"]
-[ext_resource type="Texture2D" uid="uid://cjde14moo8mdb" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_1.png" id="107_ilyuu"]
-[ext_resource type="Texture2D" uid="uid://c1ge36lly88jp" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_2.png" id="108_psas0"]
-[ext_resource type="Texture2D" uid="uid://b8shj3nxka5l6" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_3.png" id="109_cnprt"]
-[ext_resource type="Texture2D" uid="uid://cybqkbfiwlujb" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_4.png" id="110_601nq"]
-[ext_resource type="Texture2D" uid="uid://dm0gac0kj011c" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_5.png" id="111_gqwa5"]
-[ext_resource type="Texture2D" uid="uid://d0bh4qph2bunn" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_6.png" id="112_l0pa6"]
-[ext_resource type="Texture2D" uid="uid://b3kynsja5f8ka" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_7.png" id="113_1btsq"]
-[ext_resource type="Texture2D" uid="uid://b217d8gqsyhmd" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_8.png" id="114_n25v6"]
-[ext_resource type="Texture2D" uid="uid://bwduwo8wxgjon" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_9.png" id="115_246g4"]
-[ext_resource type="AudioStream" uid="uid://dqksk7sowaugs" path="res://Assets/SFX/glass_breaking.mp3" id="117_eburr"]
-[ext_resource type="AudioStream" uid="uid://hpf8ngatuj70" path="res://Assets/SFX/heartbeat.mp3" id="123_1xj0s"]
-[ext_resource type="AudioStream" uid="uid://ck8vhff1biwdc" path="res://Assets/SFX/death.mp3" id="123_u3i6e"]
-[ext_resource type="AudioStream" uid="uid://dub0r8navndb0" path="res://Assets/SFX/win_sfx.wav" id="126_jl2x4"]
+[ext_resource type="FontFile" uid="uid://dncklpwb6acux" path="res://Assets/Fonts/PixelOperator8.ttf" id="2_7me3q"]
+[ext_resource type="Texture2D" uid="uid://dct80talikhkr" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_1.png" id="2_pmmwc"]
+[ext_resource type="Texture2D" uid="uid://d4bd61lwhua8t" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_2.png" id="3_v86po"]
+[ext_resource type="Texture2D" uid="uid://cv4lgryckuf3y" path="res://Assets/Sprites/New folder/GrimeBar_Stick_White.png" id="3_vjdwo"]
+[ext_resource type="Texture2D" uid="uid://0imchqkgo7c6" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_3.png" id="4_24mrf"]
+[ext_resource type="Texture2D" uid="uid://bwqsfd7wevvua" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_4.png" id="5_iujie"]
+[ext_resource type="Texture2D" uid="uid://b8rrba1ilg1l2" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_5.png" id="6_vcxck"]
+[ext_resource type="Texture2D" uid="uid://coant7f4aute0" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_6.png" id="7_36f88"]
+[ext_resource type="Texture2D" uid="uid://cub3ml3k5pynp" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_7.png" id="8_vvu12"]
+[ext_resource type="Texture2D" uid="uid://cbv60lbwqurub" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_8.png" id="9_sj1d3"]
+[ext_resource type="Texture2D" uid="uid://c6vwx5mfuclkq" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_1.png" id="10_0ehye"]
+[ext_resource type="Texture2D" uid="uid://04un80xuvp4k" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_2.png" id="11_gs7c0"]
+[ext_resource type="Texture2D" uid="uid://b4di1yk7h0m4u" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_9.png" id="11_ymdj8"]
+[ext_resource type="Texture2D" uid="uid://blgsubxoiwjut" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_3.png" id="12_q6u07"]
+[ext_resource type="Texture2D" uid="uid://b2y1x57ln7fm8" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_4.png" id="13_k0161"]
+[ext_resource type="Texture2D" uid="uid://o2qucrbhdsm5" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_1_White.png" id="13_ms7vx"]
+[ext_resource type="Texture2D" uid="uid://cr30r32pfqp8w" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_5.png" id="14_6qmic"]
+[ext_resource type="Texture2D" uid="uid://bjmn2bx4kp7e6" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_6.png" id="15_x51h5"]
+[ext_resource type="Texture2D" uid="uid://dli6xe750skpr" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_7.png" id="16_wmw16"]
+[ext_resource type="Texture2D" uid="uid://bk0ualisbfwu8" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_8.png" id="17_56fsw"]
+[ext_resource type="Texture2D" uid="uid://bu6gbil4nbc1m" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_1.png" id="18_8liyi"]
+[ext_resource type="Texture2D" uid="uid://ccpwy5w3rfr4h" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_2.png" id="19_s3k7g"]
+[ext_resource type="Texture2D" uid="uid://8tmpekvxipvq" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_3.png" id="20_nqsly"]
+[ext_resource type="Texture2D" uid="uid://c8pu5vcjn0v3j" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_4.png" id="21_6dy2c"]
+[ext_resource type="Texture2D" uid="uid://beaxobg2d50a2" path="res://Assets/Sprites/New folder/GrimeBar_Tip2_9.png" id="21_ot16m"]
+[ext_resource type="Texture2D" uid="uid://rbxvme87psjx" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_5.png" id="22_s0acy"]
+[ext_resource type="Texture2D" uid="uid://y2q7iis7mlsu" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_6.png" id="23_v0uej"]
+[ext_resource type="Texture2D" uid="uid://ksg6ixchjbir" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_7.png" id="24_ksrtf"]
+[ext_resource type="Texture2D" uid="uid://reoyar8823gq" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_8.png" id="25_4rj7m"]
+[ext_resource type="Texture2D" uid="uid://xh1oqkaap4jd" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_1.png" id="26_id5pb"]
+[ext_resource type="Texture2D" uid="uid://dxxu6gjooinwy" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_2.png" id="27_enwbo"]
+[ext_resource type="Texture2D" uid="uid://cjl8526wl8kxf" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_3.png" id="28_3mq7w"]
+[ext_resource type="Texture2D" uid="uid://bghyo5qqrsjtv" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_4.png" id="29_63mf3"]
+[ext_resource type="Texture2D" uid="uid://ch4a5jgms3mup" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_5.png" id="30_ma3ww"]
+[ext_resource type="Texture2D" uid="uid://dej5ypeuib1lu" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_6.png" id="31_a67ji"]
+[ext_resource type="Texture2D" uid="uid://dr1wdtsbee6n4" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_9.png" id="31_x0eeu"]
+[ext_resource type="Texture2D" uid="uid://c2isfagp8d08e" path="res://Assets/Sprites/New folder/GrimeBar_Tip3_1_White.png" id="32_8riym"]
+[ext_resource type="Texture2D" uid="uid://c1d3058a35fnh" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_7.png" id="32_x7yya"]
+[ext_resource type="Texture2D" uid="uid://duc8yjbywoqew" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_8.png" id="33_iodr4"]
+[ext_resource type="Texture2D" uid="uid://dajx1g36wwyd2" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_9.png" id="34_b7glp"]
+[ext_resource type="Texture2D" uid="uid://dn0jvd3i8h4kf" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_10.png" id="35_5mcd4"]
+[ext_resource type="Texture2D" uid="uid://c7mllr358ftpc" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_11.png" id="36_vpk44"]
+[ext_resource type="Texture2D" uid="uid://bspw5ndrfo4gs" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_12.png" id="37_myog1"]
+[ext_resource type="Texture2D" uid="uid://vilkcy5hchns" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_13.png" id="38_7p2ag"]
+[ext_resource type="Texture2D" uid="uid://bkmuceg4exehw" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_14.png" id="39_66gmq"]
+[ext_resource type="Texture2D" uid="uid://co0iinuqbqiug" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_15.png" id="40_etb3q"]
+[ext_resource type="Texture2D" uid="uid://d187s1nvbwj2j" path="res://Assets/Sprites/Tendril/GrimeBar_Tendril2_16.png" id="41_nbw85"]
+[ext_resource type="Texture2D" uid="uid://ccc35hxsxq1fe" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_1.png" id="42_kq27q"]
+[ext_resource type="Texture2D" uid="uid://dxhv87jgju005" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_2.png" id="43_mi7m3"]
+[ext_resource type="Texture2D" uid="uid://dht88i2nmv7po" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_3.png" id="44_wjk7g"]
+[ext_resource type="Texture2D" uid="uid://6asae5a1f6tj" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_4.png" id="45_q1r0m"]
+[ext_resource type="Texture2D" uid="uid://fc26ofvxh5i0" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_5.png" id="46_s1b1t"]
+[ext_resource type="Texture2D" uid="uid://c0a4t6s8ycvkt" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_6.png" id="47_xodlh"]
+[ext_resource type="Texture2D" uid="uid://dk7kttd87ruht" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_7.png" id="48_mx2um"]
+[ext_resource type="Texture2D" uid="uid://dvun3sgkcno1i" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_8.png" id="49_logkj"]
+[ext_resource type="Texture2D" uid="uid://bkbur37n73byc" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_9.png" id="50_2fe3t"]
+[ext_resource type="Texture2D" uid="uid://w6l546nk6tr7" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_10.png" id="51_fgqx6"]
+[ext_resource type="Texture2D" uid="uid://b7jxnqnepjdow" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_11.png" id="52_m15gd"]
+[ext_resource type="Texture2D" uid="uid://l8l0p7tlum70" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_12.png" id="53_e60d3"]
+[ext_resource type="Texture2D" uid="uid://bbygkvceoe7ce" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_13.png" id="54_0p1t7"]
+[ext_resource type="Texture2D" uid="uid://b524oe8a07f7" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_14.png" id="55_l4hri"]
+[ext_resource type="Texture2D" uid="uid://dlwiobe8a1q47" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_15.png" id="56_svhsb"]
+[ext_resource type="Texture2D" uid="uid://dhdigirmtwvnd" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_16.png" id="57_peayi"]
+[ext_resource type="Texture2D" uid="uid://bskgixv7oyua5" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Idle_17.png" id="58_qymqa"]
+[ext_resource type="Texture2D" uid="uid://bem43o0pch3ok" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_1.png" id="59_om672"]
+[ext_resource type="Texture2D" uid="uid://dlk58y8b7xtn1" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_2.png" id="60_ndq0w"]
+[ext_resource type="Texture2D" uid="uid://dhn2pikincf7j" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_3.png" id="61_fy2fw"]
+[ext_resource type="Texture2D" uid="uid://vln8wklulq1p" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_4.png" id="62_7c8br"]
+[ext_resource type="Texture2D" uid="uid://ckwvdddyxc86t" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_5.png" id="63_a5co6"]
+[ext_resource type="Texture2D" uid="uid://be0tx1ufdv1nv" path="res://Assets/Sprites/New folder/CorruptionBall3/GrimeBar_Ball3_Pop_6.png" id="64_evath"]
+[ext_resource type="Texture2D" uid="uid://ccngha0utx4fl" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_1.png" id="65_2ilu0"]
+[ext_resource type="Texture2D" uid="uid://b1uce1wjplrym" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_2.png" id="66_roi2e"]
+[ext_resource type="Texture2D" uid="uid://dfkudv5uyb4wa" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_3.png" id="67_7701u"]
+[ext_resource type="Texture2D" uid="uid://bxa02qwlkdtkg" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_4.png" id="68_04d48"]
+[ext_resource type="Texture2D" uid="uid://3xyagm1lafqc" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_5.png" id="69_p5jn8"]
+[ext_resource type="Texture2D" uid="uid://cp76dal4nch2x" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_6.png" id="70_j8l2y"]
+[ext_resource type="Texture2D" uid="uid://bhw3imxdqqbcu" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_7.png" id="71_6g1cy"]
+[ext_resource type="Texture2D" uid="uid://375t4b4dqetr" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_8.png" id="72_jy75r"]
+[ext_resource type="Texture2D" uid="uid://bf1264g2epmu7" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_9.png" id="73_2nmdm"]
+[ext_resource type="Texture2D" uid="uid://tj33qtrpmals" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_10.png" id="74_65lwl"]
+[ext_resource type="Texture2D" uid="uid://gl1fk3osjmy2" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_11.png" id="75_45oks"]
+[ext_resource type="Texture2D" uid="uid://cvf2qws3mp83s" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_12.png" id="76_w0vxo"]
+[ext_resource type="Texture2D" uid="uid://bj6xe753qnu4p" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_13.png" id="77_wtkdh"]
+[ext_resource type="Texture2D" uid="uid://dd5bkjeri4xdg" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_14.png" id="78_eyjwj"]
+[ext_resource type="Texture2D" uid="uid://cvqfaet6x77m" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_15.png" id="79_gfwbe"]
+[ext_resource type="Texture2D" uid="uid://d010pwa36om3v" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_16.png" id="80_65ry3"]
+[ext_resource type="Texture2D" uid="uid://dk63virnmv4cp" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Idle_17.png" id="81_kbg1l"]
+[ext_resource type="Texture2D" uid="uid://x88tflv588n4" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_1.png" id="82_q56gw"]
+[ext_resource type="Texture2D" uid="uid://bvvp2wfq6idgp" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_2.png" id="83_mlbvs"]
+[ext_resource type="Texture2D" uid="uid://6e2ujlwd8ttq" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_3.png" id="84_ec13l"]
+[ext_resource type="Texture2D" uid="uid://b2qav3q1i8sds" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_4.png" id="85_10akh"]
+[ext_resource type="Texture2D" uid="uid://dsioxlqi4n3cw" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_5.png" id="86_j46xh"]
+[ext_resource type="Texture2D" uid="uid://b32wgsotm8116" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_6.png" id="87_b6dic"]
+[ext_resource type="Texture2D" uid="uid://dl2wiwee3xfow" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_7.png" id="88_1eyxh"]
+[ext_resource type="Texture2D" uid="uid://bd68vlgx51dbb" path="res://Assets/Sprites/New folder/CorruptionBall2/GrimeBar_Ball2_Pop_8.png" id="89_ngm58"]
+[ext_resource type="Texture2D" uid="uid://crt4aslkkvi75" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_1.png" id="90_yti0l"]
+[ext_resource type="Texture2D" uid="uid://on22s4joyo7c" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_2.png" id="91_bw1er"]
+[ext_resource type="Texture2D" uid="uid://bp5af4ps4ooir" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_3.png" id="92_0afgg"]
+[ext_resource type="Texture2D" uid="uid://4u8r6tjq5fsj" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_4.png" id="93_a2lgm"]
+[ext_resource type="Texture2D" uid="uid://dtghcxjduohb6" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_5.png" id="94_aewme"]
+[ext_resource type="Texture2D" uid="uid://bwct27vouqejg" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_6.png" id="95_s5mon"]
+[ext_resource type="Texture2D" uid="uid://dqiqf8kp2nrpl" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_7.png" id="96_s6mo4"]
+[ext_resource type="Texture2D" uid="uid://c2qht1ieqtpx2" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_8.png" id="97_oc446"]
+[ext_resource type="Texture2D" uid="uid://d2p6ql4lhdai" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_9.png" id="98_580wn"]
+[ext_resource type="Texture2D" uid="uid://rgyc7ht2h3jx" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_10.png" id="99_wbvrj"]
+[ext_resource type="Texture2D" uid="uid://bxhb487gln2mg" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_11.png" id="100_iqmjk"]
+[ext_resource type="Texture2D" uid="uid://bwm3dxlq26hru" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_12.png" id="101_kd64t"]
+[ext_resource type="Texture2D" uid="uid://c1h3o0ydblpdo" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_13.png" id="102_nbtef"]
+[ext_resource type="Texture2D" uid="uid://c8nv4rjait03s" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_14.png" id="103_evq3s"]
+[ext_resource type="Texture2D" uid="uid://8feqyutot2lo" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_15.png" id="104_14t02"]
+[ext_resource type="Texture2D" uid="uid://26ruxr1p4ug4" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_16.png" id="105_fu2ri"]
+[ext_resource type="Texture2D" uid="uid://s5avqvvo3scl" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Idle_17.png" id="106_fk16o"]
+[ext_resource type="Texture2D" uid="uid://fdybrflbv0jp" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_1.png" id="107_ilyuu"]
+[ext_resource type="Texture2D" uid="uid://lpx6er8tethu" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_2.png" id="108_psas0"]
+[ext_resource type="Texture2D" uid="uid://chtfyllqkh8yg" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_3.png" id="109_cnprt"]
+[ext_resource type="Texture2D" uid="uid://0hwgpbxywgb0" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_4.png" id="110_601nq"]
+[ext_resource type="Texture2D" uid="uid://dgorifi8tynw4" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_5.png" id="111_gqwa5"]
+[ext_resource type="Texture2D" uid="uid://b1h5tqd5ymae" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_6.png" id="112_l0pa6"]
+[ext_resource type="Texture2D" uid="uid://cbd1xg6y0xdrj" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_7.png" id="113_1btsq"]
+[ext_resource type="Texture2D" uid="uid://dy835qqcy5ns3" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_8.png" id="114_n25v6"]
+[ext_resource type="Texture2D" uid="uid://cs0a5hyxuh738" path="res://Assets/Sprites/New folder/CorruptionBall1/GrimeBar_Ball1_Pop_9.png" id="115_246g4"]
+[ext_resource type="AudioStream" uid="uid://ddrd4rswslxx" path="res://Assets/SFX/glass_breaking.mp3" id="117_eburr"]
+[ext_resource type="AudioStream" uid="uid://d2i6e0pg5p517" path="res://Assets/SFX/heartbeat.mp3" id="123_1xj0s"]
+[ext_resource type="AudioStream" uid="uid://b6n6ncqq4v3c2" path="res://Assets/SFX/death.mp3" id="123_u3i6e"]
+[ext_resource type="AudioStream" uid="uid://iu3748rb3kf7" path="res://Assets/SFX/win_sfx.wav" id="126_jl2x4"]
 [ext_resource type="PackedScene" uid="uid://c30hckmdwp4l5" path="res://Scenes/retry.tscn" id="127_wkf8w"]
 
 [sub_resource type="Animation" id="Animation_l08me"]
@@ -178,6 +179,26 @@ animations = [{
 "loop": false,
 "name": &"white",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vjdwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vjdwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vjdwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vjdwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_pmk1g")
+}],
+"loop": false,
+"name": &"win",
+"speed": 12.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7kugf"]
@@ -243,11 +264,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_ms7vx")
+"texture": ExtResource("4_24mrf")
 }],
 "loop": false,
 "name": &"white",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_24mrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_24mrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_24mrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_24mrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pmmwc")
+}],
+"loop": false,
+"name": &"win",
+"speed": 12.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bvsx2"]
@@ -330,6 +371,26 @@ animations = [{
 "loop": false,
 "name": &"white",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ehye")
+}],
+"loop": false,
+"name": &"win",
+"speed": 12.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7rbuu"]
@@ -412,6 +473,26 @@ animations = [{
 "loop": false,
 "name": &"white",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_8riym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8riym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8riym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8riym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8liyi")
+}],
+"loop": false,
+"name": &"win",
+"speed": 12.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v56v"]
@@ -1198,7 +1279,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ColorRect:modulate")
+tracks/4/path = NodePath("Lose/ColorRect:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1294,7 +1375,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("BlackBarTop:size")
+tracks/12/path = NodePath("Win/BlackBarTop:size")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -1306,7 +1387,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("BlackBarBottom:size")
+tracks/13/path = NodePath("Win/BlackBarBottom:size")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1340,7 +1421,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("WinScreen:modulate")
+tracks/16/path = NodePath("Win/WinScreen:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1361,19 +1442,43 @@ tracks/17/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Win/YouWinText:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_bs3sy"]
 resource_name = "blue_screen"
-length = 2.0
+length = 4.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WinScreen:modulate")
+tracks/0/path = NodePath("Win/WinScreen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Win/YouWinText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1397,7 +1502,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/path = NodePath("Lose/ColorRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1497,7 +1602,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_u5wnc"]
 resource_name = "trident_fades_out"
-length = 2.0
+length = 5.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1511,6 +1616,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Win/YouWinText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_nkrop"]
 resource_name = "win"
@@ -1518,7 +1635,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BlackBarTop:size")
+tracks/0/path = NodePath("Win/BlackBarTop:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1530,7 +1647,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BlackBarBottom:size")
+tracks/1/path = NodePath("Win/BlackBarBottom:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1587,16 +1704,9 @@ _data = {
 [node name="Trident" type="CanvasLayer"]
 script = ExtResource("1_pr6fd")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.10815, 0.09607, 0.165779, 1)
+[node name="Win" type="Node" parent="."]
 
-[node name="WinScreen" type="ColorRect" parent="."]
+[node name="WinScreen" type="ColorRect" parent="Win"]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -1605,32 +1715,75 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.373832, 0.556199, 0.662103, 1)
 
-[node name="WinScreen_Animation" type="AnimationPlayer" parent="WinScreen"]
+[node name="WinScreen_Animation" type="AnimationPlayer" parent="Win/WinScreen"]
 libraries = {
 "": SubResource("AnimationLibrary_o21ls")
 }
 
+[node name="BlackBarTop" type="ColorRect" parent="Win"]
+offset_right = 1150.0
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="YouWinText" type="Label" parent="Win"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 177.0
+offset_top = 246.0
+offset_right = 974.0
+offset_bottom = 439.0
+theme_override_fonts/font = ExtResource("2_7me3q")
+theme_override_font_sizes/font_size = 125
+text = "You Win!"
+
+[node name="BlackBarBottom" type="ColorRect" parent="Win"]
+offset_left = 1152.0
+offset_top = 648.0
+offset_right = 2302.0
+offset_bottom = 648.0
+rotation = -3.14159
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="Lose" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Lose"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10815, 0.09607, 0.165779, 1)
+
+[node name="Retry" parent="Lose" instance=ExtResource("127_wkf8w")]
+visible = false
+top_level = true
+
 [node name="TridentSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(872, 64)
 sprite_frames = SubResource("SpriteFrames_gv188")
+animation = &"win"
+autoplay = "default"
 
 [node name="Tip_1" type="AnimatedSprite2D" parent="TridentSprite"]
 show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_7kugf")
-animation = &"breaking"
+animation = &"win"
 autoplay = "full"
 
 [node name="Tip_2" type="AnimatedSprite2D" parent="TridentSprite"]
 show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_bvsx2")
-animation = &"white"
+animation = &"win"
 autoplay = "full"
+frame = 4
+frame_progress = 1.0
 
 [node name="Tip_3" type="AnimatedSprite2D" parent="TridentSprite"]
 show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_7rbuu")
-animation = &"broke"
+animation = &"win"
 autoplay = "full"
+frame = 4
+frame_progress = 1.0
 
 [node name="Tendril" type="Node2D" parent="TridentSprite"]
 position = Vector2(-47.5, 0)
@@ -1689,22 +1842,24 @@ sprite_frames = SubResource("SpriteFrames_d4hgx")
 animation = &"pop"
 autoplay = "idle"
 
-[node name="HeartBeatAudio" type="AudioStreamPlayer" parent="."]
+[node name="Audio" type="Node" parent="."]
+
+[node name="HeartBeatAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("123_1xj0s")
 volume_db = -3.0
 bus = &"SFX"
 
-[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+[node name="DeathAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("123_u3i6e")
 volume_db = -5.0
 bus = &"SFX"
 
-[node name="GlassBreakingAudio" type="AudioStreamPlayer" parent="."]
+[node name="GlassBreakingAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("117_eburr")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="WinAudio" type="AudioStreamPlayer" parent="."]
+[node name="WinAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("126_jl2x4")
 volume_db = -20.0
 pitch_scale = 1.4
@@ -1714,18 +1869,3 @@ bus = &"SFX"
 libraries = {
 "": SubResource("AnimationLibrary_w5ruf")
 }
-
-[node name="BlackBarTop" type="ColorRect" parent="."]
-offset_right = 1152.0
-color = Color(0.0430392, 0.0430392, 0.0430392, 1)
-
-[node name="BlackBarBottom" type="ColorRect" parent="."]
-offset_left = 1152.0
-offset_top = 648.0
-offset_right = 2304.0
-offset_bottom = 648.0
-rotation = -3.14159
-color = Color(0.0430392, 0.0430392, 0.0430392, 1)
-
-[node name="Retry" parent="." instance=ExtResource("127_wkf8w")]
-visible = false
