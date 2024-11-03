@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4uh4sr5u617"]
+[gd_scene load_steps=13 format=3 uid="uid://d4uh4sr5u617"]
 
 [ext_resource type="Script" path="res://boss.gd" id="1_3rhqr"]
 [ext_resource type="PackedScene" uid="uid://cqrixou45316r" path="res://projectile.tscn" id="2_72kd5"]
-[ext_resource type="Texture2D" uid="uid://dsvb5df0o4fv4" path="res://art/Gura Sprite/Gwar_Boss.png" id="3_2hdum"]
+[ext_resource type="Texture2D" uid="uid://dsfwbesh5j27q" path="res://art/Gura Sprite/Gwar_Boss.png" id="3_2hdum"]
+[ext_resource type="AudioStream" uid="uid://bvpyhpofaxlq8" path="res://Assets/SFX/bossDmg.wav" id="4_a6p60"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j741m"]
 atlas = ExtResource("3_2hdum")
@@ -30,9 +31,49 @@ size = Vector2(355, 1042)
 radius = 23.0
 height = 84.0
 
+[sub_resource type="Animation" id="Animation_napkh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_88bp1"]
+resource_name = "hurt"
+length = 0.2
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.18653, 0.421453, 0.48945, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c4nho"]
+_data = {
+"RESET": SubResource("Animation_napkh"),
+"hurt": SubResource("Animation_88bp1")
+}
+
 [node name="BOSS" type="CharacterBody2D"]
+self_modulate = Color(0.134173, 0.638826, 0.701663, 1)
 collision_layer = 4096
-collision_mask = 4096
+collision_mask = 5120
 script = ExtResource("1_3rhqr")
 
 [node name="Projectile" parent="." instance=ExtResource("2_72kd5")]
@@ -72,6 +113,21 @@ position = Vector2(106, 22)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_a5k1d")
 
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 5.5
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c4nho")
+}
+
+[node name="BossDmgAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a6p60")
+volume_db = -10.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
 [connection signal="timeout" from="DamagedCooldown" to="." method="_on_damaged_cooldown_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c30hckmdwp4l5"]
+[gd_scene load_steps=23 format=3 uid="uid://c30hckmdwp4l5"]
 
 [ext_resource type="Script" path="res://Scripts/retry.gd" id="1_suxbb"]
 [ext_resource type="Texture2D" uid="uid://bt7vda6k43gar" path="res://Assets/Sprites/Fauna's Hand.png" id="2_xk5ot"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dncklpwb6acux" path="res://Assets/Fonts/PixelOperator8.ttf" id="4_v0v16"]
 [ext_resource type="Texture2D" uid="uid://bmppnly4w8d1g" path="res://Assets/Sprites/Gura's Hand Reaching.png" id="5_t08sr"]
 [ext_resource type="Texture2D" uid="uid://d1kiyckc2im0n" path="res://Assets/Sprites/Apple.png" id="6_tvl2r"]
+[ext_resource type="AudioStream" uid="uid://cnveqy64mc32s" path="res://Assets/SFX/Retry.wav" id="8_8m1mg"]
 
 [sub_resource type="Animation" id="Animation_yra28"]
 resource_name = "Hover"
@@ -397,13 +398,8 @@ _data = {
 "Retry": SubResource("Animation_splh4")
 }
 
-[node name="Retry" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Retry" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_suxbb")
 
 [node name="Fauna" type="Sprite2D" parent="."]
@@ -429,7 +425,6 @@ libraries = {
 
 [node name="TextureButton" type="TextureButton" parent="."]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
 offset_left = 314.0
 offset_top = -75.0
 offset_right = 826.0
@@ -459,7 +454,6 @@ autoplay = "Hover"
 [node name="Label" type="Label" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.32549)
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -480,6 +474,10 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_p2jqh")
 }
+
+[node name="Retry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8m1mg")
+volume_db = -10.0
 
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]

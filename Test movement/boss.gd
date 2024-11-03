@@ -1,9 +1,15 @@
 extends CharacterBody2D
 
 const projectile = preload("res://projectile.tscn")
-@onready var BOSS = get_tree().get_root().get_node("BOSS")
+
+var startBattle = false
+@onready var BOSS = %BOSS
+#@onready var BOSS = get_tree().get_root().get_node("BOSS")
 @onready var ShootCooldown = $ShootCooldown
 @onready var DamagedCooldown = $DamagedCooldown
+@onready var ball_audio = $"../BallAudio"
+@onready var animation_player = $AnimationPlayer
+@onready var boss_dmg_audio = $BossDmgAudio
 
 @export var shootSpeed = 1.0
 
@@ -29,6 +35,8 @@ func _physics_process(delta):
 	#if Input.is_action_just_pressed("hit"):	
 		#ShootCooldown.wait_time = 0.25
 	if Global.boss_damaged and !hurt:
+		animation_player.play("hurt")
+		boss_dmg_audio.play()
 		hurt = true
 		DamagedCooldown.start()
 		
@@ -51,7 +59,8 @@ func _physics_process(delta):
 		
 
 func shoot():
-	if canShoot:
+	if Global.died or Global.win: return
+	if canShoot and startBattle and Global.boss_damaged == false:
 		canShoot = false
 		ShootCooldown.start()
 		
@@ -60,12 +69,13 @@ func shoot():
 		projectileNode.set_direction(shotAngleDeg)
 		get_tree().root.add_child(projectileNode)
 		projectileNode.global_position = position
+		ball_audio.play()
 
 func _on_area_2d_body_entered(body):
 	player_chase = true
 	player = body
-	print("FOUND YOU")
-	print(player)
+	#print("FOUND YOU")
+	#print(player)
 
 func _on_shoot_cooldown_timeout():
 	canShoot = true
@@ -76,5 +86,15 @@ func setup_direction(direction):
 
 func _on_damaged_cooldown_timeout():
 	Global.boss_damaged = false
+	animation_player.stop()
 	hurt = false
-	print("I'm coming back")
+	animation_player.stop()
+	#print("I'm coming back")
+
+
+func _on_start_timer_timeout():
+	startBattle = true
+
+func hurtEffect():
+	animation_player.play("hurt")
+	boss_dmg_audio.play()

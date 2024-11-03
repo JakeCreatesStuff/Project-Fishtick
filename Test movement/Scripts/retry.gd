@@ -1,10 +1,11 @@
-extends Control
+extends CanvasLayer
 
 var retry_ready = false
 
 @onready var animation_player = $AnimationPlayer
 @onready var fauna_animation = $Fauna/FaunaAnimation
 @onready var water_animation = $Water/WaterAnimation
+@onready var retry = $Retry
 
 func retry_screen_appear():
 	animation_player.play("Appear")
@@ -26,7 +27,10 @@ func _on_texture_button_pressed():
 		animation_player.play("Retry")
 		$Label.text = "YES!!"
 		retry_ready = false
-		
+		Global.have_retried += 1
+		retry.play()
+		await animation_player.animation_finished
 		get_tree().change_scene_to_file("res://Scenes/respawn_level.tscn")
 		Global.corruption_amount = Global.corruption_save
 		Global.hitpoints = 3
+		Global.died = false

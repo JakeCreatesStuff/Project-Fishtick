@@ -1,20 +1,26 @@
-[gd_scene load_steps=130 format=3 uid="uid://s0shuc50m6uf"]
+[gd_scene load_steps=145 format=3 uid="uid://s0shuc50m6uf"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_h246c"]
 [ext_resource type="Script" path="res://characters/hitbox.gd" id="2_o35k4"]
-[ext_resource type="Texture2D" uid="uid://c3ce3h1oobjll" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V4/Player Punch Cross/Player Punch Cross 64x64.png" id="2_topjv"]
-[ext_resource type="Texture2D" uid="uid://dqjtaqkp6p4yh" path="res://art/Gura Sprite/GroundSlide_v1-Sheet.png" id="3_lbfkb"]
-[ext_resource type="Texture2D" uid="uid://txlvx62ko2i" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Walk/player crouch-walk 48x48.png" id="3_p2hvc"]
-[ext_resource type="Texture2D" uid="uid://lcx2dkun818r" path="res://art/Gura Sprite/Gura_Idol_V2-Sheet.png" id="5_bu4kn"]
-[ext_resource type="Texture2D" uid="uid://c3r5sn33fvwvu" path="res://art/Gura Sprite/Gura_Jump-Sheet.png" id="7_5yydq"]
+[ext_resource type="Texture2D" uid="uid://cgy1kql8qvcar" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V4/Player Punch Cross/Player Punch Cross 64x64.png" id="2_topjv"]
+[ext_resource type="Texture2D" uid="uid://bdh60mxm3r2nx" path="res://art/Gura Sprite/GroundSlide_v1-Sheet.png" id="3_lbfkb"]
+[ext_resource type="Texture2D" uid="uid://dell34fhgjg5" path="res://art/Asset Packs 1-5/Asset Packs 1-5/Asset Pack-V2/Crouch-Walk/player crouch-walk 48x48.png" id="3_p2hvc"]
+[ext_resource type="Texture2D" uid="uid://d1nnv5skcfwgb" path="res://art/Gura Sprite/Gura_Idol_V2-Sheet.png" id="5_bu4kn"]
+[ext_resource type="Texture2D" uid="uid://c7eet4u8apoq1" path="res://art/Gura Sprite/Gura_Jump-Sheet.png" id="7_5yydq"]
 [ext_resource type="Shape2D" uid="uid://juxewl7jags0" path="res://cshapes/plater_stand_cshape.tres" id="9_720mu"]
-[ext_resource type="Texture2D" uid="uid://clq8ks26qamir" path="res://art/Gura Sprite/Gura_Swim_V2-Sheet.png" id="9_xn88k"]
-[ext_resource type="Texture2D" uid="uid://dh77uho0qn7cn" path="res://art/Gura Sprite/Gura_Run_V2.5-Sheet.png" id="11_qgu1i"]
-[ext_resource type="Texture2D" uid="uid://btwf5durwewjk" path="res://art/Gura Sprite/WallSlide-Sheet.png" id="12_6wdpf"]
-[ext_resource type="Texture2D" uid="uid://lrvfcmwefkpp" path="res://art/particle.png" id="15_2elvy"]
+[ext_resource type="Texture2D" uid="uid://dr5xxvc58xuus" path="res://art/Gura Sprite/Gura_Swim_V2-Sheet.png" id="9_xn88k"]
+[ext_resource type="Texture2D" uid="uid://4yo37xuatscv" path="res://art/Gura Sprite/WallSlide-Sheet_Left.png" id="10_lk7mv"]
+[ext_resource type="Texture2D" uid="uid://dmhac863y67fc" path="res://art/Gura Sprite/Gura_Run_V2.5-Sheet.png" id="11_qgu1i"]
+[ext_resource type="Texture2D" uid="uid://bc6rch75yomk0" path="res://art/Gura Sprite/WallSlide-Sheet.png" id="12_6wdpf"]
+[ext_resource type="Texture2D" uid="uid://cib50kxcldpev" path="res://art/particle.png" id="15_2elvy"]
+[ext_resource type="AudioStream" uid="uid://bjhs3owlruaoy" path="res://Assets/SFX/jump (1).wav" id="16_ojcnt"]
 [ext_resource type="Script" path="res://characters/attack_hitbox.gd" id="16_p321w"]
 [ext_resource type="Script" path="res://characters/FacingCollision.gd" id="17_crylp"]
+[ext_resource type="AudioStream" uid="uid://dvhw3533pmdbm" path="res://Assets/SFX/jump (2).wav" id="18_bfxiw"]
 [ext_resource type="Script" path="res://characters/wet_damage.gd" id="18_lme5t"]
+[ext_resource type="AudioStream" uid="uid://s2qmv0vwmval" path="res://Assets/SFX/Slide_2.wav" id="18_tvy2m"]
+[ext_resource type="AudioStream" uid="uid://c6nn7xjb82ypf" path="res://Assets/SFX/FootSteps.mp3" id="19_kp74o"]
+[ext_resource type="AudioStream" uid="uid://c5gn25oc6lb8a" path="res://Assets/SFX/Land.wav" id="20_0p42s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkwi5"]
 atlas = ExtResource("2_topjv")
@@ -443,6 +449,26 @@ region = Rect2(288, 0, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kvk24"]
 atlas = ExtResource("12_6wdpf")
 region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w26r"]
+atlas = ExtResource("10_lk7mv")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnq2c"]
+atlas = ExtResource("10_lk7mv")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0xwh"]
+atlas = ExtResource("10_lk7mv")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbx73"]
+atlas = ExtResource("10_lk7mv")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c30sm"]
+atlas = ExtResource("10_lk7mv")
+region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_idbdt"]
 animations = [{
@@ -901,7 +927,30 @@ animations = [{
 "loop": false,
 "name": &"wall slide",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w26r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnq2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0xwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbx73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c30sm")
+}],
+"loop": true,
+"name": &"wall_slide_left",
+"speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_apb83"]
+height = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1kk7h"]
 radius = 6.0
@@ -945,6 +994,45 @@ size = Vector2(28, 30)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dot5c"]
 radius = 12.0
 
+[sub_resource type="Animation" id="Animation_b2ikr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0s0ya"]
+resource_name = "hurt"
+length = 0.3
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.702578, 0.232409, 0.330209, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i37hc"]
+_data = {
+"RESET": SubResource("Animation_b2ikr"),
+"hurt": SubResource("Animation_0s0ya")
+}
+
 [node name="player" type="CharacterBody2D"]
 top_level = true
 collision_layer = 32921
@@ -955,12 +1043,17 @@ DASH_VELOCITY = 400.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -48)
 sprite_frames = SubResource("SpriteFrames_idbdt")
-animation = &"mid air"
+animation = &"jump double"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -23)
 shape = ExtResource("9_720mu")
 one_way_collision_margin = 0.0
+
+[node name="JumpCShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -48)
+shape = SubResource("CapsuleShape2D_apb83")
+disabled = true
 
 [node name="CrouchRaycast_1" type="RayCast2D" parent="."]
 position = Vector2(-5, -13)
@@ -972,7 +1065,7 @@ target_position = Vector2(0, -39)
 
 [node name="WallCheck_Right" type="RayCast2D" parent="."]
 position = Vector2(0, -16)
-target_position = Vector2(16, 0)
+target_position = Vector2(15, 0)
 
 [node name="WallCheck_Left" type="RayCast2D" parent="."]
 position = Vector2(0, -16)
@@ -1063,7 +1156,39 @@ debug_color = Color(0.913669, 0.203472, 0.529195, 0.42)
 [node name="damage_cooldown" type="Timer" parent="hitbox"]
 wait_time = 3.0
 
+[node name="SFX" type="Node" parent="."]
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("16_ojcnt")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="DoubleJumpAudio" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("18_bfxiw")
+volume_db = -11.0
+pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="SlideAudio" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("18_tvy2m")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="FootSteps" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("19_kp74o")
+bus = &"SFX"
+
+[node name="LandAudio" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("20_0p42s")
+volume_db = -5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i37hc")
+}
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="sprite_frames_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_sprite_frames_changed"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="wet_timer" to="." method="_on_wet_timer_timeout"]
@@ -1073,4 +1198,7 @@ wait_time = 3.0
 [connection signal="timeout" from="hit_cooldown" to="." method="_on_hit_cooldown_timeout"]
 [connection signal="body_entered" from="wet_damage" to="wet_damage" method="_on_body_entered"]
 [connection signal="area_entered" from="hitbox" to="hitbox" method="_on_area_entered"]
+[connection signal="hurt" from="hitbox" to="." method="_on_hitbox_hurt"]
+[connection signal="recovered" from="hitbox" to="." method="_on_hitbox_recovered"]
 [connection signal="timeout" from="hitbox/damage_cooldown" to="hitbox" method="_on_damage_cooldown_timeout"]
+[connection signal="finished" from="SFX/SlideAudio" to="." method="_on_slide_audio_finished"]

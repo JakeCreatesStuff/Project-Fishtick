@@ -20,5 +20,5 @@ func _physics_process(delta):
 	global_position += direction * speed * delta
 	animated_sprite.play("spin")
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	queue_free()

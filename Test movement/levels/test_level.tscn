@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://0ol68ehao87j" path="res://tile_sets/test_level.tres" id="1_okh7y"]
 [ext_resource type="PackedScene" uid="uid://s0shuc50m6uf" path="res://characters/player.tscn" id="3_emhbo"]
-[ext_resource type="Texture2D" uid="uid://bwxqltvxb0qo0" path="res://art/Water+.png" id="3_k0mxj"]
+[ext_resource type="Texture2D" uid="uid://dvw5h0waflpa2" path="res://art/Water+.png" id="3_k0mxj"]
 [ext_resource type="PackedScene" uid="uid://ddos1vn23r3qy" path="res://door.tscn" id="3_rte8b"]
 [ext_resource type="PackedScene" uid="uid://c7mbfdtqgn08m" path="res://shark.tscn" id="5_e6qhv"]
 [ext_resource type="PackedScene" uid="uid://0xcncyan0epy" path="res://corruption.tscn" id="6_0n7xw"]

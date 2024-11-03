@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://0xcncyan0epy"]
 
 [ext_resource type="Script" path="res://corruption.gd" id="1_04tjr"]
-[ext_resource type="Texture2D" uid="uid://c3n8wwsqsl3mv" path="res://art/Grime-export.png" id="2_07glc"]
-[ext_resource type="Texture2D" uid="uid://bknamsw2skdk6" path="res://art/spotlight_1.png" id="4_2nmj7"]
+[ext_resource type="Texture2D" uid="uid://dlraby12g6led" path="res://art/Grime-export.png" id="2_07glc"]
+[ext_resource type="Texture2D" uid="uid://bt5pp42cfqqkg" path="res://art/spotlight_1.png" id="4_2nmj7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12uve"]
 size = Vector2(20, 9)

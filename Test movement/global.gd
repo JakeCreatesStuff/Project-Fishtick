@@ -8,7 +8,10 @@ var wet = false
 var door_reached = false
 
 var boss_damaged = false
+var tutorial_not_needed = false
 
 var corruption_save = 128
 
 var win = false
+var died = false
+var have_retried = 1

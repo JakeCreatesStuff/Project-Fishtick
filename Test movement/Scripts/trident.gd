@@ -38,12 +38,14 @@ var dead = false
 @onready var death_audio = $Audio/DeathAudio
 @onready var heart_beat_audio = $Audio/HeartBeatAudio
 @onready var win_audio = $Audio/WinAudio
+@onready var fan_fare_audio = $Audio/FanFareAudio
 
 @onready var animation = $AnimationPlayer
 @onready var win_screen_animation = $Win/WinScreen/WinScreen_Animation
+@onready var counter = $Counter
 
 
-func _process(delta):
+func _process(_delta):
 	#if start_cleaning == true:
 		#clean()
 	clean()
@@ -74,18 +76,18 @@ func clean():
 		win_state = true
 		end()
 
-func _input(event):
-	if event.is_action_pressed("clean"):
-		Global.corruption_amount -= 7
-	if event.is_action_pressed("hp"):
-		if hp > 0:
-			Global.hitpoints -= 1
-			hp_update()
-		else:
-			died()
-	if event.is_action_pressed("reset_hp"):
-		hp = 3
-		hp_update()
+#func _input(event):
+	#if event.is_action_pressed("clean"):
+		#Global.corruption_amount -= 7
+	#if event.is_action_pressed("hp"):
+		#if hp > 0:
+			#Global.hitpoints -= 1
+			#hp_update()
+		#else:
+			#died()
+	#if event.is_action_pressed("reset_hp"):
+		#hp = 3
+		#hp_update()
 
 func hp_update():
 	if Global.hitpoints == 3 and hit_0 == false:
@@ -130,6 +132,7 @@ func hp_update():
 		died()
 
 func died():
+	Global.died = true
 	animation.play("dead")
 	death_audio.play()
 	ball_1.speed_scale = 4
@@ -160,8 +163,10 @@ func win():
 	tip_3.play("win")
 	trident.play("win")
 	await get_tree().create_timer(1).timeout
-	
+	counter.text = "You've fought " + str(Global.have_retried) + " times"
 	animation.play("trident_fades_out")
+	await animation.animation_finished
+	animation.play("Gura")
 	
 
 func cleaning_1():
@@ -172,25 +177,46 @@ func cleaning_2():
 	tendril_2.frame = 121 - Global.corruption_amount
 
 func cleaning_3():
+	tendril_1.frame = 8
 	tendril_2.frame = 20
 	tendril_3.frame = 101 - Global.corruption_amount
 
 func cleaning_4():
+	tendril_1.frame = 8
+	tendril_2.frame = 20
 	tendril_3.frame = 20
 	tendril_4.frame = 81 - Global.corruption_amount
 
 func cleaning_5():
+	tendril_1.frame = 8
+	tendril_2.frame = 20
+	tendril_3.frame = 20
 	tendril_4.frame = 20
 	tendril_5.frame = 61 - Global.corruption_amount
 
 func cleaning_6():
+	tendril_1.frame = 8
+	tendril_2.frame = 20
+	tendril_3.frame = 20
+	tendril_4.frame = 20
 	tendril_5.frame = 20
 	tendril_6.frame = 41 - Global.corruption_amount
 
 func cleaning_7():
+	tendril_1.frame = 8
+	tendril_2.frame = 20
+	tendril_3.frame = 20
+	tendril_4.frame = 20
+	tendril_5.frame = 20
 	tendril_6.frame = 20
 	tendril_7.frame = 21 - Global.corruption_amount
 
 func end():
+	tendril_1.frame = 8
+	tendril_2.frame = 20
+	tendril_3.frame = 20
+	tendril_4.frame = 20
+	tendril_5.frame = 20
+	tendril_6.frame = 20
 	tendril_7.frame = 20
 	win()

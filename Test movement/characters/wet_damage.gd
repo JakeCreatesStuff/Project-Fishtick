@@ -11,4 +11,4 @@ func _on_body_entered(body):
 		#print("OWWWCH")
 		Global.boss_damaged = true
 		Global.corruption_amount = Global.corruption_amount - 7
-		print(Global.corruption_amount)
+		#print(Global.corruption_amount)

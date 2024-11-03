@@ -1,16 +1,30 @@
-[gd_scene load_steps=22 format=4 uid="uid://bmjeuhtx7xpdb"]
+[gd_scene load_steps=66 format=4 uid="uid://bmjeuhtx7xpdb"]
 
-[ext_resource type="Texture2D" uid="uid://bjbxtui38hpw2" path="res://Assets/Sprites/Tilemap.png" id="1_3udb2"]
-[ext_resource type="Texture2D" uid="uid://cb5tnwtaej4q0" path="res://art/Background_tiles.png" id="1_qiseh"]
-[ext_resource type="Texture2D" uid="uid://du20dr0d82r2l" path="res://Assets/Sprites/Grime.png" id="2_hn6np"]
+[ext_resource type="Texture2D" uid="uid://bgig16l7vey8e" path="res://Assets/Sprites/Tilemap.png" id="1_3udb2"]
+[ext_resource type="Script" path="res://Scripts/level_design.gd" id="1_6cfaw"]
+[ext_resource type="Texture2D" uid="uid://cuix455eoap7y" path="res://art/Background_tiles.png" id="1_qiseh"]
+[ext_resource type="Texture2D" uid="uid://dn5qk6ikk1cu7" path="res://Assets/Sprites/Grime.png" id="2_hn6np"]
 [ext_resource type="PackedScene" uid="uid://s0shuc50m6uf" path="res://characters/player.tscn" id="2_o3pit"]
 [ext_resource type="TileSet" uid="uid://c50l5lks0hfu8" path="res://Resources/level_design.tres" id="2_u7ay0"]
-[ext_resource type="Texture2D" uid="uid://cffspllrb8vii" path="res://art/Water+.png" id="4_eya07"]
-[ext_resource type="Texture2D" uid="uid://0u04pn7vt234" path="res://art/Aquatic_Palace_Tile_Map.png" id="5_26md0"]
+[ext_resource type="Texture2D" uid="uid://dvw5h0waflpa2" path="res://art/Water+.png" id="4_eya07"]
+[ext_resource type="Texture2D" uid="uid://bbh4hvjy78gto" path="res://art/Aquatic_Palace_Tile_Map.png" id="5_26md0"]
 [ext_resource type="PackedScene" uid="uid://ddos1vn23r3qy" path="res://door.tscn" id="10_st2hu"]
 [ext_resource type="PackedScene" uid="uid://1gfki5bt57i3" path="res://breakable_wall_tall.tscn" id="11_lkhx4"]
 [ext_resource type="PackedScene" uid="uid://bqkkwxliyy4dd" path="res://Scenes/trident.tscn" id="12_24a1p"]
 [ext_resource type="PackedScene" uid="uid://0xcncyan0epy" path="res://corruption.tscn" id="12_kwpgj"]
+[ext_resource type="AudioStream" uid="uid://8b8ay1l8dey3" path="res://Assets/SFX/BGM.wav" id="13_54p6x"]
+[ext_resource type="Script" path="res://Scripts/water_2.gd" id="14_aq6ih"]
+[ext_resource type="FontFile" uid="uid://dncklpwb6acux" path="res://Assets/Fonts/PixelOperator8.ttf" id="14_tyg6k"]
+[ext_resource type="AudioStream" uid="uid://sbwu6uet4w0l" path="res://Assets/SFX/splash_1.mp3" id="15_kwl0b"]
+[ext_resource type="Script" path="res://Scripts/slide.gd" id="15_pmo6i"]
+[ext_resource type="AudioStream" uid="uid://licin3c7xvip" path="res://Assets/SFX/splash_2.mp3" id="16_ai0qs"]
+[ext_resource type="Script" path="res://Scripts/wall_jump.gd" id="16_kqgnr"]
+[ext_resource type="AudioStream" uid="uid://di1dvqsfxdpyk" path="res://Assets/SFX/splash_3.mp3" id="17_djqyw"]
+[ext_resource type="Script" path="res://Scripts/wall_guide.gd" id="21_g8yoe"]
+[ext_resource type="FontFile" uid="uid://yr55yf3xdus4" path="res://Assets/Fonts/PixelOperator8-Bold.ttf" id="22_3tv26"]
+[ext_resource type="Script" path="res://Scripts/good_job!.gd" id="23_ihqyr"]
+[ext_resource type="Script" path="res://Scripts/burst_guide.gd" id="24_oqqux"]
+[ext_resource type="Script" path="res://Scripts/Control.gd" id="25_ak1k7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tutlw"]
 texture = ExtResource("1_qiseh")
@@ -141,7 +155,316 @@ texture = ExtResource("2_hn6np")
 sources/0 = SubResource("TileSetAtlasSource_v15wd")
 sources/1 = SubResource("TileSetAtlasSource_kcqed")
 
+[sub_resource type="Animation" id="Animation_f6xew"]
+resource_name = "Start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sl0em"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jg4ov"]
+_data = {
+"RESET": SubResource("Animation_sl0em"),
+"Start": SubResource("Animation_f6xew")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfhnw"]
+size = Vector2(79, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjpya"]
+size = Vector2(119, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppqwb"]
+size = Vector2(73, 247)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hi4go"]
+size = Vector2(496, 521)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3dxq"]
+size = Vector2(57, 53)
+
+[sub_resource type="Animation" id="Animation_ae3hs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(56, 28)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(25, 28)]
+}
+
+[sub_resource type="Animation" id="Animation_lp6oe"]
+resource_name = "hover"
+length = 0.5
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(56, 28), Vector2(56, 34)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(25, 28), Vector2(25, 34)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_om6jo"]
+_data = {
+"RESET": SubResource("Animation_ae3hs"),
+"hover": SubResource("Animation_lp6oe")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxhel"]
+size = Vector2(20, 46)
+
+[sub_resource type="Animation" id="Animation_uo42a"]
+resource_name = "Appear"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0h2tx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b14yn"]
+_data = {
+"Appear": SubResource("Animation_uo42a"),
+"RESET": SubResource("Animation_0h2tx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxbvs"]
+size = Vector2(70.6829, 63.3628)
+
+[sub_resource type="Animation" id="Animation_g882w"]
+resource_name = "Appear"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WallJump2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k7crb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WallJump2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qxqaj"]
+_data = {
+"Appear": SubResource("Animation_g882w"),
+"RESET": SubResource("Animation_k7crb")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tndpn"]
+size = Vector2(25, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_alyc8"]
+size = Vector2(28, 86)
+
+[sub_resource type="Animation" id="Animation_t7e6y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bwtq0"]
+resource_name = "appear"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53pbn"]
+_data = {
+"RESET": SubResource("Animation_t7e6y"),
+"appear": SubResource("Animation_bwtq0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo3qk"]
+size = Vector2(78, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b1t0"]
+size = Vector2(198, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sckx"]
+size = Vector2(20, 96)
+
+[sub_resource type="Animation" id="Animation_gnki5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_28ruc"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqnm3"]
+_data = {
+"RESET": SubResource("Animation_gnki5"),
+"appear": SubResource("Animation_28ruc")
+}
+
 [node name="Level Design" type="Node2D"]
+script = ExtResource("1_6cfaw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(0.894118, 0.894118, 1, 0.0980392)
@@ -518,3 +841,308 @@ position = Vector2(246, -647)
 position = Vector2(-32, -2455)
 
 [node name="Trident" parent="." instance=ExtResource("12_24a1p")]
+
+[node name="ColorRect2" type="ColorRect" parent="Trident"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0148656, 0.0361276, 0.0651312, 1)
+
+[node name="StartGame" type="AnimationPlayer" parent="Trident/ColorRect2"]
+libraries = {
+"": SubResource("AnimationLibrary_jg4ov")
+}
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_54p6x")
+volume_db = -10.0
+autoplay = true
+
+[node name="Water2" type="Node" parent="."]
+script = ExtResource("14_aq6ih")
+
+[node name="Water_1" type="AudioStreamPlayer" parent="Water2"]
+stream = ExtResource("15_kwl0b")
+volume_db = -7.0
+
+[node name="Water_2" type="AudioStreamPlayer" parent="Water2"]
+stream = ExtResource("16_ai0qs")
+volume_db = -7.0
+
+[node name="Water_3" type="AudioStreamPlayer" parent="Water2"]
+stream = ExtResource("17_djqyw")
+volume_db = -5.0
+
+[node name="Area2D" type="Area2D" parent="Water2"]
+position = Vector2(-87, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water2/Area2D"]
+position = Vector2(29.5, 7.5)
+shape = SubResource("RectangleShape2D_vfhnw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Water2/Area2D"]
+position = Vector2(182.5, -521)
+shape = SubResource("RectangleShape2D_rjpya")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Water2/Area2D"]
+position = Vector2(575.5, -775.5)
+shape = SubResource("RectangleShape2D_ppqwb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Water2/Area2D"]
+position = Vector2(384, -1758.5)
+shape = SubResource("RectangleShape2D_hi4go")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Water2/Area2D"]
+position = Vector2(519.5, -2377.5)
+shape = SubResource("RectangleShape2D_a3dxq")
+
+[node name="Guide" type="Node" parent="."]
+
+[node name="Strengthen Yourself" type="Label" parent="Guide"]
+offset_left = -90.0
+offset_top = 559.0
+offset_right = -22.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("14_tyg6k")
+theme_override_font_sizes/font_size = 8
+text = "Strengthen 
+yourself"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Guide/Strengthen Yourself"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 28.0
+offset_right = 96.0
+offset_bottom = 51.0
+rotation = 1.57079
+theme_override_fonts/font = ExtResource("14_tyg6k")
+text = "->"
+
+[node name="Label2" type="Label" parent="Guide/Strengthen Yourself"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 28.0
+offset_right = 65.0
+offset_bottom = 51.0
+rotation = 1.57079
+theme_override_fonts/font = ExtResource("14_tyg6k")
+text = "->"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide/Strengthen Yourself"]
+libraries = {
+"": SubResource("AnimationLibrary_om6jo")
+}
+autoplay = "hover"
+
+[node name="Slide" type="Label" parent="Guide"]
+self_modulate = Color(0.295658, 0.512008, 0.628217, 1)
+offset_left = 225.0
+offset_top = 602.0
+offset_right = 323.0
+offset_bottom = 625.0
+theme_override_fonts/font = ExtResource("14_tyg6k")
+theme_override_font_sizes/font_size = 8
+text = "Shift + Down"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+script = ExtResource("15_pmo6i")
+
+[node name="Area2D" type="Area2D" parent="Guide/Slide"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide/Slide/Area2D"]
+position = Vector2(-66, -2)
+shape = SubResource("RectangleShape2D_yxhel")
+
+[node name="SlideAnimation" type="AnimationPlayer" parent="Guide/Slide"]
+libraries = {
+"": SubResource("AnimationLibrary_b14yn")
+}
+
+[node name="WallJump" type="Label" parent="Guide"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 420.0
+offset_top = 585.0
+offset_right = 460.0
+offset_bottom = 608.0
+rotation = -0.887984
+theme_override_fonts/font = ExtResource("14_tyg6k")
+text = "->"
+script = ExtResource("16_kqgnr")
+
+[node name="WallJump2" type="Label" parent="Guide/WallJump"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 24.8773
+offset_top = -13.7883
+offset_right = 64.8773
+offset_bottom = 9.21171
+rotation = -1.54676
+theme_override_fonts/font = ExtResource("14_tyg6k")
+text = "->"
+
+[node name="Area2D" type="Area2D" parent="Guide/WallJump"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide/WallJump/Area2D"]
+position = Vector2(-21.1281, -15.7234)
+rotation = 0.893947
+shape = SubResource("RectangleShape2D_dxbvs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide/WallJump"]
+libraries = {
+"": SubResource("AnimationLibrary_qxqaj")
+}
+
+[node name="WallGuide" type="Label" parent="Guide"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 377.0
+offset_top = 329.0
+offset_right = 522.0
+offset_bottom = 391.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("14_tyg6k")
+theme_override_font_sizes/font_size = 8
+text = "Imbue yourself with the power of Atlantis to break through"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = ExtResource("21_g8yoe")
+
+[node name="Timer" type="Timer" parent="Guide/WallGuide"]
+wait_time = 3.0
+one_shot = true
+
+[node name="StopTimerArea" type="Area2D" parent="Guide/WallGuide"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide/WallGuide/StopTimerArea"]
+position = Vector2(7, 30)
+shape = SubResource("RectangleShape2D_tndpn")
+
+[node name="StartTimerArea" type="Area2D" parent="Guide/WallGuide"]
+position = Vector2(-127, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide/WallGuide/StartTimerArea"]
+position = Vector2(38, -11)
+shape = SubResource("RectangleShape2D_alyc8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide/WallGuide"]
+libraries = {
+"": SubResource("AnimationLibrary_53pbn")
+}
+
+[node name="GoodJob!" type="Label" parent="Guide"]
+visible = false
+offset_left = 10.0
+offset_top = 561.0
+offset_right = 142.0
+offset_bottom = 584.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("22_3tv26")
+theme_override_font_sizes/font_size = 16
+text = "Good job!
+"
+script = ExtResource("23_ihqyr")
+
+[node name="Arrow" type="Label" parent="Guide/GoodJob!"]
+visible = false
+layout_mode = 0
+offset_left = 53.0
+offset_top = 29.0
+offset_right = 93.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("14_tyg6k")
+text = "->"
+
+[node name="Area2D" type="Area2D" parent="Guide/GoodJob!"]
+position = Vector2(-67, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide/GoodJob!/Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_bo3qk")
+
+[node name="BurstGuide" type="Label" parent="Guide"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 2.0
+offset_top = -40.0
+offset_right = 193.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("14_tyg6k")
+theme_override_font_sizes/font_size = 14
+text = "Shift + Up
+while in water"
+horizontal_alignment = 1
+script = ExtResource("24_oqqux")
+
+[node name="StartTimer" type="Area2D" parent="Guide/BurstGuide"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide/BurstGuide/StartTimer"]
+position = Vector2(96, 85)
+shape = SubResource("RectangleShape2D_6b1t0")
+
+[node name="Timer" type="Timer" parent="Guide/BurstGuide"]
+wait_time = 3.0
+one_shot = true
+
+[node name="StopTimer" type="Area2D" parent="Guide/BurstGuide"]
+position = Vector2(199, -30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Guide/BurstGuide/StopTimer"]
+position = Vector2(0, -38)
+shape = SubResource("RectangleShape2D_6sckx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Guide/BurstGuide"]
+libraries = {
+"": SubResource("AnimationLibrary_dqnm3")
+}
+
+[node name="W" type="Label" parent="Guide"]
+offset_left = 197.0
+offset_top = 648.0
+offset_right = 271.0
+offset_bottom = 697.0
+theme_override_fonts/font = ExtResource("14_tyg6k")
+text = "W"
+horizontal_alignment = 1
+script = ExtResource("25_ak1k7")
+
+[node name="A" type="Label" parent="Guide/W"]
+layout_mode = 0
+offset_top = 19.0
+offset_right = 40.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("14_tyg6k")
+text = "A"
+
+[node name="S" type="Label" parent="Guide/W"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 19.0
+offset_right = 70.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("14_tyg6k")
+text = "S"
+
+[node name="D" type="Label" parent="Guide/W"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 19.0
+offset_right = 101.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("14_tyg6k")
+text = "D"
+
+[connection signal="finished" from="BGM" to="." method="_on_bgm_finished"]
+[connection signal="body_entered" from="Water2/Area2D" to="Water2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Water2/Area2D" to="Water2" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Guide/Slide/Area2D" to="Guide/Slide" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Guide/WallJump/Area2D" to="Guide/WallJump" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Guide/WallGuide/Timer" to="Guide/WallGuide" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Guide/WallGuide/StopTimerArea" to="Guide/WallGuide" method="_on_stop_timer_area_body_entered"]
+[connection signal="body_entered" from="Guide/WallGuide/StartTimerArea" to="Guide/WallGuide" method="_on_start_timer_area_body_entered"]
+[connection signal="body_entered" from="Guide/GoodJob!/Area2D" to="Guide/GoodJob!" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Guide/BurstGuide/StartTimer" to="Guide/BurstGuide" method="_on_start_timer_body_entered"]
+[connection signal="timeout" from="Guide/BurstGuide/Timer" to="Guide/BurstGuide" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Guide/BurstGuide/StopTimer" to="Guide/BurstGuide" method="_on_stop_timer_body_entered"]

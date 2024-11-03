@@ -14,11 +14,11 @@ func _on_body_entered(body):
 			child.hit()
 	
 	if body.name == "BOSS" and Global.boss_damaged == false:
-		print("OWWWCH")
+		#print("OWWWCH")
+		body.hurtEffect()
 		Global.boss_damaged = true
 		Global.corruption_amount -= 3
-		print("Global.corruption_amount")
-		
+
 
 func _on_player_facing_direction_changed(facing_right : bool):
 	if(facing_right):

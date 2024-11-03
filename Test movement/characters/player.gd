@@ -24,6 +24,16 @@ signal facing_direction_changed(facing_right : bool)
 @onready var wall_raycast_left = $WallCheck_Left
 @onready var burst_particles = $Burst_Particles
 @onready var wet_particles = $Wet_Particles
+@onready var jump_c_shape = $JumpCShape
+
+@onready var jump_audio = $SFX/JumpAudio
+@onready var double_jump_audio = $SFX/DoubleJumpAudio
+@onready var slide_audio = $SFX/SlideAudio
+@onready var foot_steps = $SFX/FootSteps
+@onready var land_audio = $SFX/LandAudio
+
+@onready var animation_player = $AnimationPlayer
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 480
@@ -43,6 +53,9 @@ var in_water = false
 var is_bursting = false
 var can_burst = false
 var is_wet = false
+
+var slide_sound_is_playing = false
+var footstep_sound_is_playing = false
 
 var crouching_cshape = preload("res://cshapes/plater_crouch_cshape.tres")
 var standing_cshape = preload("res://cshapes/plater_stand_cshape.tres")
@@ -67,6 +80,7 @@ func _physics_process(delta):
 			was_in_air = true
 		else:
 			HAS_DOUBLE_JUMPED = false
+			animated_sprite.modulate = Color(1, 1, 1)
 			HAS_WALL_JUMPED = false
 			
 			if was_in_air == true:
@@ -97,6 +111,7 @@ func _physics_process(delta):
 			
 		if Input.is_action_just_pressed("dash") and can_dash:
 			dash()
+			
 			#if is_wet:
 				#$wet_damage.process_mode = Node.PROCESS_MODE_INHERIT
 			$dash_timer.start()
@@ -112,6 +127,7 @@ func _physics_process(delta):
 					wall_jump()
 				elif not HAS_DOUBLE_JUMPED:
 					double_jump()
+					animated_sprite.modulate = Color(0.581, 0.581, 0.581)
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		direction = Input.get_vector("left", "right", "up", "down")
@@ -148,6 +164,10 @@ func _physics_process(delta):
 		if is_crouching and is_dashing:
 			cshape.position.y = -13
 			cshape.shape = crouching_cshape
+			if slide_sound_is_playing == false:
+				slide_sound_is_playing = true
+				slide_audio.play()
+				
 			
 		move_and_slide()
 		update_animation()
@@ -161,6 +181,12 @@ func _physics_process(delta):
 		if in_water:
 			cshape.shape = crouching_cshape
 			animated_sprite.play("swim")
+			jump_c_shape.disabled = true
+			animated_sprite.modulate = Color(0.529, 1, 1)
+		elif !in_water and !HAS_DOUBLE_JUMPED:
+				animated_sprite.modulate = Color(1, 1, 1)
+		elif !in_water and HAS_DOUBLE_JUMPED:
+				animated_sprite.modulate = Color(0.581, 0.581, 0.581)
 	else:
 		animated_sprite.play("idle")
 
@@ -169,6 +195,7 @@ func update_animation():
 		if direction.x != 0:
 			if cshape.shape != crouching_cshape:
 				animated_sprite.play("run")
+
 			else:
 				animated_sprite.play("slide")
 		else:
@@ -187,25 +214,34 @@ func update_facing_direction():
 				animated_sprite.flip_h = true
 			elif direction.x < 0:
 				animated_sprite.flip_h = false
-		else:
-			if direction.x > 0:
-				animated_sprite.flip_h = false
-			elif direction.x < 0:
-				animated_sprite.flip_h = true
-			
-		emit_signal("facing_direction_changed", !animated_sprite.flip_h)
+		#else:
+			#if direction.x > 0:
+				#animated_sprite.flip_h = false
+			#elif direction.x < 0:
+				#animated_sprite.flip_h = true
 	
+		emit_signal("facing_direction_changed", !animated_sprite.flip_h)
+	if wall_raycast_left.is_colliding() and is_wall_sliding:
+		animated_sprite.flip_h = true
+	elif wall_raycast_right.is_colliding() and is_wall_sliding:
+		animated_sprite.flip_h = false
+
 func attack():
 	animated_sprite.play("attack")
 	animation_locked = true
 	
 func jump():
 	velocity.y = JUMP_VELOCITY
+	jump_audio.play()
 	animated_sprite.play("jump")
 	animation_locked = true
-		
+	await get_tree().create_timer(0.2).timeout
+	if is_crouching:return
+	jump_c_shape.disabled = false
+
 func double_jump():
 	velocity.y = DOUBLE_JUMP_VELOCITY
+	jump_audio.play()
 	animated_sprite.play("jump double")
 	animation_locked = true
 	HAS_DOUBLE_JUMPED = true
@@ -219,17 +255,22 @@ func wall_jump():
 	elif wall_normal == Vector2.LEFT:
 		velocity.x = -WALL_JUMP_PUSHBACK
 	animated_sprite.play("jump double")
+	double_jump_audio.play()
+	jump_c_shape.disabled = false
 	animation_locked = true
 	HAS_WALL_JUMPED = true
 	#print("jumped")
 	
 func wall_slide(delta):
+	jump_c_shape.disabled = true
 	if !is_on_floor() and (wall_raycast_right.is_colliding() or wall_raycast_left.is_colliding()):
 		if is_on_wall():	
 			animated_sprite.play("wall slide")
-			animation_locked = true
-		if direction.x > 0 or direction.x < 0:
 			is_wall_sliding = true
+			animation_locked = true
+			
+		#if direction.x > 0 or direction.x < 0:
+			
 		else:
 			is_wall_sliding = false
 	else:
@@ -254,6 +295,8 @@ func dash():
 
 func land():
 	animated_sprite.play("jump end")
+	land_audio.play()
+	jump_c_shape.disabled = true
 	animation_locked = true
 
 #func slide():
@@ -307,7 +350,7 @@ func _on_dash_cooldown_timeout():
 	is_bursting = false
 	can_dash = true
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	animated_sprite.play("swim")
 	ACCELERATION = 600
 	gravity = 100
@@ -315,11 +358,11 @@ func _on_area_2d_body_entered(body):
 	is_wet = true
 	animation_locked = true
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	ACCELERATION = 500
 	gravity = 480
 	in_water = false
-	cshape.shape = standing_cshape
+	cshape.set_deferred("shape", standing_cshape)
 	$wet_timer.start()
 	if is_dashing:
 		is_bursting = true
@@ -331,3 +374,14 @@ func _on_wet_timer_timeout():
 
 func _on_hit_cooldown_timeout():
 	$Attack_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func _on_slide_audio_finished():
+	slide_sound_is_playing = false
+	
+
+
+func _on_hitbox_hurt():
+	animation_player.play("hurt")
+func _on_hitbox_recovered():
+	animation_player.stop()
