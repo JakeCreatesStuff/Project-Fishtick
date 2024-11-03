@@ -1,7 +1,8 @@
-[gd_scene load_steps=151 format=3 uid="uid://bqkkwxliyy4dd"]
+[gd_scene load_steps=152 format=3 uid="uid://bqkkwxliyy4dd"]
 
 [ext_resource type="Texture2D" uid="uid://c148ai1o21qoq" path="res://Assets/Sprites/New folder/GrimeBar_Stick.png" id="1_pmk1g"]
 [ext_resource type="Script" path="res://Scripts/trident.gd" id="1_pr6fd"]
+[ext_resource type="FontFile" uid="uid://4bcbq7mmlm0f" path="res://Assets/Fonts/PixelOperator8.ttf" id="2_7me3q"]
 [ext_resource type="Texture2D" uid="uid://k2dic7anqxy1" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_1.png" id="2_pmmwc"]
 [ext_resource type="Texture2D" uid="uid://tsbujxac3eyc" path="res://Assets/Sprites/New folder/GrimeBar_Tip1_2.png" id="3_v86po"]
 [ext_resource type="Texture2D" uid="uid://bt5jshnsmlgtk" path="res://Assets/Sprites/New folder/GrimeBar_Stick_White.png" id="3_vjdwo"]
@@ -178,6 +179,26 @@ animations = [{
 "loop": false,
 "name": &"white",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vjdwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vjdwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vjdwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vjdwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_pmk1g")
+}],
+"loop": false,
+"name": &"win",
+"speed": 12.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7kugf"]
@@ -243,11 +264,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_ms7vx")
+"texture": ExtResource("4_24mrf")
 }],
 "loop": false,
 "name": &"white",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_24mrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_24mrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_24mrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_24mrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pmmwc")
+}],
+"loop": false,
+"name": &"win",
+"speed": 12.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bvsx2"]
@@ -330,6 +371,26 @@ animations = [{
 "loop": false,
 "name": &"white",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ms7vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0ehye")
+}],
+"loop": false,
+"name": &"win",
+"speed": 12.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7rbuu"]
@@ -412,6 +473,26 @@ animations = [{
 "loop": false,
 "name": &"white",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_8riym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8riym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8riym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8riym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8liyi")
+}],
+"loop": false,
+"name": &"win",
+"speed": 12.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4v56v"]
@@ -1198,7 +1279,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ColorRect:modulate")
+tracks/4/path = NodePath("Lose/ColorRect:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1294,7 +1375,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("BlackBarTop:size")
+tracks/12/path = NodePath("Win/BlackBarTop:size")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -1306,7 +1387,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("BlackBarBottom:size")
+tracks/13/path = NodePath("Win/BlackBarBottom:size")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1340,7 +1421,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("WinScreen:modulate")
+tracks/16/path = NodePath("Win/WinScreen:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1361,19 +1442,43 @@ tracks/17/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Win/YouWinText:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_bs3sy"]
 resource_name = "blue_screen"
-length = 2.0
+length = 4.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WinScreen:modulate")
+tracks/0/path = NodePath("Win/WinScreen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Win/YouWinText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1397,7 +1502,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/path = NodePath("Lose/ColorRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1497,7 +1602,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_u5wnc"]
 resource_name = "trident_fades_out"
-length = 2.0
+length = 5.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1511,6 +1616,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Win/YouWinText:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.5, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_nkrop"]
 resource_name = "win"
@@ -1518,7 +1635,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BlackBarTop:size")
+tracks/0/path = NodePath("Win/BlackBarTop:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1530,7 +1647,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BlackBarBottom:size")
+tracks/1/path = NodePath("Win/BlackBarBottom:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1587,16 +1704,9 @@ _data = {
 [node name="Trident" type="CanvasLayer"]
 script = ExtResource("1_pr6fd")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.10815, 0.09607, 0.165779, 1)
+[node name="Win" type="Node" parent="."]
 
-[node name="WinScreen" type="ColorRect" parent="."]
+[node name="WinScreen" type="ColorRect" parent="Win"]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -1605,32 +1715,75 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.373832, 0.556199, 0.662103, 1)
 
-[node name="WinScreen_Animation" type="AnimationPlayer" parent="WinScreen"]
+[node name="WinScreen_Animation" type="AnimationPlayer" parent="Win/WinScreen"]
 libraries = {
 "": SubResource("AnimationLibrary_o21ls")
 }
 
+[node name="BlackBarTop" type="ColorRect" parent="Win"]
+offset_right = 1150.0
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="YouWinText" type="Label" parent="Win"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 177.0
+offset_top = 246.0
+offset_right = 974.0
+offset_bottom = 439.0
+theme_override_fonts/font = ExtResource("2_7me3q")
+theme_override_font_sizes/font_size = 125
+text = "You Win!"
+
+[node name="BlackBarBottom" type="ColorRect" parent="Win"]
+offset_left = 1152.0
+offset_top = 648.0
+offset_right = 2302.0
+offset_bottom = 648.0
+rotation = -3.14159
+color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+
+[node name="Lose" type="Node" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Lose"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10815, 0.09607, 0.165779, 1)
+
+[node name="Retry" parent="Lose" instance=ExtResource("127_wkf8w")]
+visible = false
+top_level = true
+
 [node name="TridentSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(872, 64)
 sprite_frames = SubResource("SpriteFrames_gv188")
+animation = &"win"
+autoplay = "default"
 
 [node name="Tip_1" type="AnimatedSprite2D" parent="TridentSprite"]
 show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_7kugf")
-animation = &"breaking"
+animation = &"win"
 autoplay = "full"
 
 [node name="Tip_2" type="AnimatedSprite2D" parent="TridentSprite"]
 show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_bvsx2")
-animation = &"white"
+animation = &"win"
 autoplay = "full"
+frame = 4
+frame_progress = 1.0
 
 [node name="Tip_3" type="AnimatedSprite2D" parent="TridentSprite"]
 show_behind_parent = true
 sprite_frames = SubResource("SpriteFrames_7rbuu")
-animation = &"broke"
+animation = &"win"
 autoplay = "full"
+frame = 4
+frame_progress = 1.0
 
 [node name="Tendril" type="Node2D" parent="TridentSprite"]
 position = Vector2(-47.5, 0)
@@ -1689,22 +1842,24 @@ sprite_frames = SubResource("SpriteFrames_d4hgx")
 animation = &"pop"
 autoplay = "idle"
 
-[node name="HeartBeatAudio" type="AudioStreamPlayer" parent="."]
+[node name="Audio" type="Node" parent="."]
+
+[node name="HeartBeatAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("123_1xj0s")
 volume_db = -3.0
 bus = &"SFX"
 
-[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+[node name="DeathAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("123_u3i6e")
 volume_db = -5.0
 bus = &"SFX"
 
-[node name="GlassBreakingAudio" type="AudioStreamPlayer" parent="."]
+[node name="GlassBreakingAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("117_eburr")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="WinAudio" type="AudioStreamPlayer" parent="."]
+[node name="WinAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("126_jl2x4")
 volume_db = -20.0
 pitch_scale = 1.4
@@ -1714,18 +1869,3 @@ bus = &"SFX"
 libraries = {
 "": SubResource("AnimationLibrary_w5ruf")
 }
-
-[node name="BlackBarTop" type="ColorRect" parent="."]
-offset_right = 1152.0
-color = Color(0.0430392, 0.0430392, 0.0430392, 1)
-
-[node name="BlackBarBottom" type="ColorRect" parent="."]
-offset_left = 1152.0
-offset_top = 648.0
-offset_right = 2304.0
-offset_bottom = 648.0
-rotation = -3.14159
-color = Color(0.0430392, 0.0430392, 0.0430392, 1)
-
-[node name="Retry" parent="." instance=ExtResource("127_wkf8w")]
-visible = false

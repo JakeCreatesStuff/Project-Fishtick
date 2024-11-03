@@ -1,17 +1,16 @@
-[gd_scene load_steps=23 format=4 uid="uid://bmjeuhtx7xpdb"]
+[gd_scene load_steps=22 format=4 uid="uid://bmjeuhtx7xpdb"]
 
-[ext_resource type="Texture2D" uid="uid://d1ul7p0e303pe" path="res://Assets/Sprites/Tilemap.png" id="1_3udb2"]
-[ext_resource type="Texture2D" uid="uid://d6bw6lwsewaw" path="res://art/Background_tiles.png" id="1_qiseh"]
-[ext_resource type="Texture2D" uid="uid://ull4734s1wl7" path="res://Assets/Sprites/Grime.png" id="2_hn6np"]
+[ext_resource type="Texture2D" uid="uid://bjbxtui38hpw2" path="res://Assets/Sprites/Tilemap.png" id="1_3udb2"]
+[ext_resource type="Texture2D" uid="uid://cb5tnwtaej4q0" path="res://art/Background_tiles.png" id="1_qiseh"]
+[ext_resource type="Texture2D" uid="uid://du20dr0d82r2l" path="res://Assets/Sprites/Grime.png" id="2_hn6np"]
 [ext_resource type="PackedScene" uid="uid://s0shuc50m6uf" path="res://characters/player.tscn" id="2_o3pit"]
 [ext_resource type="TileSet" uid="uid://c50l5lks0hfu8" path="res://Resources/level_design.tres" id="2_u7ay0"]
-[ext_resource type="Texture2D" uid="uid://bwxqltvxb0qo0" path="res://art/Water+.png" id="4_eya07"]
-[ext_resource type="Texture2D" uid="uid://cmmws3bei50hx" path="res://art/Aquatic_Palace_Tile_Map.png" id="5_26md0"]
+[ext_resource type="Texture2D" uid="uid://cffspllrb8vii" path="res://art/Water+.png" id="4_eya07"]
+[ext_resource type="Texture2D" uid="uid://0u04pn7vt234" path="res://art/Aquatic_Palace_Tile_Map.png" id="5_26md0"]
 [ext_resource type="PackedScene" uid="uid://ddos1vn23r3qy" path="res://door.tscn" id="10_st2hu"]
 [ext_resource type="PackedScene" uid="uid://1gfki5bt57i3" path="res://breakable_wall_tall.tscn" id="11_lkhx4"]
 [ext_resource type="PackedScene" uid="uid://bqkkwxliyy4dd" path="res://Scenes/trident.tscn" id="12_24a1p"]
 [ext_resource type="PackedScene" uid="uid://0xcncyan0epy" path="res://corruption.tscn" id="12_kwpgj"]
-[ext_resource type="PackedScene" uid="uid://cqrixou45316r" path="res://projectile.tscn" id="13_cq2w2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tutlw"]
 texture = ExtResource("1_qiseh")
@@ -177,7 +176,7 @@ tile_map_data = PackedByteArray("AAAIAB4AAQAFAAAAAAAHAB4AAQAGAAAAAAAGAB4AAQAIAAk
 tile_set = SubResource("TileSet_fbrxy")
 
 [node name="player" parent="." instance=ExtResource("2_o3pit")]
-position = Vector2(47, 654)
+position = Vector2(55, 649)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(1, -26)
@@ -196,167 +195,326 @@ tile_set = ExtResource("2_u7ay0")
 [node name="Door" parent="." instance=ExtResource("10_st2hu")]
 position = Vector2(56, -1840)
 
-[node name="Breakable_Wall_Tall" parent="." instance=ExtResource("11_lkhx4")]
-position = Vector2(343, 360)
-
 [node name="C Nodes" type="Node2D" parent="."]
 position = Vector2(187, 623)
 
 [node name="Corruption" parent="C Nodes" instance=ExtResource("12_kwpgj")]
 
 [node name="Corruption2" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(20, 0)
+position = Vector2(16, 0)
 
 [node name="Corruption3" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(40, 0)
+position = Vector2(32, 0)
 
 [node name="Corruption4" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(60, 0)
+position = Vector2(48, 0)
 
 [node name="Corruption5" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(80, 0)
+position = Vector2(64, 0)
 
 [node name="Corruption6" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(100, 0)
+position = Vector2(80, 0)
 
 [node name="Corruption7" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(120, 0)
+position = Vector2(96, 0)
 
 [node name="Corruption8" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(140, 0)
+position = Vector2(112, 0)
 
 [node name="Corruption9" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(160, 0)
+position = Vector2(128, 0)
 
 [node name="Corruption10" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(116, -66)
+position = Vector2(120, -65)
 
 [node name="Corruption11" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(136, -66)
+position = Vector2(136, -65)
 
 [node name="Corruption12" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(41, -82)
+position = Vector2(43, -81)
 
 [node name="Corruption13" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(61, -82)
+position = Vector2(59, -81)
 
 [node name="Corruption14" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-36, -114)
+position = Vector2(-36, -113)
 
 [node name="Corruption15" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-120, -130)
+position = Vector2(-117, -128)
 
 [node name="Corruption16" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-99, -130)
+position = Vector2(-101, -128)
 
 [node name="Corruption23" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-2, -242)
+position = Vector2(6, -240)
+
+[node name="Corruption49" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-10, -240)
 
 [node name="Corruption24" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(18, -242)
+position = Vector2(22, -240)
 
 [node name="Corruption25" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(38, -242)
+position = Vector2(38, -240)
 
 [node name="Corruption26" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(58, -242)
+position = Vector2(54, -240)
 
 [node name="Corruption27" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(78, -242)
+position = Vector2(70, -240)
 
 [node name="Corruption28" parent="C Nodes" instance=ExtResource("12_kwpgj")]
 position = Vector2(250, -242)
 
 [node name="Corruption29" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(270, -242)
+position = Vector2(266, -242)
 
 [node name="Corruption30" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(290, -242)
+position = Vector2(282, -242)
 
 [node name="Corruption31" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(310, -242)
+position = Vector2(298, -242)
+
+[node name="Corruption37" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(314, -242)
+
+[node name="Corruption68" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(268, -986)
+rotation = 3.14159
+
+[node name="Corruption69" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(284, -986)
+rotation = 3.14159
+
+[node name="Corruption70" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(300, -986)
+rotation = 3.14159
+
+[node name="Corruption71" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(316, -986)
+rotation = 3.14159
+
+[node name="Corruption72" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(332, -986)
+rotation = 3.14159
+
+[node name="Corruption53" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(339, -294)
+rotation = -1.5708
+
+[node name="Corruption54" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(339, -310)
+rotation = -1.5708
+
+[node name="Corruption55" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(339, -326)
+rotation = -1.5708
+
+[node name="Corruption57" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(245, -364)
+rotation = 1.5708
+
+[node name="Corruption58" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(245, -380)
+rotation = 1.5708
+
+[node name="Corruption59" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(245, -396)
+rotation = 1.5708
 
 [node name="Corruption32" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(206, -450)
+position = Vector2(198, -450)
 
 [node name="Corruption33" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(186, -450)
+position = Vector2(182, -450)
 
 [node name="Corruption34" parent="C Nodes" instance=ExtResource("12_kwpgj")]
 position = Vector2(166, -450)
 
 [node name="Corruption35" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(146, -450)
+position = Vector2(150, -450)
 
 [node name="Corruption36" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(126, -450)
+position = Vector2(134, -450)
 
-[node name="Corruption37" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(74, -386)
+[node name="Corruption50" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(118, -450)
 
 [node name="Corruption38" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-38, -386)
+position = Vector2(-70, -385)
 
 [node name="Corruption39" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-81, -385)
+position = Vector2(-86, -385)
 
 [node name="Corruption40" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-131, -385)
+position = Vector2(-102, -385)
+
+[node name="Corruption56" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-118, -385)
+
+[node name="Corruption60" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-134, -385)
+
+[node name="Corruption61" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-150, -385)
+
+[node name="Corruption65" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-22, -385)
+
+[node name="Corruption66" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-38, -385)
+
+[node name="Corruption67" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-54, -385)
 
 [node name="Corruption41" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(185, -626)
-
-[node name="Corruption42" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(199, -882)
+position = Vector2(182, -626)
 
 [node name="Corruption43" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(29, -946)
+position = Vector2(45, -946)
 
 [node name="Corruption44" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-90, -883)
+position = Vector2(-164, -880)
 
 [node name="Corruption45" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-159, -883)
-
-[node name="Corruption46" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-28, -1074)
-
-[node name="Corruption47" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(165, -1107)
-
-[node name="Corruption48" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(5, -1219)
+position = Vector2(-180, -880)
 
 [node name="Corruption17" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-78, -130)
+position = Vector2(-85, -128)
 
 [node name="Corruption18" parent="C Nodes" instance=ExtResource("12_kwpgj")]
 position = Vector2(-137, -190)
 rotation = 1.5708
 
 [node name="Corruption19" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-137, -210)
+position = Vector2(-137, -206)
 rotation = 1.5708
 
 [node name="Corruption20" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-137, -230)
+position = Vector2(-137, -222)
 rotation = 1.5708
 
 [node name="Corruption21" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-137, -250)
+position = Vector2(-137, -238)
 rotation = 1.5708
 
 [node name="Corruption22" parent="C Nodes" instance=ExtResource("12_kwpgj")]
-position = Vector2(-137, -270)
+position = Vector2(-137, -254)
 rotation = 1.5708
 
-[node name="Projectile" parent="." instance=ExtResource("13_cq2w2")]
-position = Vector2(115, 590)
+[node name="Corruption51" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(37, -507)
+rotation = 1.5708
+
+[node name="Corruption52" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(37, -491)
+rotation = 1.5708
+
+[node name="Corruption73" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(114, -884)
+rotation = 0.785398
+
+[node name="Corruption74" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(103, -895)
+rotation = 0.785398
+
+[node name="Corruption75" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(92, -906)
+rotation = 0.785398
+
+[node name="Corruption76" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(81, -917)
+rotation = 0.785398
+
+[node name="Corruption77" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(70, -928)
+rotation = 0.785398
+
+[node name="Corruption78" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(59, -939)
+rotation = 0.785398
+
+[node name="Corruption79" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(126, -880)
+
+[node name="Corruption80" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-187, -900)
+rotation = 1.5708
+
+[node name="Corruption81" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-187, -884)
+rotation = 1.5708
+
+[node name="Corruption82" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(198, -2043)
+rotation = 3.14159
+
+[node name="Corruption83" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(166, -2043)
+rotation = 3.14159
+
+[node name="Corruption84" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(182, -2043)
+rotation = 3.14159
+
+[node name="Corruption85" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(198, -2050)
+
+[node name="Corruption86" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(166, -2050)
+
+[node name="Corruption87" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(182, -2050)
+
+[node name="Corruption88" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-68, -2048)
+
+[node name="Corruption89" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-100, -2048)
+
+[node name="Corruption90" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-84, -2048)
+
+[node name="Corruption92" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(-52, -2048)
+
+[node name="Corruption94" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(92, -2393)
+
+[node name="Corruption96" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(76, -2393)
+
+[node name="Corruption97" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(140, -2393)
+
+[node name="Corruption98" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(108, -2393)
+
+[node name="Corruption99" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(124, -2393)
+
+[node name="Corruption102" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(198, -626)
+
+[node name="Corruption103" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(214, -626)
+
+[node name="Corruption104" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(230, -626)
+
+[node name="Corruption105" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(144, 0)
+
+[node name="Corruption106" parent="C Nodes" instance=ExtResource("12_kwpgj")]
+position = Vector2(160, 0)
+
+[node name="Breakable_Wall_Tall" parent="C Nodes" instance=ExtResource("11_lkhx4")]
+position = Vector2(156, -263)
+
+[node name="Breakable_Wall_Tall2" parent="C Nodes" instance=ExtResource("11_lkhx4")]
+position = Vector2(246, -647)
+
+[node name="Breakable_Wall_Tall3" parent="C Nodes" instance=ExtResource("11_lkhx4")]
+position = Vector2(-32, -2455)
 
 [node name="Trident" parent="." instance=ExtResource("12_24a1p")]
-
-[node name="Breakable_Wall_Tall2" parent="." instance=ExtResource("11_lkhx4")]
-position = Vector2(433, -24)
-
-[node name="Breakable_Wall_Tall3" parent="." instance=ExtResource("11_lkhx4")]
-position = Vector2(155, -1832)

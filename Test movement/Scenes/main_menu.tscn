@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpb4bvnnt6b0h"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_c6svw"]
+[ext_resource type="Texture2D" uid="uid://b0kjslapf8o1u" path="res://Assets/Sprites/TitleScreen.png" id="1_qhrxo"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c6svw")
+
+[node name="CG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qhrxo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+
+[connection signal="start_game" from="." to="." method="_on_start_game"]
+[connection signal="pressed" from="MarginContainer/StartButton" to="." method="_on_start_button_pressed"]

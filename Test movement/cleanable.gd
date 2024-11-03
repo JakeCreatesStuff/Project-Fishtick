@@ -1,8 +1,11 @@
 extends Node
-
 class_name Cleanable
 
+@onready var corruption = Global.corruption_amount
+
+signal cleaned()
+
 func hit():
-	Global.corruption_amount = Global.corruption_amount - 1
+	corruption -= 1
 	get_parent().queue_free()
 	#print("HIT")

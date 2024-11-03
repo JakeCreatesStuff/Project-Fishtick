@@ -1,14 +1,19 @@
 extends CanvasLayer
 
+signal WIN()
 
 var start_cleaning = false # for debug purpose
 var index = 0
-var corruption = Global.corruption_amount
+@onready var corruption = Global.corruption_amount
 var hp = 3
 var win_state = false
 var lose_state = false
 
-
+var hit_0 = false
+var hit_1 = false
+var hit_2 = false
+var hit_3 = false
+var dead = false
 
 @onready var trident = $TridentSprite
 @onready var tip_1 = $TridentSprite/Tip_1
@@ -29,49 +34,52 @@ var lose_state = false
 
 
 
-@onready var glass_audio = $GlassBreakingAudio
-@onready var death_audio = $DeathAudio
-@onready var heart_beat_audio = $HeartBeatAudio
-@onready var win_audio = $WinAudio
+@onready var glass_audio = $Audio/GlassBreakingAudio
+@onready var death_audio = $Audio/DeathAudio
+@onready var heart_beat_audio = $Audio/HeartBeatAudio
+@onready var win_audio = $Audio/WinAudio
 
 @onready var animation = $AnimationPlayer
-@onready var win_screen_animation = $WinScreen/WinScreen_Animation
+@onready var win_screen_animation = $Win/WinScreen/WinScreen_Animation
 
 
 func _process(delta):
-	if start_cleaning == true:
-		clean()
+	#if start_cleaning == true:
+		#clean()
+	clean()
+	hp_update()
 
 func clean():
-		if corruption > 0:
-			corruption -= 1
-		elif win_state == false:
-			win_state = true
-			win()
-			
+	#if corruption > 0:
+		#corruption -= 1
+	#elif win_state == false:
+		#win_state = true
+		#win()
 
-		if corruption > 120:
-			cleaning_1()
-		elif corruption > 100:
-			cleaning_2()
-		elif corruption > 80:
-			cleaning_3()
-		elif corruption > 60:
-			cleaning_4()
-		elif corruption > 40:
-			cleaning_5()
-		elif corruption > 20:
-			cleaning_6()
-		elif corruption > 0:
-			cleaning_7()
-
+	if Global.corruption_amount > 120:
+		cleaning_1()
+	elif Global.corruption_amount > 100:
+		cleaning_2()
+	elif Global.corruption_amount > 80:
+		cleaning_3()
+	elif Global.corruption_amount > 60:
+		cleaning_4()
+	elif Global.corruption_amount > 40:
+		cleaning_5()
+	elif Global.corruption_amount > 20:
+		cleaning_6()
+	elif Global.corruption_amount > 0:
+		cleaning_7()
+	elif Global.corruption_amount < 0 and win_state == false:
+		win_state = true
+		end()
 
 func _input(event):
 	if event.is_action_pressed("clean"):
-		start_cleaning = true
+		Global.corruption_amount -= 7
 	if event.is_action_pressed("hp"):
 		if hp > 0:
-			hp -= 1
+			Global.hitpoints -= 1
 			hp_update()
 		else:
 			died()
@@ -80,11 +88,13 @@ func _input(event):
 		hp_update()
 
 func hp_update():
-	if hp == 3:
+	if Global.hitpoints == 3 and hit_0 == false:
+		hit_0 = true
 		tip_1.animation = "full"
 		tip_2.animation = "full"
 		tip_3.animation = "full"
-	elif hp == 2:
+	elif Global.hitpoints == 2 and hit_1 == false:
+		hit_1 = true
 		tip_1.play("breaking")
 		tip_2.play("white")
 		tip_3.play("white")
@@ -92,7 +102,8 @@ func hp_update():
 		glass_audio.play()
 		await tip_1. animation_finished
 		tip_1.play("broke")
-	elif hp == 1:
+	elif Global.hitpoints == 1 and hit_2 == false:
+		hit_2 = true
 		tip_1.play("broke_white")
 		tip_2.play("breaking")
 		tip_3.play("white")
@@ -102,7 +113,8 @@ func hp_update():
 		await tip_2. animation_finished
 		tip_1.play("broke")
 		tip_2.play("broke")
-	elif hp == 0:
+	elif Global.hitpoints == 0 and hit_3 == false:
+		hit_3 = true
 		tip_1.play("broke_white")
 		tip_2.play("broke_white")
 		tip_3.play("breaking")
@@ -113,6 +125,9 @@ func hp_update():
 		tip_1.play("broke")
 		tip_2.play("broke")
 		tip_3.play("broke")
+	elif Global.hitpoints == -1 and dead == false:
+		dead = true
+		died()
 
 func died():
 	animation.play("dead")
@@ -123,9 +138,12 @@ func died():
 	await get_tree().create_timer(1.0).timeout
 	heart_beat_audio.play()
 	animation.play("tendril_breathe")
-	$Retry.show()
+	$Lose/Retry.show()
+	$Lose/Retry.retry_screen_appear()
 
 func win():
+	WIN.emit()
+	Global.win = true
 	animation.play("win")
 	await get_tree().create_timer(1).timeout
 	win_screen_animation.play("blue_screen")
@@ -136,26 +154,43 @@ func win():
 	ball_2.play("pop")
 	await get_tree().create_timer(0.1).timeout
 	ball_3.play("pop")
+	Global.hitpoints = 3
+	tip_1.play("win")
+	tip_2.play("win")
+	tip_3.play("win")
+	trident.play("win")
 	await get_tree().create_timer(1).timeout
+	
 	animation.play("trident_fades_out")
+	
 
 func cleaning_1():
-	tendril_1.frame = 129 - corruption
+	tendril_1.frame = 129 - Global.corruption_amount
 
 func cleaning_2():
-	tendril_2.frame = 121 - corruption
+	tendril_1.frame = 8
+	tendril_2.frame = 121 - Global.corruption_amount
 
 func cleaning_3():
-	tendril_3.frame = 101 - corruption
+	tendril_2.frame = 20
+	tendril_3.frame = 101 - Global.corruption_amount
 
 func cleaning_4():
-	tendril_4.frame = 81 - corruption
+	tendril_3.frame = 20
+	tendril_4.frame = 81 - Global.corruption_amount
 
 func cleaning_5():
-	tendril_5.frame = 61 - corruption
+	tendril_4.frame = 20
+	tendril_5.frame = 61 - Global.corruption_amount
 
 func cleaning_6():
-	tendril_6.frame = 41 - corruption
+	tendril_5.frame = 20
+	tendril_6.frame = 41 - Global.corruption_amount
 
 func cleaning_7():
-	tendril_7.frame = 21 - corruption
+	tendril_6.frame = 20
+	tendril_7.frame = 21 - Global.corruption_amount
+
+func end():
+	tendril_7.frame = 20
+	win()
