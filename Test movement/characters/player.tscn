@@ -947,7 +947,7 @@ radius = 12.0
 
 [node name="player" type="CharacterBody2D"]
 top_level = true
-collision_layer = 32905
+collision_layer = 32921
 collision_mask = 32905
 script = ExtResource("1_h246c")
 DASH_VELOCITY = 400.0

@@ -221,7 +221,7 @@ func wall_jump():
 	animated_sprite.play("jump double")
 	animation_locked = true
 	HAS_WALL_JUMPED = true
-	print("jumped")
+	#print("jumped")
 	
 func wall_slide(delta):
 	if !is_on_floor() and (wall_raycast_right.is_colliding() or wall_raycast_left.is_colliding()):

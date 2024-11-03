@@ -5,12 +5,14 @@ signal cleaned()
 var  corruption = Global.corruption_amount
 
 func _on_body_entered(body):
-	hit()
+	if body is not Player: return
+	if body.is_wet:
+		hit()
 
 func hit():
 	Global.corruption_amount -= 1
 	queue_free()
-	print (Global.corruption_amount)
+	#print (Global.corruption_amount)
 	#print("HIT")
 
 #var clean = false

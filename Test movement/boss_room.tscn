@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=4 uid="uid://ck3m0p1flrw0e"]
 
-[ext_resource type="Texture2D" uid="uid://cuix455eoap7y" path="res://art/Background_tiles.png" id="1_dp80j"]
+[ext_resource type="Texture2D" uid="uid://cb5tnwtaej4q0" path="res://art/Background_tiles.png" id="1_dp80j"]
 [ext_resource type="Script" path="res://Scripts/boss_room.gd" id="1_na1xv"]
-[ext_resource type="Texture2D" uid="uid://dvw5h0waflpa2" path="res://art/Water+.png" id="2_x7k8c"]
-[ext_resource type="Texture2D" uid="uid://bbh4hvjy78gto" path="res://art/Aquatic_Palace_Tile_Map.png" id="3_phonu"]
+[ext_resource type="Texture2D" uid="uid://cffspllrb8vii" path="res://art/Water+.png" id="2_x7k8c"]
+[ext_resource type="Texture2D" uid="uid://0u04pn7vt234" path="res://art/Aquatic_Palace_Tile_Map.png" id="3_phonu"]
 [ext_resource type="TileSet" uid="uid://c50l5lks0hfu8" path="res://Resources/level_design.tres" id="4_q4gue"]
 [ext_resource type="PackedScene" uid="uid://s0shuc50m6uf" path="res://characters/player.tscn" id="5_dprxq"]
 [ext_resource type="PackedScene" uid="uid://d4uh4sr5u617" path="res://boss.tscn" id="6_pcni0"]
